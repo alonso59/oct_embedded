@@ -1,0 +1,2799 @@
+Training items: 264
+Validation items: 72
+Factor train/val: 0.7857142857142857
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1         [-1, 32, 512, 512]             320
+         LeakyReLU-2         [-1, 32, 512, 512]               0
+    InstanceNorm2d-3         [-1, 32, 512, 512]               0
+            Conv2d-4         [-1, 32, 512, 512]           9,248
+         LeakyReLU-5         [-1, 32, 512, 512]               0
+    InstanceNorm2d-6         [-1, 32, 512, 512]               0
+        DoubleConv-7         [-1, 32, 512, 512]               0
+         MaxPool2d-8         [-1, 32, 256, 256]               0
+            Conv2d-9         [-1, 64, 256, 256]          18,496
+        LeakyReLU-10         [-1, 64, 256, 256]               0
+   InstanceNorm2d-11         [-1, 64, 256, 256]               0
+           Conv2d-12         [-1, 64, 256, 256]          36,928
+        LeakyReLU-13         [-1, 64, 256, 256]               0
+   InstanceNorm2d-14         [-1, 64, 256, 256]               0
+       DoubleConv-15         [-1, 64, 256, 256]               0
+             Down-16         [-1, 64, 256, 256]               0
+        MaxPool2d-17         [-1, 64, 128, 128]               0
+           Conv2d-18        [-1, 128, 128, 128]          73,856
+        LeakyReLU-19        [-1, 128, 128, 128]               0
+   InstanceNorm2d-20        [-1, 128, 128, 128]               0
+           Conv2d-21        [-1, 128, 128, 128]         147,584
+        LeakyReLU-22        [-1, 128, 128, 128]               0
+   InstanceNorm2d-23        [-1, 128, 128, 128]               0
+       DoubleConv-24        [-1, 128, 128, 128]               0
+             Down-25        [-1, 128, 128, 128]               0
+        MaxPool2d-26          [-1, 128, 64, 64]               0
+           Conv2d-27          [-1, 256, 64, 64]         295,168
+        LeakyReLU-28          [-1, 256, 64, 64]               0
+   InstanceNorm2d-29          [-1, 256, 64, 64]               0
+           Conv2d-30          [-1, 256, 64, 64]         590,080
+        LeakyReLU-31          [-1, 256, 64, 64]               0
+   InstanceNorm2d-32          [-1, 256, 64, 64]               0
+       DoubleConv-33          [-1, 256, 64, 64]               0
+             Down-34          [-1, 256, 64, 64]               0
+  ConvTranspose2d-35        [-1, 128, 128, 128]         131,200
+           Conv2d-36        [-1, 128, 128, 128]         295,040
+        LeakyReLU-37        [-1, 128, 128, 128]               0
+   InstanceNorm2d-38        [-1, 128, 128, 128]               0
+           Conv2d-39        [-1, 128, 128, 128]         147,584
+        LeakyReLU-40        [-1, 128, 128, 128]               0
+   InstanceNorm2d-41        [-1, 128, 128, 128]               0
+       DoubleConv-42        [-1, 128, 128, 128]               0
+               Up-43        [-1, 128, 128, 128]               0
+  ConvTranspose2d-44         [-1, 64, 256, 256]          32,832
+           Conv2d-45         [-1, 64, 256, 256]          73,792
+        LeakyReLU-46         [-1, 64, 256, 256]               0
+   InstanceNorm2d-47         [-1, 64, 256, 256]               0
+           Conv2d-48         [-1, 64, 256, 256]          36,928
+        LeakyReLU-49         [-1, 64, 256, 256]               0
+   InstanceNorm2d-50         [-1, 64, 256, 256]               0
+       DoubleConv-51         [-1, 64, 256, 256]               0
+               Up-52         [-1, 64, 256, 256]               0
+  ConvTranspose2d-53         [-1, 32, 512, 512]           8,224
+           Conv2d-54         [-1, 32, 512, 512]          18,464
+        LeakyReLU-55         [-1, 32, 512, 512]               0
+   InstanceNorm2d-56         [-1, 32, 512, 512]               0
+           Conv2d-57         [-1, 32, 512, 512]           9,248
+        LeakyReLU-58         [-1, 32, 512, 512]               0
+   InstanceNorm2d-59         [-1, 32, 512, 512]               0
+       DoubleConv-60         [-1, 32, 512, 512]               0
+               Up-61         [-1, 32, 512, 512]               0
+           Conv2d-62         [-1, 10, 512, 512]             330
+================================================================
+Total params: 1,925,322
+Trainable params: 1,925,322
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 1.00
+Forward/backward pass size (MB): 1952.00
+Params size (MB): 7.34
+Estimated Total Size (MB): 1960.34
+----------------------------------------------------------------
+Total_params:1925322
+**********************************************************
+**************** Initialization sucessful ****************
+**********************************************************
+--------------------- Start training ---------------------
+Epoch: 1/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 1.41134 	 Val. Loss: 1.31038
+----> Train Pixel Acc: 0.02504 	 Val. Pixel Acc: 0.03452
+----> Train Dice Coef: 0.04234 	 Val. Dice Coef: 0.05679
+----> Train Precision: 0.02476 	 Val. Precision: 0.03357
+----> Train Recall: 0.16267 	 Val. Recall: 0.20206
+----> Train mIoU: 0.02184 	 Val. mIoU: 0.02968
+Valid dice Coef. improved from 0.00000 to 0.05679. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 2/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 1.24603 	 Val. Loss: 1.17069
+----> Train Pixel Acc: 0.03962 	 Val. Pixel Acc: 0.04911
+----> Train Dice Coef: 0.06425 	 Val. Dice Coef: 0.07793
+----> Train Precision: 0.03813 	 Val. Precision: 0.04710
+----> Train Recall: 0.22301 	 Val. Recall: 0.24425
+----> Train mIoU: 0.03392 	 Val. mIoU: 0.04172
+Valid dice Coef. improved from 0.05679 to 0.07793. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 3/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 1.14010 	 Val. Loss: 1.07970
+----> Train Pixel Acc: 0.05564 	 Val. Pixel Acc: 0.06960
+----> Train Dice Coef: 0.08869 	 Val. Dice Coef: 0.11008
+----> Train Precision: 0.05347 	 Val. Precision: 0.06706
+----> Train Recall: 0.28490 	 Val. Recall: 0.33324
+----> Train mIoU: 0.04780 	 Val. mIoU: 0.06006
+Valid dice Coef. improved from 0.07793 to 0.11008. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 4/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 1.05187 	 Val. Loss: 1.00042
+----> Train Pixel Acc: 0.07670 	 Val. Pixel Acc: 0.09159
+----> Train Dice Coef: 0.12274 	 Val. Dice Coef: 0.14476
+----> Train Precision: 0.07452 	 Val. Precision: 0.08891
+----> Train Recall: 0.37840 	 Val. Recall: 0.42423
+----> Train mIoU: 0.06725 	 Val. mIoU: 0.08001
+Valid dice Coef. improved from 0.11008 to 0.14476. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 5/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.98654 	 Val. Loss: 0.93285
+----> Train Pixel Acc: 0.09481 	 Val. Pixel Acc: 0.11260
+----> Train Dice Coef: 0.15122 	 Val. Dice Coef: 0.17695
+----> Train Precision: 0.09247 	 Val. Precision: 0.11003
+----> Train Recall: 0.45088 	 Val. Recall: 0.49138
+----> Train mIoU: 0.08383 	 Val. mIoU: 0.09947
+Valid dice Coef. improved from 0.14476 to 0.17695. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 6/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.92399 	 Val. Loss: 0.87995
+----> Train Pixel Acc: 0.11449 	 Val. Pixel Acc: 0.13614
+----> Train Dice Coef: 0.18099 	 Val. Dice Coef: 0.21094
+----> Train Precision: 0.11197 	 Val. Precision: 0.13313
+----> Train Recall: 0.51167 	 Val. Recall: 0.55114
+----> Train mIoU: 0.10176 	 Val. mIoU: 0.12058
+Valid dice Coef. improved from 0.17695 to 0.21094. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 7/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.86439 	 Val. Loss: 0.82092
+----> Train Pixel Acc: 0.13866 	 Val. Pixel Acc: 0.16108
+----> Train Dice Coef: 0.21715 	 Val. Dice Coef: 0.24731
+----> Train Precision: 0.13625 	 Val. Precision: 0.15809
+----> Train Recall: 0.57988 	 Val. Recall: 0.61466
+----> Train mIoU: 0.12411 	 Val. mIoU: 0.14367
+Valid dice Coef. improved from 0.21094 to 0.24731. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 8/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.81371 	 Val. Loss: 0.77101
+----> Train Pixel Acc: 0.16135 	 Val. Pixel Acc: 0.18995
+----> Train Dice Coef: 0.25016 	 Val. Dice Coef: 0.28755
+----> Train Precision: 0.15912 	 Val. Precision: 0.18728
+----> Train Recall: 0.63290 	 Val. Recall: 0.66886
+----> Train mIoU: 0.14517 	 Val. mIoU: 0.17087
+Valid dice Coef. improved from 0.24731 to 0.28755. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 9/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.76795 	 Val. Loss: 0.72289
+----> Train Pixel Acc: 0.18366 	 Val. Pixel Acc: 0.21610
+----> Train Dice Coef: 0.27986 	 Val. Dice Coef: 0.31817
+----> Train Precision: 0.18091 	 Val. Precision: 0.21173
+----> Train Recall: 0.66613 	 Val. Recall: 0.68304
+----> Train mIoU: 0.16517 	 Val. mIoU: 0.19316
+Valid dice Coef. improved from 0.28755 to 0.31817. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 10/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.72443 	 Val. Loss: 0.68184
+----> Train Pixel Acc: 0.20871 	 Val. Pixel Acc: 0.24707
+----> Train Dice Coef: 0.31165 	 Val. Dice Coef: 0.35656
+----> Train Precision: 0.20543 	 Val. Precision: 0.24214
+----> Train Recall: 0.69033 	 Val. Recall: 0.72085
+----> Train mIoU: 0.18745 	 Val. mIoU: 0.22117
+Valid dice Coef. improved from 0.31817 to 0.35656. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 11/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.68753 	 Val. Loss: 0.64727
+----> Train Pixel Acc: 0.23136 	 Val. Pixel Acc: 0.26838
+----> Train Dice Coef: 0.33868 	 Val. Dice Coef: 0.37910
+----> Train Precision: 0.22733 	 Val. Precision: 0.26326
+----> Train Recall: 0.70726 	 Val. Recall: 0.71936
+----> Train mIoU: 0.20704 	 Val. mIoU: 0.23845
+Valid dice Coef. improved from 0.35656 to 0.37910. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 12/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.65252 	 Val. Loss: 0.61056
+----> Train Pixel Acc: 0.26011 	 Val. Pixel Acc: 0.30496
+----> Train Dice Coef: 0.37225 	 Val. Dice Coef: 0.42255
+----> Train Precision: 0.25521 	 Val. Precision: 0.29965
+----> Train Recall: 0.72914 	 Val. Recall: 0.76041
+----> Train mIoU: 0.23206 	 Val. mIoU: 0.27280
+Valid dice Coef. improved from 0.37910 to 0.42255. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 13/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.61395 	 Val. Loss: 0.58228
+----> Train Pixel Acc: 0.28760 	 Val. Pixel Acc: 0.33368
+----> Train Dice Coef: 0.40190 	 Val. Dice Coef: 0.45030
+----> Train Precision: 0.28153 	 Val. Precision: 0.32653
+----> Train Recall: 0.73914 	 Val. Recall: 0.76372
+----> Train mIoU: 0.25520 	 Val. mIoU: 0.29648
+Valid dice Coef. improved from 0.42255 to 0.45030. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 14/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.58539 	 Val. Loss: 0.54811
+----> Train Pixel Acc: 0.31497 	 Val. Pixel Acc: 0.36036
+----> Train Dice Coef: 0.42889 	 Val. Dice Coef: 0.47773
+----> Train Precision: 0.30749 	 Val. Precision: 0.35310
+----> Train Recall: 0.74560 	 Val. Recall: 0.77665
+----> Train mIoU: 0.27735 	 Val. mIoU: 0.31977
+Valid dice Coef. improved from 0.45030 to 0.47773. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 15/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.56103 	 Val. Loss: 0.52452
+----> Train Pixel Acc: 0.33974 	 Val. Pixel Acc: 0.37762
+----> Train Dice Coef: 0.45444 	 Val. Dice Coef: 0.48924
+----> Train Precision: 0.33177 	 Val. Precision: 0.36802
+----> Train Recall: 0.75222 	 Val. Recall: 0.76035
+----> Train mIoU: 0.29819 	 Val. mIoU: 0.33029
+Valid dice Coef. improved from 0.47773 to 0.48924. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 16/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.53458 	 Val. Loss: 0.49693
+----> Train Pixel Acc: 0.36941 	 Val. Pixel Acc: 0.41887
+----> Train Dice Coef: 0.48244 	 Val. Dice Coef: 0.52986
+----> Train Precision: 0.36027 	 Val. Precision: 0.40862
+----> Train Recall: 0.75892 	 Val. Recall: 0.78237
+----> Train mIoU: 0.32241 	 Val. mIoU: 0.36746
+Valid dice Coef. improved from 0.48924 to 0.52986. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 17/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.50116 	 Val. Loss: 0.47504
+----> Train Pixel Acc: 0.40565 	 Val. Pixel Acc: 0.44444
+----> Train Dice Coef: 0.51662 	 Val. Dice Coef: 0.55074
+----> Train Precision: 0.39530 	 Val. Precision: 0.43294
+----> Train Recall: 0.77283 	 Val. Recall: 0.78351
+----> Train mIoU: 0.35380 	 Val. mIoU: 0.38754
+Valid dice Coef. improved from 0.52986 to 0.55074. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 18/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.48288 	 Val. Loss: 0.44878
+----> Train Pixel Acc: 0.43037 	 Val. Pixel Acc: 0.47852
+----> Train Dice Coef: 0.53890 	 Val. Dice Coef: 0.58176
+----> Train Precision: 0.41934 	 Val. Precision: 0.46653
+----> Train Recall: 0.77741 	 Val. Recall: 0.79708
+----> Train mIoU: 0.37362 	 Val. mIoU: 0.41791
+Valid dice Coef. improved from 0.55074 to 0.58176. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 19/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.46264 	 Val. Loss: 0.44174
+----> Train Pixel Acc: 0.45587 	 Val. Pixel Acc: 0.50470
+----> Train Dice Coef: 0.55939 	 Val. Dice Coef: 0.59915
+----> Train Precision: 0.44348 	 Val. Precision: 0.48963
+----> Train Recall: 0.78033 	 Val. Recall: 0.78784
+----> Train mIoU: 0.39371 	 Val. mIoU: 0.43610
+Valid dice Coef. improved from 0.58176 to 0.59915. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 20/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.44909 	 Val. Loss: 0.43212
+----> Train Pixel Acc: 0.47766 	 Val. Pixel Acc: 0.52701
+----> Train Dice Coef: 0.57756 	 Val. Dice Coef: 0.61952
+----> Train Precision: 0.46522 	 Val. Precision: 0.51321
+----> Train Recall: 0.78142 	 Val. Recall: 0.79867
+----> Train mIoU: 0.41149 	 Val. mIoU: 0.45659
+Valid dice Coef. improved from 0.59915 to 0.61952. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 21/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.43552 	 Val. Loss: 0.40977
+----> Train Pixel Acc: 0.49804 	 Val. Pixel Acc: 0.54326
+----> Train Dice Coef: 0.59254 	 Val. Dice Coef: 0.63373
+----> Train Precision: 0.48477 	 Val. Precision: 0.53044
+----> Train Recall: 0.78057 	 Val. Recall: 0.80605
+----> Train mIoU: 0.42651 	 Val. mIoU: 0.47153
+Valid dice Coef. improved from 0.61952 to 0.63373. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 22/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.41835 	 Val. Loss: 0.39463
+----> Train Pixel Acc: 0.52298 	 Val. Pixel Acc: 0.55942
+----> Train Dice Coef: 0.61385 	 Val. Dice Coef: 0.64193
+----> Train Precision: 0.50937 	 Val. Precision: 0.54478
+----> Train Recall: 0.78872 	 Val. Recall: 0.79609
+----> Train mIoU: 0.44799 	 Val. mIoU: 0.48101
+Valid dice Coef. improved from 0.63373 to 0.64193. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 23/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.40470 	 Val. Loss: 0.38186
+----> Train Pixel Acc: 0.54251 	 Val. Pixel Acc: 0.58224
+----> Train Dice Coef: 0.62565 	 Val. Dice Coef: 0.65986
+----> Train Precision: 0.52701 	 Val. Precision: 0.56746
+----> Train Recall: 0.78866 	 Val. Recall: 0.80299
+----> Train mIoU: 0.46269 	 Val. mIoU: 0.50044
+Valid dice Coef. improved from 0.64193 to 0.65986. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 24/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.39355 	 Val. Loss: 0.37532
+----> Train Pixel Acc: 0.55911 	 Val. Pixel Acc: 0.59719
+----> Train Dice Coef: 0.64130 	 Val. Dice Coef: 0.67086
+----> Train Precision: 0.54453 	 Val. Precision: 0.58271
+----> Train Recall: 0.79384 	 Val. Recall: 0.80348
+----> Train mIoU: 0.47703 	 Val. mIoU: 0.51287
+Valid dice Coef. improved from 0.65986 to 0.67086. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 25/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.38060 	 Val. Loss: 0.36395
+----> Train Pixel Acc: 0.57870 	 Val. Pixel Acc: 0.61891
+----> Train Dice Coef: 0.65599 	 Val. Dice Coef: 0.68953
+----> Train Precision: 0.56435 	 Val. Precision: 0.60440
+----> Train Recall: 0.79633 	 Val. Recall: 0.81439
+----> Train mIoU: 0.49288 	 Val. mIoU: 0.53397
+Valid dice Coef. improved from 0.67086 to 0.68953. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 26/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.37587 	 Val. Loss: 0.35543
+----> Train Pixel Acc: 0.59273 	 Val. Pixel Acc: 0.63273
+----> Train Dice Coef: 0.66526 	 Val. Dice Coef: 0.69708
+----> Train Precision: 0.57798 	 Val. Precision: 0.61724
+----> Train Recall: 0.79625 	 Val. Recall: 0.80996
+----> Train mIoU: 0.50333 	 Val. mIoU: 0.54284
+Valid dice Coef. improved from 0.68953 to 0.69708. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 27/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.36676 	 Val. Loss: 0.34555
+----> Train Pixel Acc: 0.60505 	 Val. Pixel Acc: 0.64333
+----> Train Dice Coef: 0.67483 	 Val. Dice Coef: 0.70674
+----> Train Precision: 0.59075 	 Val. Precision: 0.62912
+----> Train Recall: 0.79816 	 Val. Recall: 0.81675
+----> Train mIoU: 0.51440 	 Val. mIoU: 0.55415
+Valid dice Coef. improved from 0.69708 to 0.70674. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 28/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.35532 	 Val. Loss: 0.34238
+----> Train Pixel Acc: 0.62139 	 Val. Pixel Acc: 0.65589
+----> Train Dice Coef: 0.68560 	 Val. Dice Coef: 0.71370
+----> Train Precision: 0.60562 	 Val. Precision: 0.64166
+----> Train Recall: 0.80150 	 Val. Recall: 0.81264
+----> Train mIoU: 0.52734 	 Val. mIoU: 0.56210
+Valid dice Coef. improved from 0.70674 to 0.71370. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 29/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.35235 	 Val. Loss: 0.33704
+----> Train Pixel Acc: 0.63039 	 Val. Pixel Acc: 0.65430
+----> Train Dice Coef: 0.69207 	 Val. Dice Coef: 0.71149
+----> Train Precision: 0.61490 	 Val. Precision: 0.63972
+----> Train Recall: 0.80077 	 Val. Recall: 0.81209
+----> Train mIoU: 0.53392 	 Val. mIoU: 0.55994
+Valid Dice not improved: 0.71370, Val. Loss: 0.34238, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 30/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.34131 	 Val. Loss: 0.32880
+----> Train Pixel Acc: 0.64637 	 Val. Pixel Acc: 0.67468
+----> Train Dice Coef: 0.70378 	 Val. Dice Coef: 0.72703
+----> Train Precision: 0.63133 	 Val. Precision: 0.66052
+----> Train Recall: 0.80426 	 Val. Recall: 0.81652
+----> Train mIoU: 0.54764 	 Val. mIoU: 0.57842
+Valid dice Coef. improved from 0.71370 to 0.72703. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 31/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.33339 	 Val. Loss: 0.32325
+----> Train Pixel Acc: 0.65670 	 Val. Pixel Acc: 0.68245
+----> Train Dice Coef: 0.71125 	 Val. Dice Coef: 0.72928
+----> Train Precision: 0.64216 	 Val. Precision: 0.66732
+----> Train Recall: 0.80527 	 Val. Recall: 0.81073
+----> Train mIoU: 0.55601 	 Val. mIoU: 0.58181
+Valid dice Coef. improved from 0.72703 to 0.72928. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 32/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.33411 	 Val. Loss: 0.32305
+----> Train Pixel Acc: 0.66050 	 Val. Pixel Acc: 0.68864
+----> Train Dice Coef: 0.70978 	 Val. Dice Coef: 0.73224
+----> Train Precision: 0.64339 	 Val. Precision: 0.67471
+----> Train Recall: 0.80367 	 Val. Recall: 0.80766
+----> Train mIoU: 0.55731 	 Val. mIoU: 0.58457
+Valid dice Coef. improved from 0.72928 to 0.73224. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 33/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.32776 	 Val. Loss: 0.31544
+----> Train Pixel Acc: 0.66914 	 Val. Pixel Acc: 0.69709
+----> Train Dice Coef: 0.71888 	 Val. Dice Coef: 0.73833
+----> Train Precision: 0.65482 	 Val. Precision: 0.68223
+----> Train Recall: 0.80443 	 Val. Recall: 0.81004
+----> Train mIoU: 0.56534 	 Val. mIoU: 0.59260
+Valid dice Coef. improved from 0.73224 to 0.73833. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 34/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.32107 	 Val. Loss: 0.31136
+----> Train Pixel Acc: 0.67722 	 Val. Pixel Acc: 0.70570
+----> Train Dice Coef: 0.72314 	 Val. Dice Coef: 0.74256
+----> Train Precision: 0.66218 	 Val. Precision: 0.69191
+----> Train Recall: 0.80480 	 Val. Recall: 0.80775
+----> Train mIoU: 0.57084 	 Val. mIoU: 0.59794
+Valid dice Coef. improved from 0.73833 to 0.74256. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 35/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.30971 	 Val. Loss: 0.30399
+----> Train Pixel Acc: 0.69477 	 Val. Pixel Acc: 0.71115
+----> Train Dice Coef: 0.73712 	 Val. Dice Coef: 0.75045
+----> Train Precision: 0.68115 	 Val. Precision: 0.69811
+----> Train Recall: 0.81086 	 Val. Recall: 0.81862
+----> Train mIoU: 0.58862 	 Val. mIoU: 0.60783
+Valid dice Coef. improved from 0.74256 to 0.75045. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 36/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.30929 	 Val. Loss: 0.30080
+----> Train Pixel Acc: 0.69399 	 Val. Pixel Acc: 0.72317
+----> Train Dice Coef: 0.73570 	 Val. Dice Coef: 0.75692
+----> Train Precision: 0.67985 	 Val. Precision: 0.70966
+----> Train Recall: 0.80903 	 Val. Recall: 0.81662
+----> Train mIoU: 0.58705 	 Val. mIoU: 0.61554
+Valid dice Coef. improved from 0.75045 to 0.75692. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 37/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.30684 	 Val. Loss: 0.29394
+----> Train Pixel Acc: 0.70225 	 Val. Pixel Acc: 0.72236
+----> Train Dice Coef: 0.74043 	 Val. Dice Coef: 0.75790
+----> Train Precision: 0.68742 	 Val. Precision: 0.70960
+----> Train Recall: 0.80889 	 Val. Recall: 0.81915
+----> Train mIoU: 0.59196 	 Val. mIoU: 0.61699
+Valid dice Coef. improved from 0.75692 to 0.75790. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 38/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.32453 	 Val. Loss: 0.32212
+----> Train Pixel Acc: 0.70173 	 Val. Pixel Acc: 0.68701
+----> Train Dice Coef: 0.73537 	 Val. Dice Coef: 0.71887
+----> Train Precision: 0.68648 	 Val. Precision: 0.67388
+----> Train Recall: 0.81213 	 Val. Recall: 0.77997
+----> Train mIoU: 0.59109 	 Val. mIoU: 0.56709
+Valid Dice not improved: 0.75790, Val. Loss: 0.29394, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 39/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.31826 	 Val. Loss: 0.29218
+----> Train Pixel Acc: 0.68939 	 Val. Pixel Acc: 0.73338
+----> Train Dice Coef: 0.72764 	 Val. Dice Coef: 0.76480
+----> Train Precision: 0.67599 	 Val. Precision: 0.72027
+----> Train Recall: 0.79508 	 Val. Recall: 0.82024
+----> Train mIoU: 0.57623 	 Val. mIoU: 0.62584
+Valid dice Coef. improved from 0.75790 to 0.76480. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 40/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.29339 	 Val. Loss: 0.28202
+----> Train Pixel Acc: 0.72075 	 Val. Pixel Acc: 0.73657
+----> Train Dice Coef: 0.75259 	 Val. Dice Coef: 0.76859
+----> Train Precision: 0.70639 	 Val. Precision: 0.72343
+----> Train Recall: 0.81140 	 Val. Recall: 0.82500
+----> Train mIoU: 0.60758 	 Val. mIoU: 0.63087
+Valid dice Coef. improved from 0.76480 to 0.76859. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 41/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.28562 	 Val. Loss: 0.27747
+----> Train Pixel Acc: 0.72850 	 Val. Pixel Acc: 0.74137
+----> Train Dice Coef: 0.75990 	 Val. Dice Coef: 0.77003
+----> Train Precision: 0.71530 	 Val. Precision: 0.72783
+----> Train Recall: 0.81560 	 Val. Recall: 0.82207
+----> Train mIoU: 0.61664 	 Val. mIoU: 0.63284
+Valid dice Coef. improved from 0.76859 to 0.77003. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 42/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.27717 	 Val. Loss: 0.27665
+----> Train Pixel Acc: 0.73454 	 Val. Pixel Acc: 0.74310
+----> Train Dice Coef: 0.76421 	 Val. Dice Coef: 0.77311
+----> Train Precision: 0.72081 	 Val. Precision: 0.73057
+----> Train Recall: 0.81852 	 Val. Recall: 0.82605
+----> Train mIoU: 0.62242 	 Val. mIoU: 0.63649
+Valid dice Coef. improved from 0.77003 to 0.77311. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 43/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.28714 	 Val. Loss: 0.27802
+----> Train Pixel Acc: 0.73142 	 Val. Pixel Acc: 0.73943
+----> Train Dice Coef: 0.75607 	 Val. Dice Coef: 0.76512
+----> Train Precision: 0.71484 	 Val. Precision: 0.72582
+----> Train Recall: 0.81150 	 Val. Recall: 0.81412
+----> Train mIoU: 0.61421 	 Val. mIoU: 0.62636
+Valid Dice not improved: 0.77311, Val. Loss: 0.27665, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 44/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.27768 	 Val. Loss: 0.27445
+----> Train Pixel Acc: 0.73558 	 Val. Pixel Acc: 0.75040
+----> Train Dice Coef: 0.76287 	 Val. Dice Coef: 0.77332
+----> Train Precision: 0.72335 	 Val. Precision: 0.73883
+----> Train Recall: 0.81203 	 Val. Recall: 0.81518
+----> Train mIoU: 0.62074 	 Val. mIoU: 0.63649
+Valid dice Coef. improved from 0.77311 to 0.77332. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 45/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.26722 	 Val. Loss: 0.26701
+----> Train Pixel Acc: 0.75058 	 Val. Pixel Acc: 0.75968
+----> Train Dice Coef: 0.77286 	 Val. Dice Coef: 0.78311
+----> Train Precision: 0.73777 	 Val. Precision: 0.74732
+----> Train Recall: 0.81652 	 Val. Recall: 0.82694
+----> Train mIoU: 0.63359 	 Val. mIoU: 0.64953
+Valid dice Coef. improved from 0.77332 to 0.78311. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 46/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.27618 	 Val. Loss: 0.27466
+----> Train Pixel Acc: 0.74325 	 Val. Pixel Acc: 0.75266
+----> Train Dice Coef: 0.76834 	 Val. Dice Coef: 0.77579
+----> Train Precision: 0.73071 	 Val. Precision: 0.74063
+----> Train Recall: 0.81532 	 Val. Recall: 0.81961
+----> Train mIoU: 0.62801 	 Val. mIoU: 0.64009
+Valid Dice not improved: 0.78311, Val. Loss: 0.26701, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 47/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.26873 	 Val. Loss: 0.26983
+----> Train Pixel Acc: 0.74879 	 Val. Pixel Acc: 0.76250
+----> Train Dice Coef: 0.77168 	 Val. Dice Coef: 0.78477
+----> Train Precision: 0.73608 	 Val. Precision: 0.75194
+----> Train Recall: 0.81617 	 Val. Recall: 0.82573
+----> Train mIoU: 0.63242 	 Val. mIoU: 0.65201
+Valid dice Coef. improved from 0.78311 to 0.78477. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 48/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.26402 	 Val. Loss: 0.27153
+----> Train Pixel Acc: 0.75363 	 Val. Pixel Acc: 0.76072
+----> Train Dice Coef: 0.77475 	 Val. Dice Coef: 0.77949
+----> Train Precision: 0.74087 	 Val. Precision: 0.74864
+----> Train Recall: 0.81706 	 Val. Recall: 0.81698
+----> Train mIoU: 0.63569 	 Val. mIoU: 0.64558
+Valid Dice not improved: 0.78477, Val. Loss: 0.26983, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 49/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.26058 	 Val. Loss: 0.26016
+----> Train Pixel Acc: 0.75910 	 Val. Pixel Acc: 0.76626
+----> Train Dice Coef: 0.77891 	 Val. Dice Coef: 0.78677
+----> Train Precision: 0.74665 	 Val. Precision: 0.75367
+----> Train Recall: 0.81842 	 Val. Recall: 0.82693
+----> Train mIoU: 0.64140 	 Val. mIoU: 0.65410
+Valid dice Coef. improved from 0.78477 to 0.78677. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 50/500 --model:unet --lr:5.0000e-04
+----> Train Loss: 0.25971 	 Val. Loss: 0.25881
+----> Train Pixel Acc: 0.76131 	 Val. Pixel Acc: 0.76149
+----> Train Dice Coef: 0.78183 	 Val. Dice Coef: 0.78148
+----> Train Precision: 0.74961 	 Val. Precision: 0.75087
+----> Train Recall: 0.82181 	 Val. Recall: 0.82006
+----> Train mIoU: 0.64577 	 Val. mIoU: 0.64725
+Valid Dice not improved: 0.78677, Val. Loss: 0.26016, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 51/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.25319 	 Val. Loss: 0.26350
+----> Train Pixel Acc: 0.76616 	 Val. Pixel Acc: 0.77366
+----> Train Dice Coef: 0.78273 	 Val. Dice Coef: 0.79405
+----> Train Precision: 0.75378 	 Val. Precision: 0.76468
+----> Train Recall: 0.81901 	 Val. Recall: 0.83187
+----> Train mIoU: 0.64691 	 Val. mIoU: 0.66410
+Valid dice Coef. improved from 0.78677 to 0.79405. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 52/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.25466 	 Val. Loss: 0.26023
+----> Train Pixel Acc: 0.76948 	 Val. Pixel Acc: 0.77048
+----> Train Dice Coef: 0.78591 	 Val. Dice Coef: 0.78501
+----> Train Precision: 0.75778 	 Val. Precision: 0.75992
+----> Train Recall: 0.82065 	 Val. Recall: 0.81499
+----> Train mIoU: 0.65121 	 Val. mIoU: 0.65264
+Valid Dice not improved: 0.79405, Val. Loss: 0.26350, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 53/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.25010 	 Val. Loss: 0.24827
+----> Train Pixel Acc: 0.77172 	 Val. Pixel Acc: 0.78773
+----> Train Dice Coef: 0.78561 	 Val. Dice Coef: 0.80084
+----> Train Precision: 0.75836 	 Val. Precision: 0.77618
+----> Train Recall: 0.81928 	 Val. Recall: 0.82995
+----> Train mIoU: 0.65124 	 Val. mIoU: 0.67344
+Valid dice Coef. improved from 0.79405 to 0.80084. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 54/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.23949 	 Val. Loss: 0.24402
+----> Train Pixel Acc: 0.78454 	 Val. Pixel Acc: 0.78718
+----> Train Dice Coef: 0.79602 	 Val. Dice Coef: 0.80015
+----> Train Precision: 0.77235 	 Val. Precision: 0.77619
+----> Train Recall: 0.82497 	 Val. Recall: 0.82900
+----> Train mIoU: 0.66474 	 Val. mIoU: 0.67280
+Valid Dice not improved: 0.80084, Val. Loss: 0.24827, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 55/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.24473 	 Val. Loss: 0.24941
+----> Train Pixel Acc: 0.78005 	 Val. Pixel Acc: 0.78203
+----> Train Dice Coef: 0.79320 	 Val. Dice Coef: 0.79938
+----> Train Precision: 0.76896 	 Val. Precision: 0.77295
+----> Train Recall: 0.82360 	 Val. Recall: 0.83086
+----> Train mIoU: 0.66057 	 Val. mIoU: 0.67134
+Valid Dice not improved: 0.80084, Val. Loss: 0.24827, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 56/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.24602 	 Val. Loss: 0.24897
+----> Train Pixel Acc: 0.77587 	 Val. Pixel Acc: 0.77622
+----> Train Dice Coef: 0.78910 	 Val. Dice Coef: 0.79188
+----> Train Precision: 0.76334 	 Val. Precision: 0.76574
+----> Train Recall: 0.82134 	 Val. Recall: 0.82282
+----> Train mIoU: 0.65554 	 Val. mIoU: 0.66168
+Valid Dice not improved: 0.80084, Val. Loss: 0.24827, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 57/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.23991 	 Val. Loss: 0.24641
+----> Train Pixel Acc: 0.78588 	 Val. Pixel Acc: 0.78138
+----> Train Dice Coef: 0.79725 	 Val. Dice Coef: 0.79819
+----> Train Precision: 0.77468 	 Val. Precision: 0.77179
+----> Train Recall: 0.82498 	 Val. Recall: 0.82885
+----> Train mIoU: 0.66651 	 Val. mIoU: 0.67001
+Valid Dice not improved: 0.80084, Val. Loss: 0.24827, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 58/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.24112 	 Val. Loss: 0.24526
+----> Train Pixel Acc: 0.78502 	 Val. Pixel Acc: 0.78589
+----> Train Dice Coef: 0.79429 	 Val. Dice Coef: 0.80020
+----> Train Precision: 0.77225 	 Val. Precision: 0.77664
+----> Train Recall: 0.82459 	 Val. Recall: 0.82893
+----> Train mIoU: 0.66373 	 Val. mIoU: 0.67278
+Valid Dice not improved: 0.80084, Val. Loss: 0.24827, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 59/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.24383 	 Val. Loss: 0.24989
+----> Train Pixel Acc: 0.77981 	 Val. Pixel Acc: 0.79318
+----> Train Dice Coef: 0.79246 	 Val. Dice Coef: 0.80188
+----> Train Precision: 0.76856 	 Val. Precision: 0.78225
+----> Train Recall: 0.82138 	 Val. Recall: 0.82663
+----> Train mIoU: 0.65944 	 Val. mIoU: 0.67471
+Valid dice Coef. improved from 0.80084 to 0.80188. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 60/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.24672 	 Val. Loss: 0.24222
+----> Train Pixel Acc: 0.77739 	 Val. Pixel Acc: 0.78865
+----> Train Dice Coef: 0.78971 	 Val. Dice Coef: 0.79890
+----> Train Precision: 0.76618 	 Val. Precision: 0.77863
+----> Train Recall: 0.81944 	 Val. Recall: 0.82367
+----> Train mIoU: 0.65590 	 Val. mIoU: 0.67135
+Valid Dice not improved: 0.80188, Val. Loss: 0.24989, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 61/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.23814 	 Val. Loss: 0.23986
+----> Train Pixel Acc: 0.78917 	 Val. Pixel Acc: 0.79727
+----> Train Dice Coef: 0.80181 	 Val. Dice Coef: 0.80322
+----> Train Precision: 0.77904 	 Val. Precision: 0.78650
+----> Train Recall: 0.82938 	 Val. Recall: 0.82464
+----> Train mIoU: 0.67192 	 Val. mIoU: 0.67686
+Valid dice Coef. improved from 0.80188 to 0.80322. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 62/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.22866 	 Val. Loss: 0.24024
+----> Train Pixel Acc: 0.79418 	 Val. Pixel Acc: 0.79976
+----> Train Dice Coef: 0.80221 	 Val. Dice Coef: 0.80536
+----> Train Precision: 0.78259 	 Val. Precision: 0.78877
+----> Train Recall: 0.82625 	 Val. Recall: 0.82612
+----> Train mIoU: 0.67363 	 Val. mIoU: 0.67960
+Valid dice Coef. improved from 0.80322 to 0.80536. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 63/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.22601 	 Val. Loss: 0.25351
+----> Train Pixel Acc: 0.80091 	 Val. Pixel Acc: 0.76012
+----> Train Dice Coef: 0.80900 	 Val. Dice Coef: 0.78418
+----> Train Precision: 0.79056 	 Val. Precision: 0.74839
+----> Train Recall: 0.83162 	 Val. Recall: 0.82670
+----> Train mIoU: 0.68218 	 Val. mIoU: 0.65034
+Valid Dice not improved: 0.80536, Val. Loss: 0.24024, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 64/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.23213 	 Val. Loss: 0.23668
+----> Train Pixel Acc: 0.79288 	 Val. Pixel Acc: 0.80145
+----> Train Dice Coef: 0.80157 	 Val. Dice Coef: 0.80754
+----> Train Precision: 0.78226 	 Val. Precision: 0.79170
+----> Train Recall: 0.82551 	 Val. Recall: 0.82663
+----> Train mIoU: 0.67223 	 Val. mIoU: 0.68273
+Valid dice Coef. improved from 0.80536 to 0.80754. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 65/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.23067 	 Val. Loss: 0.24130
+----> Train Pixel Acc: 0.79287 	 Val. Pixel Acc: 0.79852
+----> Train Dice Coef: 0.80201 	 Val. Dice Coef: 0.80251
+----> Train Precision: 0.78193 	 Val. Precision: 0.79000
+----> Train Recall: 0.82807 	 Val. Recall: 0.81850
+----> Train mIoU: 0.67336 	 Val. mIoU: 0.67566
+Valid Dice not improved: 0.80754, Val. Loss: 0.23668, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 66/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.22722 	 Val. Loss: 0.23340
+----> Train Pixel Acc: 0.79919 	 Val. Pixel Acc: 0.80197
+----> Train Dice Coef: 0.80527 	 Val. Dice Coef: 0.80785
+----> Train Precision: 0.78928 	 Val. Precision: 0.79153
+----> Train Recall: 0.82592 	 Val. Recall: 0.82787
+----> Train mIoU: 0.67769 	 Val. mIoU: 0.68306
+Valid dice Coef. improved from 0.80754 to 0.80785. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 67/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.22439 	 Val. Loss: 0.24870
+----> Train Pixel Acc: 0.80100 	 Val. Pixel Acc: 0.76804
+----> Train Dice Coef: 0.80889 	 Val. Dice Coef: 0.78722
+----> Train Precision: 0.79158 	 Val. Precision: 0.75750
+----> Train Recall: 0.83018 	 Val. Recall: 0.82329
+----> Train mIoU: 0.68196 	 Val. mIoU: 0.65449
+Valid Dice not improved: 0.80785, Val. Loss: 0.23340, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 68/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.21973 	 Val. Loss: 0.23793
+----> Train Pixel Acc: 0.80539 	 Val. Pixel Acc: 0.80426
+----> Train Dice Coef: 0.81222 	 Val. Dice Coef: 0.80711
+----> Train Precision: 0.79485 	 Val. Precision: 0.79527
+----> Train Recall: 0.83405 	 Val. Recall: 0.82244
+----> Train mIoU: 0.68755 	 Val. mIoU: 0.68219
+Valid Dice not improved: 0.80785, Val. Loss: 0.23340, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 69/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.22254 	 Val. Loss: 0.23650
+----> Train Pixel Acc: 0.80405 	 Val. Pixel Acc: 0.80444
+----> Train Dice Coef: 0.80872 	 Val. Dice Coef: 0.80995
+----> Train Precision: 0.79393 	 Val. Precision: 0.79530
+----> Train Recall: 0.82761 	 Val. Recall: 0.82865
+----> Train mIoU: 0.68235 	 Val. mIoU: 0.68587
+Valid dice Coef. improved from 0.80785 to 0.80995. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 70/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.22311 	 Val. Loss: 0.24091
+----> Train Pixel Acc: 0.80561 	 Val. Pixel Acc: 0.79585
+----> Train Dice Coef: 0.80929 	 Val. Dice Coef: 0.80767
+----> Train Precision: 0.79286 	 Val. Precision: 0.78695
+----> Train Recall: 0.82987 	 Val. Recall: 0.83289
+----> Train mIoU: 0.68386 	 Val. mIoU: 0.68273
+Valid Dice not improved: 0.80995, Val. Loss: 0.23650, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 71/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.22192 	 Val. Loss: 0.22899
+----> Train Pixel Acc: 0.80692 	 Val. Pixel Acc: 0.80735
+----> Train Dice Coef: 0.81107 	 Val. Dice Coef: 0.81213
+----> Train Precision: 0.79674 	 Val. Precision: 0.79803
+----> Train Recall: 0.82959 	 Val. Recall: 0.82940
+----> Train mIoU: 0.68530 	 Val. mIoU: 0.68878
+Valid dice Coef. improved from 0.80995 to 0.81213. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 72/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.21392 	 Val. Loss: 0.23110
+----> Train Pixel Acc: 0.81023 	 Val. Pixel Acc: 0.80851
+----> Train Dice Coef: 0.81451 	 Val. Dice Coef: 0.81483
+----> Train Precision: 0.79976 	 Val. Precision: 0.79917
+----> Train Recall: 0.83379 	 Val. Recall: 0.83415
+----> Train mIoU: 0.69044 	 Val. mIoU: 0.69286
+Valid dice Coef. improved from 0.81213 to 0.81483. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 73/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.21795 	 Val. Loss: 0.23029
+----> Train Pixel Acc: 0.81079 	 Val. Pixel Acc: 0.81252
+----> Train Dice Coef: 0.81505 	 Val. Dice Coef: 0.81329
+----> Train Precision: 0.80057 	 Val. Precision: 0.80279
+----> Train Recall: 0.83439 	 Val. Recall: 0.82719
+----> Train mIoU: 0.69276 	 Val. mIoU: 0.69045
+Valid Dice not improved: 0.81483, Val. Loss: 0.23110, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 74/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.23108 	 Val. Loss: 0.24649
+----> Train Pixel Acc: 0.79337 	 Val. Pixel Acc: 0.79623
+----> Train Dice Coef: 0.79606 	 Val. Dice Coef: 0.79974
+----> Train Precision: 0.77841 	 Val. Precision: 0.78707
+----> Train Recall: 0.81965 	 Val. Recall: 0.81581
+----> Train mIoU: 0.66737 	 Val. mIoU: 0.67143
+Valid Dice not improved: 0.81483, Val. Loss: 0.23110, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 75/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.22114 	 Val. Loss: 0.23546
+----> Train Pixel Acc: 0.80724 	 Val. Pixel Acc: 0.81021
+----> Train Dice Coef: 0.80775 	 Val. Dice Coef: 0.80876
+----> Train Precision: 0.79514 	 Val. Precision: 0.80057
+----> Train Recall: 0.82429 	 Val. Recall: 0.81951
+----> Train mIoU: 0.68168 	 Val. mIoU: 0.68444
+Valid Dice not improved: 0.81483, Val. Loss: 0.23110, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 76/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.21293 	 Val. Loss: 0.23184
+----> Train Pixel Acc: 0.81701 	 Val. Pixel Acc: 0.81311
+----> Train Dice Coef: 0.81878 	 Val. Dice Coef: 0.81059
+----> Train Precision: 0.80693 	 Val. Precision: 0.80438
+----> Train Recall: 0.83417 	 Val. Recall: 0.82000
+----> Train mIoU: 0.69621 	 Val. mIoU: 0.68707
+Valid Dice not improved: 0.81483, Val. Loss: 0.23110, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 77/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.21993 	 Val. Loss: 0.24088
+----> Train Pixel Acc: 0.81210 	 Val. Pixel Acc: 0.79214
+----> Train Dice Coef: 0.81363 	 Val. Dice Coef: 0.80512
+----> Train Precision: 0.80149 	 Val. Precision: 0.78396
+----> Train Recall: 0.83103 	 Val. Recall: 0.83238
+----> Train mIoU: 0.68954 	 Val. mIoU: 0.67884
+Valid Dice not improved: 0.81483, Val. Loss: 0.23110, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 78/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.21684 	 Val. Loss: 0.23353
+----> Train Pixel Acc: 0.80965 	 Val. Pixel Acc: 0.80896
+----> Train Dice Coef: 0.81307 	 Val. Dice Coef: 0.81298
+----> Train Precision: 0.79887 	 Val. Precision: 0.79985
+----> Train Recall: 0.83241 	 Val. Recall: 0.82979
+----> Train mIoU: 0.68844 	 Val. mIoU: 0.69026
+Valid Dice not improved: 0.81483, Val. Loss: 0.23110, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 79/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.20560 	 Val. Loss: 0.23167
+----> Train Pixel Acc: 0.82256 	 Val. Pixel Acc: 0.80923
+----> Train Dice Coef: 0.82252 	 Val. Dice Coef: 0.81638
+----> Train Precision: 0.81220 	 Val. Precision: 0.80103
+----> Train Recall: 0.83562 	 Val. Recall: 0.83482
+----> Train mIoU: 0.70133 	 Val. mIoU: 0.69494
+Valid dice Coef. improved from 0.81483 to 0.81638. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 80/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.21498 	 Val. Loss: 0.22987
+----> Train Pixel Acc: 0.81182 	 Val. Pixel Acc: 0.80337
+----> Train Dice Coef: 0.81693 	 Val. Dice Coef: 0.81256
+----> Train Precision: 0.80306 	 Val. Precision: 0.79523
+----> Train Recall: 0.83407 	 Val. Recall: 0.83316
+----> Train mIoU: 0.69305 	 Val. mIoU: 0.68965
+Valid Dice not improved: 0.81638, Val. Loss: 0.23167, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 81/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.21248 	 Val. Loss: 0.22988
+----> Train Pixel Acc: 0.81364 	 Val. Pixel Acc: 0.80874
+----> Train Dice Coef: 0.81695 	 Val. Dice Coef: 0.81009
+----> Train Precision: 0.80387 	 Val. Precision: 0.80063
+----> Train Recall: 0.83357 	 Val. Recall: 0.82236
+----> Train mIoU: 0.69334 	 Val. mIoU: 0.68640
+Valid Dice not improved: 0.81638, Val. Loss: 0.23167, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 82/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.20842 	 Val. Loss: 0.22005
+----> Train Pixel Acc: 0.81888 	 Val. Pixel Acc: 0.81275
+----> Train Dice Coef: 0.81870 	 Val. Dice Coef: 0.81938
+----> Train Precision: 0.80800 	 Val. Precision: 0.80405
+----> Train Recall: 0.83275 	 Val. Recall: 0.83850
+----> Train mIoU: 0.69635 	 Val. mIoU: 0.69898
+Valid dice Coef. improved from 0.81638 to 0.81938. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 83/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.20430 	 Val. Loss: 0.22561
+----> Train Pixel Acc: 0.82194 	 Val. Pixel Acc: 0.81695
+----> Train Dice Coef: 0.81918 	 Val. Dice Coef: 0.81780
+----> Train Precision: 0.80789 	 Val. Precision: 0.80856
+----> Train Recall: 0.83449 	 Val. Recall: 0.82948
+----> Train mIoU: 0.69845 	 Val. mIoU: 0.69710
+Valid Dice not improved: 0.81938, Val. Loss: 0.22005, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 84/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.20432 	 Val. Loss: 0.22551
+----> Train Pixel Acc: 0.82563 	 Val. Pixel Acc: 0.80975
+----> Train Dice Coef: 0.82143 	 Val. Dice Coef: 0.81920
+----> Train Precision: 0.81377 	 Val. Precision: 0.80138
+----> Train Recall: 0.83547 	 Val. Recall: 0.84065
+----> Train mIoU: 0.70195 	 Val. mIoU: 0.69896
+Valid Dice not improved: 0.81938, Val. Loss: 0.22005, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 85/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19906 	 Val. Loss: 0.21860
+----> Train Pixel Acc: 0.82723 	 Val. Pixel Acc: 0.82292
+----> Train Dice Coef: 0.82784 	 Val. Dice Coef: 0.82273
+----> Train Precision: 0.81884 	 Val. Precision: 0.81483
+----> Train Recall: 0.83947 	 Val. Recall: 0.83328
+----> Train mIoU: 0.70846 	 Val. mIoU: 0.70353
+Valid dice Coef. improved from 0.81938 to 0.82273. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 86/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.20501 	 Val. Loss: 0.23134
+----> Train Pixel Acc: 0.82169 	 Val. Pixel Acc: 0.80781
+----> Train Dice Coef: 0.81937 	 Val. Dice Coef: 0.81098
+----> Train Precision: 0.80980 	 Val. Precision: 0.80081
+----> Train Recall: 0.83597 	 Val. Recall: 0.82493
+----> Train mIoU: 0.69867 	 Val. mIoU: 0.68718
+Valid Dice not improved: 0.82273, Val. Loss: 0.21860, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 87/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.20245 	 Val. Loss: 0.22435
+----> Train Pixel Acc: 0.82244 	 Val. Pixel Acc: 0.81072
+----> Train Dice Coef: 0.82476 	 Val. Dice Coef: 0.81670
+----> Train Precision: 0.81411 	 Val. Precision: 0.80325
+----> Train Recall: 0.83831 	 Val. Recall: 0.83309
+----> Train mIoU: 0.70411 	 Val. mIoU: 0.69536
+Valid Dice not improved: 0.82273, Val. Loss: 0.21860, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 88/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.20471 	 Val. Loss: 0.22897
+----> Train Pixel Acc: 0.82174 	 Val. Pixel Acc: 0.81305
+----> Train Dice Coef: 0.81847 	 Val. Dice Coef: 0.81777
+----> Train Precision: 0.80998 	 Val. Precision: 0.80574
+----> Train Recall: 0.83355 	 Val. Recall: 0.83343
+----> Train mIoU: 0.69756 	 Val. mIoU: 0.69667
+Valid Dice not improved: 0.82273, Val. Loss: 0.21860, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 89/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19641 	 Val. Loss: 0.21992
+----> Train Pixel Acc: 0.82934 	 Val. Pixel Acc: 0.82019
+----> Train Dice Coef: 0.82859 	 Val. Dice Coef: 0.82217
+----> Train Precision: 0.82074 	 Val. Precision: 0.81146
+----> Train Recall: 0.83914 	 Val. Recall: 0.83614
+----> Train mIoU: 0.71006 	 Val. mIoU: 0.70266
+Valid Dice not improved: 0.82273, Val. Loss: 0.21860, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 90/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19985 	 Val. Loss: 0.21924
+----> Train Pixel Acc: 0.82944 	 Val. Pixel Acc: 0.81121
+----> Train Dice Coef: 0.82738 	 Val. Dice Coef: 0.81767
+----> Train Precision: 0.81988 	 Val. Precision: 0.80266
+----> Train Recall: 0.83795 	 Val. Recall: 0.83626
+----> Train mIoU: 0.70856 	 Val. mIoU: 0.69684
+Valid Dice not improved: 0.82273, Val. Loss: 0.21860, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 91/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19653 	 Val. Loss: 0.22093
+----> Train Pixel Acc: 0.83015 	 Val. Pixel Acc: 0.81896
+----> Train Dice Coef: 0.82774 	 Val. Dice Coef: 0.82103
+----> Train Precision: 0.81949 	 Val. Precision: 0.81317
+----> Train Recall: 0.84017 	 Val. Recall: 0.83136
+----> Train mIoU: 0.70948 	 Val. mIoU: 0.70133
+Valid Dice not improved: 0.82273, Val. Loss: 0.21860, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 92/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19190 	 Val. Loss: 0.23986
+----> Train Pixel Acc: 0.83373 	 Val. Pixel Acc: 0.77577
+----> Train Dice Coef: 0.83286 	 Val. Dice Coef: 0.79849
+----> Train Precision: 0.82435 	 Val. Precision: 0.76598
+----> Train Recall: 0.84429 	 Val. Recall: 0.83725
+----> Train mIoU: 0.71629 	 Val. mIoU: 0.67065
+Valid Dice not improved: 0.82273, Val. Loss: 0.21860, ESC: 7/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 93/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19512 	 Val. Loss: 0.21926
+----> Train Pixel Acc: 0.83142 	 Val. Pixel Acc: 0.81959
+----> Train Dice Coef: 0.83042 	 Val. Dice Coef: 0.82373
+----> Train Precision: 0.82202 	 Val. Precision: 0.80999
+----> Train Recall: 0.84174 	 Val. Recall: 0.84096
+----> Train mIoU: 0.71285 	 Val. mIoU: 0.70504
+Valid dice Coef. improved from 0.82273 to 0.82373. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 94/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.18776 	 Val. Loss: 0.21572
+----> Train Pixel Acc: 0.83814 	 Val. Pixel Acc: 0.82028
+----> Train Dice Coef: 0.83717 	 Val. Dice Coef: 0.82279
+----> Train Precision: 0.82989 	 Val. Precision: 0.81098
+----> Train Recall: 0.84686 	 Val. Recall: 0.83779
+----> Train mIoU: 0.72196 	 Val. mIoU: 0.70379
+Valid Dice not improved: 0.82373, Val. Loss: 0.21926, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 95/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19909 	 Val. Loss: 0.22059
+----> Train Pixel Acc: 0.82617 	 Val. Pixel Acc: 0.81467
+----> Train Dice Coef: 0.82595 	 Val. Dice Coef: 0.81632
+----> Train Precision: 0.81691 	 Val. Precision: 0.80699
+----> Train Recall: 0.83803 	 Val. Recall: 0.82837
+----> Train mIoU: 0.70643 	 Val. mIoU: 0.69500
+Valid Dice not improved: 0.82373, Val. Loss: 0.21926, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 96/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19702 	 Val. Loss: 0.21678
+----> Train Pixel Acc: 0.82823 	 Val. Pixel Acc: 0.81320
+----> Train Dice Coef: 0.82341 	 Val. Dice Coef: 0.81728
+----> Train Precision: 0.81657 	 Val. Precision: 0.80404
+----> Train Recall: 0.83659 	 Val. Recall: 0.83348
+----> Train mIoU: 0.70505 	 Val. mIoU: 0.69622
+Valid Dice not improved: 0.82373, Val. Loss: 0.21926, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 97/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19344 	 Val. Loss: 0.21828
+----> Train Pixel Acc: 0.83152 	 Val. Pixel Acc: 0.82177
+----> Train Dice Coef: 0.82784 	 Val. Dice Coef: 0.82140
+----> Train Precision: 0.82091 	 Val. Precision: 0.81307
+----> Train Recall: 0.83807 	 Val. Recall: 0.83246
+----> Train mIoU: 0.71023 	 Val. mIoU: 0.70194
+Valid Dice not improved: 0.82373, Val. Loss: 0.21926, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 98/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.19610 	 Val. Loss: 0.21474
+----> Train Pixel Acc: 0.82749 	 Val. Pixel Acc: 0.82869
+----> Train Dice Coef: 0.82625 	 Val. Dice Coef: 0.82542
+----> Train Precision: 0.81917 	 Val. Precision: 0.82117
+----> Train Recall: 0.83648 	 Val. Recall: 0.83152
+----> Train mIoU: 0.70653 	 Val. mIoU: 0.70766
+Valid dice Coef. improved from 0.82373 to 0.82542. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 99/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.18699 	 Val. Loss: 0.21598
+----> Train Pixel Acc: 0.83871 	 Val. Pixel Acc: 0.82523
+----> Train Dice Coef: 0.83577 	 Val. Dice Coef: 0.82014
+----> Train Precision: 0.82995 	 Val. Precision: 0.81696
+----> Train Recall: 0.84415 	 Val. Recall: 0.82613
+----> Train mIoU: 0.72045 	 Val. mIoU: 0.69999
+Valid Dice not improved: 0.82542, Val. Loss: 0.21474, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 100/500 --model:unet --lr:4.5000e-04
+----> Train Loss: 0.18703 	 Val. Loss: 0.21556
+----> Train Pixel Acc: 0.83752 	 Val. Pixel Acc: 0.82373
+----> Train Dice Coef: 0.83489 	 Val. Dice Coef: 0.82510
+----> Train Precision: 0.82958 	 Val. Precision: 0.81695
+----> Train Recall: 0.84294 	 Val. Recall: 0.83560
+----> Train mIoU: 0.71909 	 Val. mIoU: 0.70727
+Valid Dice not improved: 0.82542, Val. Loss: 0.21474, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 101/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18294 	 Val. Loss: 0.21583
+----> Train Pixel Acc: 0.84284 	 Val. Pixel Acc: 0.83017
+----> Train Dice Coef: 0.84052 	 Val. Dice Coef: 0.82561
+----> Train Precision: 0.83476 	 Val. Precision: 0.82277
+----> Train Recall: 0.84828 	 Val. Recall: 0.83055
+----> Train mIoU: 0.72705 	 Val. mIoU: 0.70817
+Valid dice Coef. improved from 0.82542 to 0.82561. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 102/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18415 	 Val. Loss: 0.22893
+----> Train Pixel Acc: 0.84091 	 Val. Pixel Acc: 0.80413
+----> Train Dice Coef: 0.83887 	 Val. Dice Coef: 0.80410
+----> Train Precision: 0.83316 	 Val. Precision: 0.79435
+----> Train Recall: 0.84704 	 Val. Recall: 0.81768
+----> Train mIoU: 0.72473 	 Val. mIoU: 0.67744
+Valid Dice not improved: 0.82561, Val. Loss: 0.21583, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 103/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.19356 	 Val. Loss: 0.21857
+----> Train Pixel Acc: 0.83036 	 Val. Pixel Acc: 0.81961
+----> Train Dice Coef: 0.82949 	 Val. Dice Coef: 0.82414
+----> Train Precision: 0.82146 	 Val. Precision: 0.81237
+----> Train Recall: 0.84062 	 Val. Recall: 0.83846
+----> Train mIoU: 0.71125 	 Val. mIoU: 0.70594
+Valid Dice not improved: 0.82561, Val. Loss: 0.21583, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 104/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18243 	 Val. Loss: 0.21373
+----> Train Pixel Acc: 0.84265 	 Val. Pixel Acc: 0.82497
+----> Train Dice Coef: 0.83885 	 Val. Dice Coef: 0.82786
+----> Train Precision: 0.83340 	 Val. Precision: 0.81699
+----> Train Recall: 0.84693 	 Val. Recall: 0.84176
+----> Train mIoU: 0.72502 	 Val. mIoU: 0.71127
+Valid dice Coef. improved from 0.82561 to 0.82786. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 105/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18155 	 Val. Loss: 0.21660
+----> Train Pixel Acc: 0.84382 	 Val. Pixel Acc: 0.81727
+----> Train Dice Coef: 0.83985 	 Val. Dice Coef: 0.82254
+----> Train Precision: 0.83390 	 Val. Precision: 0.80882
+----> Train Recall: 0.84866 	 Val. Recall: 0.83961
+----> Train mIoU: 0.72658 	 Val. mIoU: 0.70334
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 106/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18238 	 Val. Loss: 0.21426
+----> Train Pixel Acc: 0.84309 	 Val. Pixel Acc: 0.82027
+----> Train Dice Coef: 0.83681 	 Val. Dice Coef: 0.82332
+----> Train Precision: 0.83090 	 Val. Precision: 0.81254
+----> Train Recall: 0.84542 	 Val. Recall: 0.83727
+----> Train mIoU: 0.72351 	 Val. mIoU: 0.70471
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 107/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18101 	 Val. Loss: 0.21852
+----> Train Pixel Acc: 0.84472 	 Val. Pixel Acc: 0.82311
+----> Train Dice Coef: 0.84139 	 Val. Dice Coef: 0.82012
+----> Train Precision: 0.83669 	 Val. Precision: 0.81661
+----> Train Recall: 0.84884 	 Val. Recall: 0.82596
+----> Train mIoU: 0.72821 	 Val. mIoU: 0.70044
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 108/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18274 	 Val. Loss: 0.21709
+----> Train Pixel Acc: 0.84187 	 Val. Pixel Acc: 0.82815
+----> Train Dice Coef: 0.83752 	 Val. Dice Coef: 0.82240
+----> Train Precision: 0.83243 	 Val. Precision: 0.82224
+----> Train Recall: 0.84532 	 Val. Recall: 0.82509
+----> Train mIoU: 0.72332 	 Val. mIoU: 0.70364
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 109/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18358 	 Val. Loss: 0.21270
+----> Train Pixel Acc: 0.84548 	 Val. Pixel Acc: 0.82582
+----> Train Dice Coef: 0.83861 	 Val. Dice Coef: 0.82553
+----> Train Precision: 0.83500 	 Val. Precision: 0.81858
+----> Train Recall: 0.84771 	 Val. Recall: 0.83493
+----> Train mIoU: 0.72693 	 Val. mIoU: 0.70787
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 110/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.19231 	 Val. Loss: 0.21200
+----> Train Pixel Acc: 0.82969 	 Val. Pixel Acc: 0.82547
+----> Train Dice Coef: 0.82531 	 Val. Dice Coef: 0.82330
+----> Train Precision: 0.81838 	 Val. Precision: 0.81618
+----> Train Recall: 0.83553 	 Val. Recall: 0.83301
+----> Train mIoU: 0.70652 	 Val. mIoU: 0.70447
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 111/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18483 	 Val. Loss: 0.21571
+----> Train Pixel Acc: 0.83883 	 Val. Pixel Acc: 0.82224
+----> Train Dice Coef: 0.83553 	 Val. Dice Coef: 0.81863
+----> Train Precision: 0.82998 	 Val. Precision: 0.81572
+----> Train Recall: 0.84368 	 Val. Recall: 0.82355
+----> Train mIoU: 0.72000 	 Val. mIoU: 0.69797
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 7/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 112/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.17856 	 Val. Loss: 0.21422
+----> Train Pixel Acc: 0.84576 	 Val. Pixel Acc: 0.82416
+----> Train Dice Coef: 0.84324 	 Val. Dice Coef: 0.82568
+----> Train Precision: 0.83781 	 Val. Precision: 0.81765
+----> Train Recall: 0.85082 	 Val. Recall: 0.83625
+----> Train mIoU: 0.73090 	 Val. mIoU: 0.70797
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 8/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 113/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18316 	 Val. Loss: 0.22992
+----> Train Pixel Acc: 0.84322 	 Val. Pixel Acc: 0.78612
+----> Train Dice Coef: 0.83946 	 Val. Dice Coef: 0.79586
+----> Train Precision: 0.83480 	 Val. Precision: 0.77828
+----> Train Recall: 0.84674 	 Val. Recall: 0.81664
+----> Train mIoU: 0.72587 	 Val. mIoU: 0.66732
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 9/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 114/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.19815 	 Val. Loss: 0.21911
+----> Train Pixel Acc: 0.81938 	 Val. Pixel Acc: 0.81525
+----> Train Dice Coef: 0.82120 	 Val. Dice Coef: 0.81979
+----> Train Precision: 0.81241 	 Val. Precision: 0.80955
+----> Train Recall: 0.83325 	 Val. Recall: 0.83281
+----> Train mIoU: 0.69946 	 Val. mIoU: 0.69932
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 10/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 115/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.18091 	 Val. Loss: 0.21246
+----> Train Pixel Acc: 0.84062 	 Val. Pixel Acc: 0.82442
+----> Train Dice Coef: 0.83793 	 Val. Dice Coef: 0.82699
+----> Train Precision: 0.83260 	 Val. Precision: 0.81760
+----> Train Recall: 0.84583 	 Val. Recall: 0.83864
+----> Train mIoU: 0.72331 	 Val. mIoU: 0.70992
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 11/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 116/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.17406 	 Val. Loss: 0.21690
+----> Train Pixel Acc: 0.84985 	 Val. Pixel Acc: 0.83323
+----> Train Dice Coef: 0.84568 	 Val. Dice Coef: 0.82756
+----> Train Precision: 0.84173 	 Val. Precision: 0.82715
+----> Train Recall: 0.85193 	 Val. Recall: 0.83017
+----> Train mIoU: 0.73460 	 Val. mIoU: 0.71059
+Valid Dice not improved: 0.82786, Val. Loss: 0.21373, ESC: 12/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 117/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.17284 	 Val. Loss: 0.21571
+----> Train Pixel Acc: 0.85220 	 Val. Pixel Acc: 0.82617
+----> Train Dice Coef: 0.84747 	 Val. Dice Coef: 0.82789
+----> Train Precision: 0.84444 	 Val. Precision: 0.81802
+----> Train Recall: 0.85305 	 Val. Recall: 0.84081
+----> Train mIoU: 0.73742 	 Val. mIoU: 0.71115
+Valid dice Coef. improved from 0.82786 to 0.82789. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 118/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.17602 	 Val. Loss: 0.21217
+----> Train Pixel Acc: 0.84747 	 Val. Pixel Acc: 0.83270
+----> Train Dice Coef: 0.84281 	 Val. Dice Coef: 0.82692
+----> Train Precision: 0.83898 	 Val. Precision: 0.82607
+----> Train Recall: 0.84873 	 Val. Recall: 0.82975
+----> Train mIoU: 0.73080 	 Val. mIoU: 0.70989
+Valid Dice not improved: 0.82789, Val. Loss: 0.21571, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 119/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.17289 	 Val. Loss: 0.21575
+----> Train Pixel Acc: 0.84884 	 Val. Pixel Acc: 0.82532
+----> Train Dice Coef: 0.84539 	 Val. Dice Coef: 0.82534
+----> Train Precision: 0.84076 	 Val. Precision: 0.81948
+----> Train Recall: 0.85252 	 Val. Recall: 0.83355
+----> Train mIoU: 0.73448 	 Val. mIoU: 0.70804
+Valid Dice not improved: 0.82789, Val. Loss: 0.21571, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 120/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.17455 	 Val. Loss: 0.21121
+----> Train Pixel Acc: 0.84711 	 Val. Pixel Acc: 0.82215
+----> Train Dice Coef: 0.84361 	 Val. Dice Coef: 0.82286
+----> Train Precision: 0.83920 	 Val. Precision: 0.81425
+----> Train Recall: 0.85027 	 Val. Recall: 0.83420
+----> Train mIoU: 0.73181 	 Val. mIoU: 0.70409
+Valid Dice not improved: 0.82789, Val. Loss: 0.21571, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 121/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.17584 	 Val. Loss: 0.20986
+----> Train Pixel Acc: 0.84773 	 Val. Pixel Acc: 0.82910
+----> Train Dice Coef: 0.84129 	 Val. Dice Coef: 0.82433
+----> Train Precision: 0.83710 	 Val. Precision: 0.82108
+----> Train Recall: 0.85082 	 Val. Recall: 0.83033
+----> Train mIoU: 0.73007 	 Val. mIoU: 0.70624
+Valid Dice not improved: 0.82789, Val. Loss: 0.21571, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 122/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.17561 	 Val. Loss: 0.21065
+----> Train Pixel Acc: 0.84870 	 Val. Pixel Acc: 0.82720
+----> Train Dice Coef: 0.84219 	 Val. Dice Coef: 0.82773
+----> Train Precision: 0.83967 	 Val. Precision: 0.82031
+----> Train Recall: 0.84728 	 Val. Recall: 0.83733
+----> Train mIoU: 0.73006 	 Val. mIoU: 0.71099
+Valid Dice not improved: 0.82789, Val. Loss: 0.21571, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 123/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16866 	 Val. Loss: 0.20951
+----> Train Pixel Acc: 0.85504 	 Val. Pixel Acc: 0.83169
+----> Train Dice Coef: 0.85138 	 Val. Dice Coef: 0.82939
+----> Train Precision: 0.84815 	 Val. Precision: 0.82474
+----> Train Recall: 0.85645 	 Val. Recall: 0.83609
+----> Train mIoU: 0.74292 	 Val. mIoU: 0.71323
+Valid dice Coef. improved from 0.82789 to 0.82939. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 124/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16902 	 Val. Loss: 0.20999
+----> Train Pixel Acc: 0.85591 	 Val. Pixel Acc: 0.82980
+----> Train Dice Coef: 0.85069 	 Val. Dice Coef: 0.82702
+----> Train Precision: 0.84802 	 Val. Precision: 0.82381
+----> Train Recall: 0.85566 	 Val. Recall: 0.83224
+----> Train mIoU: 0.74213 	 Val. mIoU: 0.71002
+Valid Dice not improved: 0.82939, Val. Loss: 0.20951, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 125/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16466 	 Val. Loss: 0.21092
+----> Train Pixel Acc: 0.85947 	 Val. Pixel Acc: 0.83058
+----> Train Dice Coef: 0.85379 	 Val. Dice Coef: 0.82886
+----> Train Precision: 0.85142 	 Val. Precision: 0.82428
+----> Train Recall: 0.85796 	 Val. Recall: 0.83533
+----> Train mIoU: 0.74688 	 Val. mIoU: 0.71290
+Valid Dice not improved: 0.82939, Val. Loss: 0.20951, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 126/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16622 	 Val. Loss: 0.21049
+----> Train Pixel Acc: 0.85869 	 Val. Pixel Acc: 0.82353
+----> Train Dice Coef: 0.85359 	 Val. Dice Coef: 0.82666
+----> Train Precision: 0.85189 	 Val. Precision: 0.81624
+----> Train Recall: 0.85707 	 Val. Recall: 0.83922
+----> Train mIoU: 0.74630 	 Val. mIoU: 0.70969
+Valid Dice not improved: 0.82939, Val. Loss: 0.20951, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 127/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16614 	 Val. Loss: 0.21418
+----> Train Pixel Acc: 0.85822 	 Val. Pixel Acc: 0.82973
+----> Train Dice Coef: 0.85119 	 Val. Dice Coef: 0.82713
+----> Train Precision: 0.84811 	 Val. Precision: 0.82391
+----> Train Recall: 0.85929 	 Val. Recall: 0.83218
+----> Train mIoU: 0.74447 	 Val. mIoU: 0.71073
+Valid Dice not improved: 0.82939, Val. Loss: 0.20951, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 128/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16441 	 Val. Loss: 0.21504
+----> Train Pixel Acc: 0.85945 	 Val. Pixel Acc: 0.83359
+----> Train Dice Coef: 0.85438 	 Val. Dice Coef: 0.82679
+----> Train Precision: 0.85157 	 Val. Precision: 0.82691
+----> Train Recall: 0.85905 	 Val. Recall: 0.82878
+----> Train mIoU: 0.74748 	 Val. mIoU: 0.70984
+Valid Dice not improved: 0.82939, Val. Loss: 0.20951, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 129/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16584 	 Val. Loss: 0.20989
+----> Train Pixel Acc: 0.85828 	 Val. Pixel Acc: 0.82855
+----> Train Dice Coef: 0.85292 	 Val. Dice Coef: 0.82834
+----> Train Precision: 0.85118 	 Val. Precision: 0.82314
+----> Train Recall: 0.85638 	 Val. Recall: 0.83578
+----> Train mIoU: 0.74548 	 Val. mIoU: 0.71201
+Valid Dice not improved: 0.82939, Val. Loss: 0.20951, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 130/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16257 	 Val. Loss: 0.20879
+----> Train Pixel Acc: 0.86132 	 Val. Pixel Acc: 0.83367
+----> Train Dice Coef: 0.85642 	 Val. Dice Coef: 0.83149
+----> Train Precision: 0.85440 	 Val. Precision: 0.82753
+----> Train Recall: 0.86006 	 Val. Recall: 0.83744
+----> Train mIoU: 0.75062 	 Val. mIoU: 0.71647
+Valid dice Coef. improved from 0.82939 to 0.83149. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 131/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16604 	 Val. Loss: 0.21258
+----> Train Pixel Acc: 0.85629 	 Val. Pixel Acc: 0.83101
+----> Train Dice Coef: 0.85067 	 Val. Dice Coef: 0.82792
+----> Train Precision: 0.84794 	 Val. Precision: 0.82426
+----> Train Recall: 0.85528 	 Val. Recall: 0.83350
+----> Train mIoU: 0.74239 	 Val. mIoU: 0.71127
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 132/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16254 	 Val. Loss: 0.21550
+----> Train Pixel Acc: 0.86136 	 Val. Pixel Acc: 0.82734
+----> Train Dice Coef: 0.85448 	 Val. Dice Coef: 0.82397
+----> Train Precision: 0.85209 	 Val. Precision: 0.82168
+----> Train Recall: 0.85896 	 Val. Recall: 0.82861
+----> Train mIoU: 0.74832 	 Val. mIoU: 0.70596
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 133/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16390 	 Val. Loss: 0.20904
+----> Train Pixel Acc: 0.85925 	 Val. Pixel Acc: 0.82345
+----> Train Dice Coef: 0.85349 	 Val. Dice Coef: 0.82677
+----> Train Precision: 0.85177 	 Val. Precision: 0.81798
+----> Train Recall: 0.85718 	 Val. Recall: 0.83814
+----> Train mIoU: 0.74618 	 Val. mIoU: 0.70993
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 134/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16210 	 Val. Loss: 0.20829
+----> Train Pixel Acc: 0.86149 	 Val. Pixel Acc: 0.83110
+----> Train Dice Coef: 0.85607 	 Val. Dice Coef: 0.83033
+----> Train Precision: 0.85355 	 Val. Precision: 0.82400
+----> Train Recall: 0.86052 	 Val. Recall: 0.83889
+----> Train mIoU: 0.75005 	 Val. mIoU: 0.71485
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 135/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16372 	 Val. Loss: 0.20689
+----> Train Pixel Acc: 0.85965 	 Val. Pixel Acc: 0.83386
+----> Train Dice Coef: 0.85308 	 Val. Dice Coef: 0.82928
+----> Train Precision: 0.85191 	 Val. Precision: 0.82724
+----> Train Recall: 0.85608 	 Val. Recall: 0.83359
+----> Train mIoU: 0.74625 	 Val. mIoU: 0.71310
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 136/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.17399 	 Val. Loss: 0.20628
+----> Train Pixel Acc: 0.85556 	 Val. Pixel Acc: 0.81521
+----> Train Dice Coef: 0.84890 	 Val. Dice Coef: 0.81921
+----> Train Precision: 0.84550 	 Val. Precision: 0.80944
+----> Train Recall: 0.85738 	 Val. Recall: 0.83158
+----> Train mIoU: 0.74151 	 Val. mIoU: 0.69920
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 137/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16923 	 Val. Loss: 0.21278
+----> Train Pixel Acc: 0.85268 	 Val. Pixel Acc: 0.81890
+----> Train Dice Coef: 0.84846 	 Val. Dice Coef: 0.82433
+----> Train Precision: 0.84604 	 Val. Precision: 0.81117
+----> Train Recall: 0.85351 	 Val. Recall: 0.84141
+----> Train mIoU: 0.73843 	 Val. mIoU: 0.70602
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 7/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 138/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16300 	 Val. Loss: 0.20565
+----> Train Pixel Acc: 0.85936 	 Val. Pixel Acc: 0.83180
+----> Train Dice Coef: 0.85377 	 Val. Dice Coef: 0.82719
+----> Train Precision: 0.85200 	 Val. Precision: 0.82619
+----> Train Recall: 0.85762 	 Val. Recall: 0.83047
+----> Train mIoU: 0.74687 	 Val. mIoU: 0.71027
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 8/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 139/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16122 	 Val. Loss: 0.21292
+----> Train Pixel Acc: 0.86184 	 Val. Pixel Acc: 0.83048
+----> Train Dice Coef: 0.85558 	 Val. Dice Coef: 0.82925
+----> Train Precision: 0.85406 	 Val. Precision: 0.82238
+----> Train Recall: 0.85903 	 Val. Recall: 0.83820
+----> Train mIoU: 0.74932 	 Val. mIoU: 0.71340
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 9/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 140/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16512 	 Val. Loss: 0.21117
+----> Train Pixel Acc: 0.85912 	 Val. Pixel Acc: 0.82403
+----> Train Dice Coef: 0.84880 	 Val. Dice Coef: 0.82354
+----> Train Precision: 0.84745 	 Val. Precision: 0.81876
+----> Train Recall: 0.85578 	 Val. Recall: 0.83062
+----> Train mIoU: 0.74157 	 Val. mIoU: 0.70522
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 10/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 141/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16210 	 Val. Loss: 0.20404
+----> Train Pixel Acc: 0.86013 	 Val. Pixel Acc: 0.83405
+----> Train Dice Coef: 0.85463 	 Val. Dice Coef: 0.82907
+----> Train Precision: 0.85326 	 Val. Precision: 0.82737
+----> Train Recall: 0.85773 	 Val. Recall: 0.83282
+----> Train mIoU: 0.74788 	 Val. mIoU: 0.71306
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 11/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 142/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16049 	 Val. Loss: 0.20749
+----> Train Pixel Acc: 0.86244 	 Val. Pixel Acc: 0.82903
+----> Train Dice Coef: 0.85676 	 Val. Dice Coef: 0.82569
+----> Train Precision: 0.85575 	 Val. Precision: 0.82046
+----> Train Recall: 0.85942 	 Val. Recall: 0.83337
+----> Train mIoU: 0.75100 	 Val. mIoU: 0.70797
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 12/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 143/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16036 	 Val. Loss: 0.20987
+----> Train Pixel Acc: 0.86200 	 Val. Pixel Acc: 0.82778
+----> Train Dice Coef: 0.85602 	 Val. Dice Coef: 0.82662
+----> Train Precision: 0.85479 	 Val. Precision: 0.82224
+----> Train Recall: 0.85895 	 Val. Recall: 0.83322
+----> Train mIoU: 0.74985 	 Val. mIoU: 0.70959
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 13/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 144/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16114 	 Val. Loss: 0.21289
+----> Train Pixel Acc: 0.86035 	 Val. Pixel Acc: 0.83461
+----> Train Dice Coef: 0.85545 	 Val. Dice Coef: 0.82346
+----> Train Precision: 0.85374 	 Val. Precision: 0.82905
+----> Train Recall: 0.85935 	 Val. Recall: 0.81995
+----> Train mIoU: 0.74900 	 Val. mIoU: 0.70477
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 14/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 145/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.16251 	 Val. Loss: 0.20880
+----> Train Pixel Acc: 0.86052 	 Val. Pixel Acc: 0.83504
+----> Train Dice Coef: 0.85174 	 Val. Dice Coef: 0.82981
+----> Train Precision: 0.85022 	 Val. Precision: 0.82921
+----> Train Recall: 0.85838 	 Val. Recall: 0.83250
+----> Train mIoU: 0.74538 	 Val. mIoU: 0.71389
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 15/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 146/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.15969 	 Val. Loss: 0.20194
+----> Train Pixel Acc: 0.86229 	 Val. Pixel Acc: 0.83510
+----> Train Dice Coef: 0.85524 	 Val. Dice Coef: 0.83036
+----> Train Precision: 0.85346 	 Val. Precision: 0.82833
+----> Train Recall: 0.85953 	 Val. Recall: 0.83420
+----> Train mIoU: 0.74935 	 Val. mIoU: 0.71474
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 16/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 147/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.15470 	 Val. Loss: 0.20509
+----> Train Pixel Acc: 0.86753 	 Val. Pixel Acc: 0.83816
+----> Train Dice Coef: 0.86194 	 Val. Dice Coef: 0.82840
+----> Train Precision: 0.86087 	 Val. Precision: 0.83149
+----> Train Recall: 0.86455 	 Val. Recall: 0.82728
+----> Train mIoU: 0.75902 	 Val. mIoU: 0.71201
+Valid Dice not improved: 0.83149, Val. Loss: 0.20879, ESC: 17/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 148/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.15386 	 Val. Loss: 0.20524
+----> Train Pixel Acc: 0.86707 	 Val. Pixel Acc: 0.83647
+----> Train Dice Coef: 0.86136 	 Val. Dice Coef: 0.83186
+----> Train Precision: 0.85955 	 Val. Precision: 0.82953
+----> Train Recall: 0.86495 	 Val. Recall: 0.83646
+----> Train mIoU: 0.75808 	 Val. mIoU: 0.71706
+Valid dice Coef. improved from 0.83149 to 0.83186. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 149/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.15469 	 Val. Loss: 0.20597
+----> Train Pixel Acc: 0.86712 	 Val. Pixel Acc: 0.82918
+----> Train Dice Coef: 0.86063 	 Val. Dice Coef: 0.82915
+----> Train Precision: 0.85981 	 Val. Precision: 0.82368
+----> Train Recall: 0.86301 	 Val. Recall: 0.83700
+----> Train mIoU: 0.75696 	 Val. mIoU: 0.71303
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 150/500 --model:unet --lr:4.0500e-04
+----> Train Loss: 0.15430 	 Val. Loss: 0.20577
+----> Train Pixel Acc: 0.86784 	 Val. Pixel Acc: 0.83388
+----> Train Dice Coef: 0.86177 	 Val. Dice Coef: 0.83153
+----> Train Precision: 0.86019 	 Val. Precision: 0.82651
+----> Train Recall: 0.86515 	 Val. Recall: 0.83916
+----> Train mIoU: 0.75856 	 Val. mIoU: 0.71662
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 151/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15530 	 Val. Loss: 0.20438
+----> Train Pixel Acc: 0.86613 	 Val. Pixel Acc: 0.83764
+----> Train Dice Coef: 0.85891 	 Val. Dice Coef: 0.83167
+----> Train Precision: 0.85784 	 Val. Precision: 0.82985
+----> Train Recall: 0.86273 	 Val. Recall: 0.83530
+----> Train mIoU: 0.75589 	 Val. mIoU: 0.71674
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 152/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15247 	 Val. Loss: 0.20732
+----> Train Pixel Acc: 0.86994 	 Val. Pixel Acc: 0.82933
+----> Train Dice Coef: 0.86293 	 Val. Dice Coef: 0.82529
+----> Train Precision: 0.86271 	 Val. Precision: 0.82397
+----> Train Recall: 0.86554 	 Val. Recall: 0.82874
+----> Train mIoU: 0.76070 	 Val. mIoU: 0.70786
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 153/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15075 	 Val. Loss: 0.20804
+----> Train Pixel Acc: 0.87033 	 Val. Pixel Acc: 0.83349
+----> Train Dice Coef: 0.86462 	 Val. Dice Coef: 0.82828
+----> Train Precision: 0.86366 	 Val. Precision: 0.82671
+----> Train Recall: 0.86695 	 Val. Recall: 0.83249
+----> Train mIoU: 0.76301 	 Val. mIoU: 0.71174
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 154/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15189 	 Val. Loss: 0.20759
+----> Train Pixel Acc: 0.86941 	 Val. Pixel Acc: 0.83389
+----> Train Dice Coef: 0.86298 	 Val. Dice Coef: 0.83032
+----> Train Precision: 0.86169 	 Val. Precision: 0.82835
+----> Train Recall: 0.86580 	 Val. Recall: 0.83412
+----> Train mIoU: 0.76068 	 Val. mIoU: 0.71498
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 155/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15268 	 Val. Loss: 0.20492
+----> Train Pixel Acc: 0.86841 	 Val. Pixel Acc: 0.83212
+----> Train Dice Coef: 0.86258 	 Val. Dice Coef: 0.82956
+----> Train Precision: 0.86198 	 Val. Precision: 0.82447
+----> Train Recall: 0.86485 	 Val. Recall: 0.83672
+----> Train mIoU: 0.75992 	 Val. mIoU: 0.71389
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 7/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 156/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14806 	 Val. Loss: 0.20880
+----> Train Pixel Acc: 0.87290 	 Val. Pixel Acc: 0.83422
+----> Train Dice Coef: 0.86638 	 Val. Dice Coef: 0.82967
+----> Train Precision: 0.86560 	 Val. Precision: 0.82853
+----> Train Recall: 0.86888 	 Val. Recall: 0.83283
+----> Train mIoU: 0.76608 	 Val. mIoU: 0.71385
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 8/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 157/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14814 	 Val. Loss: 0.20542
+----> Train Pixel Acc: 0.87295 	 Val. Pixel Acc: 0.83304
+----> Train Dice Coef: 0.86738 	 Val. Dice Coef: 0.82639
+----> Train Precision: 0.86617 	 Val. Precision: 0.82915
+----> Train Recall: 0.87019 	 Val. Recall: 0.82581
+----> Train mIoU: 0.76723 	 Val. mIoU: 0.70922
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 9/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 158/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15087 	 Val. Loss: 0.20542
+----> Train Pixel Acc: 0.87036 	 Val. Pixel Acc: 0.82455
+----> Train Dice Coef: 0.86250 	 Val. Dice Coef: 0.82656
+----> Train Precision: 0.86285 	 Val. Precision: 0.81796
+----> Train Recall: 0.86383 	 Val. Recall: 0.83788
+----> Train mIoU: 0.76038 	 Val. mIoU: 0.70955
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 10/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 159/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15148 	 Val. Loss: 0.20950
+----> Train Pixel Acc: 0.86972 	 Val. Pixel Acc: 0.83378
+----> Train Dice Coef: 0.86361 	 Val. Dice Coef: 0.82896
+----> Train Precision: 0.86171 	 Val. Precision: 0.82788
+----> Train Recall: 0.86734 	 Val. Recall: 0.83187
+----> Train mIoU: 0.76166 	 Val. mIoU: 0.71303
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 11/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 160/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15018 	 Val. Loss: 0.20214
+----> Train Pixel Acc: 0.87185 	 Val. Pixel Acc: 0.83394
+----> Train Dice Coef: 0.86490 	 Val. Dice Coef: 0.83129
+----> Train Precision: 0.86466 	 Val. Precision: 0.82541
+----> Train Recall: 0.86720 	 Val. Recall: 0.83939
+----> Train mIoU: 0.76371 	 Val. mIoU: 0.71606
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 12/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 161/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14965 	 Val. Loss: 0.20427
+----> Train Pixel Acc: 0.87220 	 Val. Pixel Acc: 0.83375
+----> Train Dice Coef: 0.86279 	 Val. Dice Coef: 0.82965
+----> Train Precision: 0.86230 	 Val. Precision: 0.82727
+----> Train Recall: 0.86852 	 Val. Recall: 0.83414
+----> Train mIoU: 0.76251 	 Val. mIoU: 0.71373
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 13/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 162/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14651 	 Val. Loss: 0.20500
+----> Train Pixel Acc: 0.87465 	 Val. Pixel Acc: 0.83705
+----> Train Dice Coef: 0.86803 	 Val. Dice Coef: 0.82993
+----> Train Precision: 0.86787 	 Val. Precision: 0.82966
+----> Train Recall: 0.86976 	 Val. Recall: 0.83227
+----> Train mIoU: 0.76852 	 Val. mIoU: 0.71420
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 14/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 163/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14960 	 Val. Loss: 0.19924
+----> Train Pixel Acc: 0.87142 	 Val. Pixel Acc: 0.83427
+----> Train Dice Coef: 0.86502 	 Val. Dice Coef: 0.82895
+----> Train Precision: 0.86389 	 Val. Precision: 0.82888
+----> Train Recall: 0.86781 	 Val. Recall: 0.83096
+----> Train mIoU: 0.76370 	 Val. mIoU: 0.71315
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 15/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 164/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15291 	 Val. Loss: 0.22158
+----> Train Pixel Acc: 0.86773 	 Val. Pixel Acc: 0.82788
+----> Train Dice Coef: 0.86205 	 Val. Dice Coef: 0.82652
+----> Train Precision: 0.86076 	 Val. Precision: 0.82090
+----> Train Recall: 0.86513 	 Val. Recall: 0.83478
+----> Train mIoU: 0.75901 	 Val. mIoU: 0.70938
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 16/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 165/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.19309 	 Val. Loss: 0.21070
+----> Train Pixel Acc: 0.83068 	 Val. Pixel Acc: 0.81762
+----> Train Dice Coef: 0.82672 	 Val. Dice Coef: 0.81182
+----> Train Precision: 0.82195 	 Val. Precision: 0.81115
+----> Train Recall: 0.83534 	 Val. Recall: 0.81521
+----> Train mIoU: 0.70760 	 Val. mIoU: 0.68867
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 17/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 166/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.17149 	 Val. Loss: 0.19927
+----> Train Pixel Acc: 0.84490 	 Val. Pixel Acc: 0.82298
+----> Train Dice Coef: 0.84071 	 Val. Dice Coef: 0.82438
+----> Train Precision: 0.83732 	 Val. Precision: 0.81693
+----> Train Recall: 0.84666 	 Val. Recall: 0.83416
+----> Train mIoU: 0.72733 	 Val. mIoU: 0.70604
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 18/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 167/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.16096 	 Val. Loss: 0.19886
+----> Train Pixel Acc: 0.85809 	 Val. Pixel Acc: 0.83379
+----> Train Dice Coef: 0.85378 	 Val. Dice Coef: 0.82848
+----> Train Precision: 0.85173 	 Val. Precision: 0.82902
+----> Train Recall: 0.85820 	 Val. Recall: 0.83024
+----> Train mIoU: 0.74673 	 Val. mIoU: 0.71227
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 19/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 168/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15464 	 Val. Loss: 0.20245
+----> Train Pixel Acc: 0.86339 	 Val. Pixel Acc: 0.83406
+----> Train Dice Coef: 0.85671 	 Val. Dice Coef: 0.83041
+----> Train Precision: 0.85536 	 Val. Precision: 0.82531
+----> Train Recall: 0.85991 	 Val. Recall: 0.83812
+----> Train mIoU: 0.75134 	 Val. mIoU: 0.71458
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 20/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 169/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15124 	 Val. Loss: 0.20733
+----> Train Pixel Acc: 0.86927 	 Val. Pixel Acc: 0.83127
+----> Train Dice Coef: 0.86299 	 Val. Dice Coef: 0.82548
+----> Train Precision: 0.86199 	 Val. Precision: 0.82626
+----> Train Recall: 0.86599 	 Val. Recall: 0.82685
+----> Train mIoU: 0.76036 	 Val. mIoU: 0.70842
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 21/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 170/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15383 	 Val. Loss: 0.20037
+----> Train Pixel Acc: 0.86504 	 Val. Pixel Acc: 0.83168
+----> Train Dice Coef: 0.85944 	 Val. Dice Coef: 0.82898
+----> Train Precision: 0.85914 	 Val. Precision: 0.82404
+----> Train Recall: 0.86137 	 Val. Recall: 0.83608
+----> Train mIoU: 0.75506 	 Val. mIoU: 0.71301
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 22/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 171/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14875 	 Val. Loss: 0.20147
+----> Train Pixel Acc: 0.87106 	 Val. Pixel Acc: 0.83239
+----> Train Dice Coef: 0.86479 	 Val. Dice Coef: 0.83117
+----> Train Precision: 0.86436 	 Val. Precision: 0.82511
+----> Train Recall: 0.86670 	 Val. Recall: 0.83922
+----> Train mIoU: 0.76332 	 Val. mIoU: 0.71608
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 23/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 172/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.15024 	 Val. Loss: 0.20198
+----> Train Pixel Acc: 0.87164 	 Val. Pixel Acc: 0.83043
+----> Train Dice Coef: 0.86083 	 Val. Dice Coef: 0.82991
+----> Train Precision: 0.86140 	 Val. Precision: 0.82297
+----> Train Recall: 0.86553 	 Val. Recall: 0.84005
+----> Train mIoU: 0.75957 	 Val. mIoU: 0.71406
+Valid Dice not improved: 0.83186, Val. Loss: 0.20524, ESC: 24/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 173/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14520 	 Val. Loss: 0.20094
+----> Train Pixel Acc: 0.87408 	 Val. Pixel Acc: 0.83480
+----> Train Dice Coef: 0.86767 	 Val. Dice Coef: 0.83294
+----> Train Precision: 0.86689 	 Val. Precision: 0.82943
+----> Train Recall: 0.86980 	 Val. Recall: 0.83869
+----> Train mIoU: 0.76782 	 Val. mIoU: 0.71857
+Valid dice Coef. improved from 0.83186 to 0.83294. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 174/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14888 	 Val. Loss: 0.20702
+----> Train Pixel Acc: 0.87283 	 Val. Pixel Acc: 0.82157
+----> Train Dice Coef: 0.86449 	 Val. Dice Coef: 0.82455
+----> Train Precision: 0.86571 	 Val. Precision: 0.81582
+----> Train Recall: 0.86547 	 Val. Recall: 0.83564
+----> Train mIoU: 0.76337 	 Val. mIoU: 0.70686
+Valid Dice not improved: 0.83294, Val. Loss: 0.20094, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 175/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14841 	 Val. Loss: 0.20188
+----> Train Pixel Acc: 0.86914 	 Val. Pixel Acc: 0.83033
+----> Train Dice Coef: 0.86370 	 Val. Dice Coef: 0.82979
+----> Train Precision: 0.86187 	 Val. Precision: 0.82513
+----> Train Recall: 0.86729 	 Val. Recall: 0.83636
+----> Train mIoU: 0.76171 	 Val. mIoU: 0.71426
+Valid Dice not improved: 0.83294, Val. Loss: 0.20094, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 176/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14680 	 Val. Loss: 0.20350
+----> Train Pixel Acc: 0.87136 	 Val. Pixel Acc: 0.83472
+----> Train Dice Coef: 0.86571 	 Val. Dice Coef: 0.83114
+----> Train Precision: 0.86457 	 Val. Precision: 0.82977
+----> Train Recall: 0.86847 	 Val. Recall: 0.83440
+----> Train mIoU: 0.76497 	 Val. mIoU: 0.71630
+Valid Dice not improved: 0.83294, Val. Loss: 0.20094, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 177/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14716 	 Val. Loss: 0.20945
+----> Train Pixel Acc: 0.87254 	 Val. Pixel Acc: 0.83032
+----> Train Dice Coef: 0.86378 	 Val. Dice Coef: 0.82678
+----> Train Precision: 0.86292 	 Val. Precision: 0.82528
+----> Train Recall: 0.86943 	 Val. Recall: 0.83057
+----> Train mIoU: 0.76373 	 Val. mIoU: 0.70987
+Valid Dice not improved: 0.83294, Val. Loss: 0.20094, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 178/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14714 	 Val. Loss: 0.20848
+----> Train Pixel Acc: 0.87616 	 Val. Pixel Acc: 0.82899
+----> Train Dice Coef: 0.86866 	 Val. Dice Coef: 0.83080
+----> Train Precision: 0.86972 	 Val. Precision: 0.82326
+----> Train Recall: 0.86910 	 Val. Recall: 0.84091
+----> Train mIoU: 0.76938 	 Val. mIoU: 0.71530
+Valid Dice not improved: 0.83294, Val. Loss: 0.20094, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 179/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14390 	 Val. Loss: 0.20319
+----> Train Pixel Acc: 0.87656 	 Val. Pixel Acc: 0.83814
+----> Train Dice Coef: 0.86724 	 Val. Dice Coef: 0.83001
+----> Train Precision: 0.86647 	 Val. Precision: 0.83065
+----> Train Recall: 0.87289 	 Val. Recall: 0.83149
+----> Train mIoU: 0.76906 	 Val. mIoU: 0.71420
+Valid Dice not improved: 0.83294, Val. Loss: 0.20094, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 180/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14387 	 Val. Loss: 0.20197
+----> Train Pixel Acc: 0.87553 	 Val. Pixel Acc: 0.83397
+----> Train Dice Coef: 0.86849 	 Val. Dice Coef: 0.82772
+----> Train Precision: 0.86836 	 Val. Precision: 0.82879
+----> Train Recall: 0.87019 	 Val. Recall: 0.82883
+----> Train mIoU: 0.76926 	 Val. mIoU: 0.71136
+Valid Dice not improved: 0.83294, Val. Loss: 0.20094, ESC: 7/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 181/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14242 	 Val. Loss: 0.20001
+----> Train Pixel Acc: 0.87625 	 Val. Pixel Acc: 0.83709
+----> Train Dice Coef: 0.86956 	 Val. Dice Coef: 0.83366
+----> Train Precision: 0.86979 	 Val. Precision: 0.83089
+----> Train Recall: 0.87062 	 Val. Recall: 0.83869
+----> Train mIoU: 0.77067 	 Val. mIoU: 0.71989
+Valid dice Coef. improved from 0.83294 to 0.83366. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 182/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14242 	 Val. Loss: 0.20390
+----> Train Pixel Acc: 0.87601 	 Val. Pixel Acc: 0.83409
+----> Train Dice Coef: 0.87037 	 Val. Dice Coef: 0.83075
+----> Train Precision: 0.87023 	 Val. Precision: 0.82768
+----> Train Recall: 0.87185 	 Val. Recall: 0.83589
+----> Train mIoU: 0.77178 	 Val. mIoU: 0.71561
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 183/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14215 	 Val. Loss: 0.20735
+----> Train Pixel Acc: 0.87667 	 Val. Pixel Acc: 0.83057
+----> Train Dice Coef: 0.87043 	 Val. Dice Coef: 0.82611
+----> Train Precision: 0.87025 	 Val. Precision: 0.82521
+----> Train Recall: 0.87199 	 Val. Recall: 0.82896
+----> Train mIoU: 0.77205 	 Val. mIoU: 0.70931
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 184/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14514 	 Val. Loss: 0.20196
+----> Train Pixel Acc: 0.87436 	 Val. Pixel Acc: 0.83464
+----> Train Dice Coef: 0.86788 	 Val. Dice Coef: 0.83140
+----> Train Precision: 0.86837 	 Val. Precision: 0.82664
+----> Train Recall: 0.86879 	 Val. Recall: 0.83867
+----> Train mIoU: 0.76809 	 Val. mIoU: 0.71651
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 185/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14335 	 Val. Loss: 0.20465
+----> Train Pixel Acc: 0.87521 	 Val. Pixel Acc: 0.83417
+----> Train Dice Coef: 0.86950 	 Val. Dice Coef: 0.83053
+----> Train Precision: 0.86871 	 Val. Precision: 0.82746
+----> Train Recall: 0.87171 	 Val. Recall: 0.83596
+----> Train mIoU: 0.77047 	 Val. mIoU: 0.71541
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 186/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14145 	 Val. Loss: 0.20401
+----> Train Pixel Acc: 0.87779 	 Val. Pixel Acc: 0.83312
+----> Train Dice Coef: 0.87094 	 Val. Dice Coef: 0.83193
+----> Train Precision: 0.87050 	 Val. Precision: 0.82789
+----> Train Recall: 0.87284 	 Val. Recall: 0.83796
+----> Train mIoU: 0.77291 	 Val. mIoU: 0.71737
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 187/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14061 	 Val. Loss: 0.20504
+----> Train Pixel Acc: 0.87691 	 Val. Pixel Acc: 0.82933
+----> Train Dice Coef: 0.87137 	 Val. Dice Coef: 0.83045
+----> Train Precision: 0.87128 	 Val. Precision: 0.82396
+----> Train Recall: 0.87303 	 Val. Recall: 0.83855
+----> Train mIoU: 0.77356 	 Val. mIoU: 0.71513
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 188/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.13911 	 Val. Loss: 0.20267
+----> Train Pixel Acc: 0.87842 	 Val. Pixel Acc: 0.83496
+----> Train Dice Coef: 0.87344 	 Val. Dice Coef: 0.83207
+----> Train Precision: 0.87275 	 Val. Precision: 0.82881
+----> Train Recall: 0.87533 	 Val. Recall: 0.83711
+----> Train mIoU: 0.77647 	 Val. mIoU: 0.71767
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 7/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 189/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.13972 	 Val. Loss: 0.20350
+----> Train Pixel Acc: 0.87898 	 Val. Pixel Acc: 0.83535
+----> Train Dice Coef: 0.87242 	 Val. Dice Coef: 0.83327
+----> Train Precision: 0.87222 	 Val. Precision: 0.83024
+----> Train Recall: 0.87381 	 Val. Recall: 0.83816
+----> Train mIoU: 0.77516 	 Val. mIoU: 0.71931
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 8/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 190/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14191 	 Val. Loss: 0.20035
+----> Train Pixel Acc: 0.87766 	 Val. Pixel Acc: 0.83595
+----> Train Dice Coef: 0.87168 	 Val. Dice Coef: 0.83215
+----> Train Precision: 0.87068 	 Val. Precision: 0.82892
+----> Train Recall: 0.87430 	 Val. Recall: 0.83743
+----> Train mIoU: 0.77412 	 Val. mIoU: 0.71742
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 9/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 191/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14663 	 Val. Loss: 0.20487
+----> Train Pixel Acc: 0.87269 	 Val. Pixel Acc: 0.83315
+----> Train Dice Coef: 0.86334 	 Val. Dice Coef: 0.82778
+----> Train Precision: 0.86251 	 Val. Precision: 0.82901
+----> Train Recall: 0.86901 	 Val. Recall: 0.82882
+----> Train mIoU: 0.76308 	 Val. mIoU: 0.71174
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 10/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 192/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14115 	 Val. Loss: 0.20238
+----> Train Pixel Acc: 0.87623 	 Val. Pixel Acc: 0.83436
+----> Train Dice Coef: 0.86988 	 Val. Dice Coef: 0.83203
+----> Train Precision: 0.87001 	 Val. Precision: 0.82855
+----> Train Recall: 0.87129 	 Val. Recall: 0.83788
+----> Train mIoU: 0.77114 	 Val. mIoU: 0.71744
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 11/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 193/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.13777 	 Val. Loss: 0.20422
+----> Train Pixel Acc: 0.87976 	 Val. Pixel Acc: 0.83829
+----> Train Dice Coef: 0.87401 	 Val. Dice Coef: 0.83115
+----> Train Precision: 0.87339 	 Val. Precision: 0.83162
+----> Train Recall: 0.87592 	 Val. Recall: 0.83284
+----> Train mIoU: 0.77757 	 Val. mIoU: 0.71634
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 12/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 194/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.13869 	 Val. Loss: 0.20442
+----> Train Pixel Acc: 0.87922 	 Val. Pixel Acc: 0.83617
+----> Train Dice Coef: 0.87294 	 Val. Dice Coef: 0.83242
+----> Train Precision: 0.87289 	 Val. Precision: 0.82984
+----> Train Recall: 0.87524 	 Val. Recall: 0.83687
+----> Train mIoU: 0.77654 	 Val. mIoU: 0.71783
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 13/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 195/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.14079 	 Val. Loss: 0.20300
+----> Train Pixel Acc: 0.87961 	 Val. Pixel Acc: 0.83834
+----> Train Dice Coef: 0.86766 	 Val. Dice Coef: 0.83179
+----> Train Precision: 0.86828 	 Val. Precision: 0.83145
+----> Train Recall: 0.87241 	 Val. Recall: 0.83450
+----> Train mIoU: 0.77060 	 Val. mIoU: 0.71699
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 14/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 196/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.13397 	 Val. Loss: 0.20698
+----> Train Pixel Acc: 0.88300 	 Val. Pixel Acc: 0.82787
+----> Train Dice Coef: 0.87689 	 Val. Dice Coef: 0.82796
+----> Train Precision: 0.87651 	 Val. Precision: 0.82350
+----> Train Recall: 0.87837 	 Val. Recall: 0.83453
+----> Train mIoU: 0.78208 	 Val. mIoU: 0.71178
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 15/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 197/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.13596 	 Val. Loss: 0.20266
+----> Train Pixel Acc: 0.88182 	 Val. Pixel Acc: 0.83734
+----> Train Dice Coef: 0.87514 	 Val. Dice Coef: 0.83202
+----> Train Precision: 0.87500 	 Val. Precision: 0.83187
+----> Train Recall: 0.87679 	 Val. Recall: 0.83400
+----> Train mIoU: 0.77946 	 Val. mIoU: 0.71764
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 16/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 198/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.13632 	 Val. Loss: 0.20788
+----> Train Pixel Acc: 0.88097 	 Val. Pixel Acc: 0.83051
+----> Train Dice Coef: 0.87449 	 Val. Dice Coef: 0.82905
+----> Train Precision: 0.87417 	 Val. Precision: 0.82533
+----> Train Recall: 0.87604 	 Val. Recall: 0.83517
+----> Train mIoU: 0.77851 	 Val. mIoU: 0.71319
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 17/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 199/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.13638 	 Val. Loss: 0.20881
+----> Train Pixel Acc: 0.88161 	 Val. Pixel Acc: 0.83561
+----> Train Dice Coef: 0.87596 	 Val. Dice Coef: 0.83151
+----> Train Precision: 0.87567 	 Val. Precision: 0.82945
+----> Train Recall: 0.87729 	 Val. Recall: 0.83544
+----> Train mIoU: 0.78050 	 Val. mIoU: 0.71664
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 18/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 200/500 --model:unet --lr:3.6450e-04
+----> Train Loss: 0.13629 	 Val. Loss: 0.20634
+----> Train Pixel Acc: 0.88211 	 Val. Pixel Acc: 0.83451
+----> Train Dice Coef: 0.87361 	 Val. Dice Coef: 0.83222
+----> Train Precision: 0.87304 	 Val. Precision: 0.82814
+----> Train Recall: 0.87866 	 Val. Recall: 0.83821
+----> Train mIoU: 0.77882 	 Val. mIoU: 0.71773
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 19/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 201/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.14592 	 Val. Loss: 0.20244
+----> Train Pixel Acc: 0.87249 	 Val. Pixel Acc: 0.82942
+----> Train Dice Coef: 0.86806 	 Val. Dice Coef: 0.82653
+----> Train Precision: 0.86694 	 Val. Precision: 0.82453
+----> Train Recall: 0.87122 	 Val. Recall: 0.83073
+----> Train mIoU: 0.76860 	 Val. mIoU: 0.70934
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 20/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 202/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.14149 	 Val. Loss: 0.20665
+----> Train Pixel Acc: 0.87446 	 Val. Pixel Acc: 0.83264
+----> Train Dice Coef: 0.86841 	 Val. Dice Coef: 0.82857
+----> Train Precision: 0.86724 	 Val. Precision: 0.82648
+----> Train Recall: 0.87092 	 Val. Recall: 0.83302
+----> Train mIoU: 0.76886 	 Val. mIoU: 0.71238
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 21/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 203/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13493 	 Val. Loss: 0.20395
+----> Train Pixel Acc: 0.88037 	 Val. Pixel Acc: 0.82794
+----> Train Dice Coef: 0.87474 	 Val. Dice Coef: 0.82699
+----> Train Precision: 0.87347 	 Val. Precision: 0.82399
+----> Train Recall: 0.87731 	 Val. Recall: 0.83202
+----> Train mIoU: 0.77867 	 Val. mIoU: 0.71011
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 22/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 204/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13417 	 Val. Loss: 0.20762
+----> Train Pixel Acc: 0.88165 	 Val. Pixel Acc: 0.83166
+----> Train Dice Coef: 0.87573 	 Val. Dice Coef: 0.82917
+----> Train Precision: 0.87534 	 Val. Precision: 0.82602
+----> Train Recall: 0.87726 	 Val. Recall: 0.83405
+----> Train mIoU: 0.78035 	 Val. mIoU: 0.71355
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 23/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 205/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13283 	 Val. Loss: 0.20294
+----> Train Pixel Acc: 0.88454 	 Val. Pixel Acc: 0.83422
+----> Train Dice Coef: 0.87772 	 Val. Dice Coef: 0.83182
+----> Train Precision: 0.87790 	 Val. Precision: 0.82910
+----> Train Recall: 0.87870 	 Val. Recall: 0.83626
+----> Train mIoU: 0.78323 	 Val. mIoU: 0.71707
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 24/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 206/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13460 	 Val. Loss: 0.20427
+----> Train Pixel Acc: 0.88200 	 Val. Pixel Acc: 0.83150
+----> Train Dice Coef: 0.87634 	 Val. Dice Coef: 0.83143
+----> Train Precision: 0.87588 	 Val. Precision: 0.82477
+----> Train Recall: 0.87801 	 Val. Recall: 0.84024
+----> Train mIoU: 0.78132 	 Val. mIoU: 0.71621
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 25/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 207/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13322 	 Val. Loss: 0.20271
+----> Train Pixel Acc: 0.88319 	 Val. Pixel Acc: 0.83812
+----> Train Dice Coef: 0.87709 	 Val. Dice Coef: 0.83248
+----> Train Precision: 0.87613 	 Val. Precision: 0.83221
+----> Train Recall: 0.87926 	 Val. Recall: 0.83430
+----> Train mIoU: 0.78243 	 Val. mIoU: 0.71818
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 26/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 208/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12996 	 Val. Loss: 0.20167
+----> Train Pixel Acc: 0.88680 	 Val. Pixel Acc: 0.83265
+----> Train Dice Coef: 0.88031 	 Val. Dice Coef: 0.83075
+----> Train Precision: 0.88027 	 Val. Precision: 0.82494
+----> Train Recall: 0.88157 	 Val. Recall: 0.83850
+----> Train mIoU: 0.78745 	 Val. mIoU: 0.71558
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 27/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 209/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12826 	 Val. Loss: 0.19902
+----> Train Pixel Acc: 0.88792 	 Val. Pixel Acc: 0.83836
+----> Train Dice Coef: 0.88226 	 Val. Dice Coef: 0.83339
+----> Train Precision: 0.88172 	 Val. Precision: 0.83038
+----> Train Recall: 0.88379 	 Val. Recall: 0.83827
+----> Train mIoU: 0.79047 	 Val. mIoU: 0.71880
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 28/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 210/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12909 	 Val. Loss: 0.20718
+----> Train Pixel Acc: 0.88695 	 Val. Pixel Acc: 0.83844
+----> Train Dice Coef: 0.88123 	 Val. Dice Coef: 0.83196
+----> Train Precision: 0.88084 	 Val. Precision: 0.83077
+----> Train Recall: 0.88287 	 Val. Recall: 0.83523
+----> Train mIoU: 0.78901 	 Val. mIoU: 0.71718
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 29/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 211/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13016 	 Val. Loss: 0.20018
+----> Train Pixel Acc: 0.88688 	 Val. Pixel Acc: 0.83184
+----> Train Dice Coef: 0.87992 	 Val. Dice Coef: 0.83043
+----> Train Precision: 0.88001 	 Val. Precision: 0.82467
+----> Train Recall: 0.88109 	 Val. Recall: 0.83854
+----> Train mIoU: 0.78710 	 Val. mIoU: 0.71463
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 30/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 212/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12940 	 Val. Loss: 0.19874
+----> Train Pixel Acc: 0.88683 	 Val. Pixel Acc: 0.84063
+----> Train Dice Coef: 0.88092 	 Val. Dice Coef: 0.83161
+----> Train Precision: 0.88010 	 Val. Precision: 0.83542
+----> Train Recall: 0.88318 	 Val. Recall: 0.82984
+----> Train mIoU: 0.78872 	 Val. mIoU: 0.71666
+Valid Dice not improved: 0.83366, Val. Loss: 0.20001, ESC: 31/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 213/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12790 	 Val. Loss: 0.20037
+----> Train Pixel Acc: 0.88832 	 Val. Pixel Acc: 0.83552
+----> Train Dice Coef: 0.88299 	 Val. Dice Coef: 0.83376
+----> Train Precision: 0.88243 	 Val. Precision: 0.83040
+----> Train Recall: 0.88434 	 Val. Recall: 0.83869
+----> Train mIoU: 0.79148 	 Val. mIoU: 0.71983
+Valid dice Coef. improved from 0.83366 to 0.83376. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 214/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13173 	 Val. Loss: 0.20019
+----> Train Pixel Acc: 0.88546 	 Val. Pixel Acc: 0.83595
+----> Train Dice Coef: 0.87731 	 Val. Dice Coef: 0.83216
+----> Train Precision: 0.87679 	 Val. Precision: 0.82923
+----> Train Recall: 0.88220 	 Val. Recall: 0.83689
+----> Train mIoU: 0.78460 	 Val. mIoU: 0.71742
+Valid Dice not improved: 0.83376, Val. Loss: 0.20037, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 215/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13023 	 Val. Loss: 0.20315
+----> Train Pixel Acc: 0.88697 	 Val. Pixel Acc: 0.82682
+----> Train Dice Coef: 0.88092 	 Val. Dice Coef: 0.83027
+----> Train Precision: 0.88108 	 Val. Precision: 0.82142
+----> Train Recall: 0.88169 	 Val. Recall: 0.84072
+----> Train mIoU: 0.78817 	 Val. mIoU: 0.71478
+Valid Dice not improved: 0.83376, Val. Loss: 0.20037, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 216/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13174 	 Val. Loss: 0.20574
+----> Train Pixel Acc: 0.88583 	 Val. Pixel Acc: 0.82790
+----> Train Dice Coef: 0.87914 	 Val. Dice Coef: 0.82912
+----> Train Precision: 0.87928 	 Val. Precision: 0.82201
+----> Train Recall: 0.88038 	 Val. Recall: 0.83817
+----> Train mIoU: 0.78576 	 Val. mIoU: 0.71327
+Valid Dice not improved: 0.83376, Val. Loss: 0.20037, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 217/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12833 	 Val. Loss: 0.19997
+----> Train Pixel Acc: 0.88679 	 Val. Pixel Acc: 0.84138
+----> Train Dice Coef: 0.88179 	 Val. Dice Coef: 0.83478
+----> Train Precision: 0.88081 	 Val. Precision: 0.83524
+----> Train Recall: 0.88389 	 Val. Recall: 0.83601
+----> Train mIoU: 0.78973 	 Val. mIoU: 0.72136
+Valid dice Coef. improved from 0.83376 to 0.83478. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 218/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12978 	 Val. Loss: 0.20496
+----> Train Pixel Acc: 0.88674 	 Val. Pixel Acc: 0.83538
+----> Train Dice Coef: 0.87772 	 Val. Dice Coef: 0.82909
+----> Train Precision: 0.87697 	 Val. Precision: 0.83130
+----> Train Recall: 0.88285 	 Val. Recall: 0.82863
+----> Train mIoU: 0.78534 	 Val. mIoU: 0.71324
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 219/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13232 	 Val. Loss: 0.19797
+----> Train Pixel Acc: 0.88451 	 Val. Pixel Acc: 0.83969
+----> Train Dice Coef: 0.87566 	 Val. Dice Coef: 0.83253
+----> Train Precision: 0.87492 	 Val. Precision: 0.83451
+----> Train Recall: 0.88079 	 Val. Recall: 0.83218
+----> Train mIoU: 0.78211 	 Val. mIoU: 0.71829
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 220/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13167 	 Val. Loss: 0.20151
+----> Train Pixel Acc: 0.88456 	 Val. Pixel Acc: 0.83998
+----> Train Dice Coef: 0.87841 	 Val. Dice Coef: 0.83067
+----> Train Precision: 0.87813 	 Val. Precision: 0.83282
+----> Train Recall: 0.87967 	 Val. Recall: 0.83065
+----> Train mIoU: 0.78437 	 Val. mIoU: 0.71532
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 221/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.13120 	 Val. Loss: 0.20044
+----> Train Pixel Acc: 0.88505 	 Val. Pixel Acc: 0.84315
+----> Train Dice Coef: 0.87629 	 Val. Dice Coef: 0.83292
+----> Train Precision: 0.87575 	 Val. Precision: 0.83682
+----> Train Recall: 0.88138 	 Val. Recall: 0.83081
+----> Train mIoU: 0.78329 	 Val. mIoU: 0.71863
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 222/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12989 	 Val. Loss: 0.20300
+----> Train Pixel Acc: 0.88779 	 Val. Pixel Acc: 0.83497
+----> Train Dice Coef: 0.87876 	 Val. Dice Coef: 0.83053
+----> Train Precision: 0.87934 	 Val. Precision: 0.82934
+----> Train Recall: 0.88261 	 Val. Recall: 0.83415
+----> Train mIoU: 0.78695 	 Val. mIoU: 0.71526
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 223/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12713 	 Val. Loss: 0.20367
+----> Train Pixel Acc: 0.88796 	 Val. Pixel Acc: 0.83917
+----> Train Dice Coef: 0.88292 	 Val. Dice Coef: 0.82946
+----> Train Precision: 0.88194 	 Val. Precision: 0.83270
+----> Train Recall: 0.88484 	 Val. Recall: 0.82862
+----> Train mIoU: 0.79166 	 Val. mIoU: 0.71344
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 224/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12832 	 Val. Loss: 0.20112
+----> Train Pixel Acc: 0.88908 	 Val. Pixel Acc: 0.84197
+----> Train Dice Coef: 0.88194 	 Val. Dice Coef: 0.83357
+----> Train Precision: 0.88212 	 Val. Precision: 0.83621
+----> Train Recall: 0.88368 	 Val. Recall: 0.83306
+----> Train mIoU: 0.79108 	 Val. mIoU: 0.71937
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 7/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 225/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12864 	 Val. Loss: 0.20520
+----> Train Pixel Acc: 0.88996 	 Val. Pixel Acc: 0.83404
+----> Train Dice Coef: 0.88275 	 Val. Dice Coef: 0.83145
+----> Train Precision: 0.88424 	 Val. Precision: 0.82681
+----> Train Recall: 0.88231 	 Val. Recall: 0.83837
+----> Train mIoU: 0.79111 	 Val. mIoU: 0.71671
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 8/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 226/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12764 	 Val. Loss: 0.20427
+----> Train Pixel Acc: 0.88779 	 Val. Pixel Acc: 0.83578
+----> Train Dice Coef: 0.88148 	 Val. Dice Coef: 0.82975
+----> Train Precision: 0.88125 	 Val. Precision: 0.82939
+----> Train Recall: 0.88305 	 Val. Recall: 0.83197
+----> Train mIoU: 0.78926 	 Val. mIoU: 0.71436
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 9/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 227/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12750 	 Val. Loss: 0.20460
+----> Train Pixel Acc: 0.88806 	 Val. Pixel Acc: 0.83880
+----> Train Dice Coef: 0.88213 	 Val. Dice Coef: 0.82897
+----> Train Precision: 0.88123 	 Val. Precision: 0.83346
+----> Train Recall: 0.88430 	 Val. Recall: 0.82637
+----> Train mIoU: 0.79028 	 Val. mIoU: 0.71342
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 10/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 228/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12688 	 Val. Loss: 0.20020
+----> Train Pixel Acc: 0.88758 	 Val. Pixel Acc: 0.83535
+----> Train Dice Coef: 0.88259 	 Val. Dice Coef: 0.82909
+----> Train Precision: 0.88106 	 Val. Precision: 0.83046
+----> Train Recall: 0.88519 	 Val. Recall: 0.82958
+----> Train mIoU: 0.79099 	 Val. mIoU: 0.71348
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 11/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 229/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12808 	 Val. Loss: 0.20198
+----> Train Pixel Acc: 0.88926 	 Val. Pixel Acc: 0.84283
+----> Train Dice Coef: 0.88308 	 Val. Dice Coef: 0.83150
+----> Train Precision: 0.88357 	 Val. Precision: 0.83610
+----> Train Recall: 0.88387 	 Val. Recall: 0.82891
+----> Train mIoU: 0.79164 	 Val. mIoU: 0.71668
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 12/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 230/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12498 	 Val. Loss: 0.20086
+----> Train Pixel Acc: 0.89091 	 Val. Pixel Acc: 0.83667
+----> Train Dice Coef: 0.88529 	 Val. Dice Coef: 0.83250
+----> Train Precision: 0.88528 	 Val. Precision: 0.83082
+----> Train Recall: 0.88619 	 Val. Recall: 0.83595
+----> Train mIoU: 0.79507 	 Val. mIoU: 0.71795
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 13/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 231/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12658 	 Val. Loss: 0.19826
+----> Train Pixel Acc: 0.88862 	 Val. Pixel Acc: 0.84013
+----> Train Dice Coef: 0.88290 	 Val. Dice Coef: 0.83307
+----> Train Precision: 0.88186 	 Val. Precision: 0.83282
+----> Train Recall: 0.88512 	 Val. Recall: 0.83551
+----> Train mIoU: 0.79152 	 Val. mIoU: 0.71892
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 14/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 232/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12806 	 Val. Loss: 0.19936
+----> Train Pixel Acc: 0.88715 	 Val. Pixel Acc: 0.83624
+----> Train Dice Coef: 0.88180 	 Val. Dice Coef: 0.83314
+----> Train Precision: 0.88180 	 Val. Precision: 0.83031
+----> Train Recall: 0.88278 	 Val. Recall: 0.83798
+----> Train mIoU: 0.78954 	 Val. mIoU: 0.71912
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 15/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 233/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12295 	 Val. Loss: 0.20345
+----> Train Pixel Acc: 0.89152 	 Val. Pixel Acc: 0.83593
+----> Train Dice Coef: 0.88646 	 Val. Dice Coef: 0.83208
+----> Train Precision: 0.88570 	 Val. Precision: 0.83178
+----> Train Recall: 0.88798 	 Val. Recall: 0.83471
+----> Train mIoU: 0.79715 	 Val. mIoU: 0.71766
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 16/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 234/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12123 	 Val. Loss: 0.20165
+----> Train Pixel Acc: 0.89383 	 Val. Pixel Acc: 0.83462
+----> Train Dice Coef: 0.88846 	 Val. Dice Coef: 0.83334
+----> Train Precision: 0.88859 	 Val. Precision: 0.82979
+----> Train Recall: 0.88919 	 Val. Recall: 0.83898
+----> Train mIoU: 0.80031 	 Val. mIoU: 0.71936
+Valid Dice not improved: 0.83478, Val. Loss: 0.19997, ESC: 17/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 235/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12402 	 Val. Loss: 0.19921
+----> Train Pixel Acc: 0.89235 	 Val. Pixel Acc: 0.83933
+----> Train Dice Coef: 0.88692 	 Val. Dice Coef: 0.83566
+----> Train Precision: 0.88665 	 Val. Precision: 0.83289
+----> Train Recall: 0.88782 	 Val. Recall: 0.83995
+----> Train mIoU: 0.79775 	 Val. mIoU: 0.72233
+Valid dice Coef. improved from 0.83478 to 0.83566. Saving checkpoint: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 236/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12270 	 Val. Loss: 0.20313
+----> Train Pixel Acc: 0.89176 	 Val. Pixel Acc: 0.83372
+----> Train Dice Coef: 0.88637 	 Val. Dice Coef: 0.83312
+----> Train Precision: 0.88593 	 Val. Precision: 0.82895
+----> Train Recall: 0.88765 	 Val. Recall: 0.83970
+----> Train mIoU: 0.79710 	 Val. mIoU: 0.71918
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 1/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 237/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12410 	 Val. Loss: 0.20302
+----> Train Pixel Acc: 0.89065 	 Val. Pixel Acc: 0.83954
+----> Train Dice Coef: 0.88474 	 Val. Dice Coef: 0.83254
+----> Train Precision: 0.88500 	 Val. Precision: 0.83281
+----> Train Recall: 0.88557 	 Val. Recall: 0.83409
+----> Train mIoU: 0.79465 	 Val. mIoU: 0.71826
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 2/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 238/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12194 	 Val. Loss: 0.20482
+----> Train Pixel Acc: 0.89326 	 Val. Pixel Acc: 0.83008
+----> Train Dice Coef: 0.88794 	 Val. Dice Coef: 0.82925
+----> Train Precision: 0.88736 	 Val. Precision: 0.82532
+----> Train Recall: 0.88944 	 Val. Recall: 0.83518
+----> Train mIoU: 0.79944 	 Val. mIoU: 0.71344
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 3/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 239/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12149 	 Val. Loss: 0.19894
+----> Train Pixel Acc: 0.89303 	 Val. Pixel Acc: 0.83945
+----> Train Dice Coef: 0.88778 	 Val. Dice Coef: 0.83288
+----> Train Precision: 0.88702 	 Val. Precision: 0.83293
+----> Train Recall: 0.88933 	 Val. Recall: 0.83448
+----> Train mIoU: 0.79920 	 Val. mIoU: 0.71871
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 4/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 240/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12254 	 Val. Loss: 0.20097
+----> Train Pixel Acc: 0.89418 	 Val. Pixel Acc: 0.83485
+----> Train Dice Coef: 0.88544 	 Val. Dice Coef: 0.83162
+----> Train Precision: 0.88457 	 Val. Precision: 0.83100
+----> Train Recall: 0.89066 	 Val. Recall: 0.83420
+----> Train mIoU: 0.79755 	 Val. mIoU: 0.71666
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 5/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 241/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12329 	 Val. Loss: 0.20025
+----> Train Pixel Acc: 0.89157 	 Val. Pixel Acc: 0.83307
+----> Train Dice Coef: 0.88604 	 Val. Dice Coef: 0.82984
+----> Train Precision: 0.88613 	 Val. Precision: 0.82617
+----> Train Recall: 0.88687 	 Val. Recall: 0.83575
+----> Train mIoU: 0.79639 	 Val. mIoU: 0.71415
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 6/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 242/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12128 	 Val. Loss: 0.20207
+----> Train Pixel Acc: 0.89337 	 Val. Pixel Acc: 0.83264
+----> Train Dice Coef: 0.88799 	 Val. Dice Coef: 0.83374
+----> Train Precision: 0.88752 	 Val. Precision: 0.82800
+----> Train Recall: 0.88924 	 Val. Recall: 0.84159
+----> Train mIoU: 0.79947 	 Val. mIoU: 0.72007
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 7/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 243/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.11998 	 Val. Loss: 0.19911
+----> Train Pixel Acc: 0.89457 	 Val. Pixel Acc: 0.83590
+----> Train Dice Coef: 0.88912 	 Val. Dice Coef: 0.83345
+----> Train Precision: 0.88879 	 Val. Precision: 0.82978
+----> Train Recall: 0.89026 	 Val. Recall: 0.83879
+----> Train mIoU: 0.80141 	 Val. mIoU: 0.71942
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 8/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 244/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12113 	 Val. Loss: 0.20021
+----> Train Pixel Acc: 0.89341 	 Val. Pixel Acc: 0.83785
+----> Train Dice Coef: 0.88813 	 Val. Dice Coef: 0.83204
+----> Train Precision: 0.88749 	 Val. Precision: 0.83069
+----> Train Recall: 0.88946 	 Val. Recall: 0.83543
+----> Train mIoU: 0.79974 	 Val. mIoU: 0.71754
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 9/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 245/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12444 	 Val. Loss: 0.20167
+----> Train Pixel Acc: 0.89100 	 Val. Pixel Acc: 0.83768
+----> Train Dice Coef: 0.88168 	 Val. Dice Coef: 0.83219
+----> Train Precision: 0.88078 	 Val. Precision: 0.83364
+----> Train Recall: 0.88708 	 Val. Recall: 0.83332
+----> Train mIoU: 0.79217 	 Val. mIoU: 0.71746
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 10/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 246/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12915 	 Val. Loss: 0.19980
+----> Train Pixel Acc: 0.88862 	 Val. Pixel Acc: 0.83701
+----> Train Dice Coef: 0.87964 	 Val. Dice Coef: 0.83071
+----> Train Precision: 0.88027 	 Val. Precision: 0.83103
+----> Train Recall: 0.88350 	 Val. Recall: 0.83272
+----> Train mIoU: 0.78824 	 Val. mIoU: 0.71523
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 11/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 247/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12367 	 Val. Loss: 0.20017
+----> Train Pixel Acc: 0.89360 	 Val. Pixel Acc: 0.83769
+----> Train Dice Coef: 0.88804 	 Val. Dice Coef: 0.83197
+----> Train Precision: 0.88762 	 Val. Precision: 0.83205
+----> Train Recall: 0.88944 	 Val. Recall: 0.83384
+----> Train mIoU: 0.79969 	 Val. mIoU: 0.71735
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 12/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 248/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.11883 	 Val. Loss: 0.20336
+----> Train Pixel Acc: 0.89627 	 Val. Pixel Acc: 0.83538
+----> Train Dice Coef: 0.89086 	 Val. Dice Coef: 0.83319
+----> Train Precision: 0.89065 	 Val. Precision: 0.82873
+----> Train Recall: 0.89185 	 Val. Recall: 0.83971
+----> Train mIoU: 0.80403 	 Val. mIoU: 0.71879
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 13/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 249/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12058 	 Val. Loss: 0.20780
+----> Train Pixel Acc: 0.89508 	 Val. Pixel Acc: 0.83048
+----> Train Dice Coef: 0.88960 	 Val. Dice Coef: 0.82650
+----> Train Precision: 0.88904 	 Val. Precision: 0.82532
+----> Train Recall: 0.89120 	 Val. Recall: 0.82942
+----> Train mIoU: 0.80212 	 Val. mIoU: 0.70962
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 14/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 250/500 --model:unet --lr:3.2805e-04
+----> Train Loss: 0.12390 	 Val. Loss: 0.20118
+----> Train Pixel Acc: 0.89071 	 Val. Pixel Acc: 0.83752
+----> Train Dice Coef: 0.88608 	 Val. Dice Coef: 0.83191
+----> Train Precision: 0.88580 	 Val. Precision: 0.83125
+----> Train Recall: 0.88727 	 Val. Recall: 0.83461
+----> Train mIoU: 0.79637 	 Val. mIoU: 0.71717
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 15/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 251/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.12026 	 Val. Loss: 0.20215
+----> Train Pixel Acc: 0.89458 	 Val. Pixel Acc: 0.83447
+----> Train Dice Coef: 0.88940 	 Val. Dice Coef: 0.83275
+----> Train Precision: 0.88887 	 Val. Precision: 0.82916
+----> Train Recall: 0.89079 	 Val. Recall: 0.83793
+----> Train mIoU: 0.80169 	 Val. mIoU: 0.71852
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 16/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 252/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.12020 	 Val. Loss: 0.19807
+----> Train Pixel Acc: 0.89479 	 Val. Pixel Acc: 0.84239
+----> Train Dice Coef: 0.88572 	 Val. Dice Coef: 0.83548
+----> Train Precision: 0.88511 	 Val. Precision: 0.83608
+----> Train Recall: 0.89056 	 Val. Recall: 0.83649
+----> Train mIoU: 0.79837 	 Val. mIoU: 0.72224
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 17/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 253/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11872 	 Val. Loss: 0.20269
+----> Train Pixel Acc: 0.89695 	 Val. Pixel Acc: 0.83692
+----> Train Dice Coef: 0.89143 	 Val. Dice Coef: 0.83180
+----> Train Precision: 0.89100 	 Val. Precision: 0.83057
+----> Train Recall: 0.89268 	 Val. Recall: 0.83521
+----> Train mIoU: 0.80494 	 Val. mIoU: 0.71725
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 18/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 254/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11782 	 Val. Loss: 0.20302
+----> Train Pixel Acc: 0.89667 	 Val. Pixel Acc: 0.83744
+----> Train Dice Coef: 0.89141 	 Val. Dice Coef: 0.83062
+----> Train Precision: 0.89089 	 Val. Precision: 0.83096
+----> Train Recall: 0.89269 	 Val. Recall: 0.83216
+----> Train mIoU: 0.80489 	 Val. mIoU: 0.71541
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 19/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 255/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11601 	 Val. Loss: 0.20412
+----> Train Pixel Acc: 0.89959 	 Val. Pixel Acc: 0.83597
+----> Train Dice Coef: 0.89428 	 Val. Dice Coef: 0.83016
+----> Train Precision: 0.89396 	 Val. Precision: 0.83232
+----> Train Recall: 0.89526 	 Val. Recall: 0.82971
+----> Train mIoU: 0.80966 	 Val. mIoU: 0.71497
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 20/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 256/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11595 	 Val. Loss: 0.20853
+----> Train Pixel Acc: 0.89975 	 Val. Pixel Acc: 0.83411
+----> Train Dice Coef: 0.89444 	 Val. Dice Coef: 0.82751
+----> Train Precision: 0.89385 	 Val. Precision: 0.82947
+----> Train Recall: 0.89566 	 Val. Recall: 0.82752
+----> Train mIoU: 0.80991 	 Val. mIoU: 0.71126
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 21/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 257/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11474 	 Val. Loss: 0.20626
+----> Train Pixel Acc: 0.89993 	 Val. Pixel Acc: 0.83509
+----> Train Dice Coef: 0.89511 	 Val. Dice Coef: 0.83124
+----> Train Precision: 0.89467 	 Val. Precision: 0.82973
+----> Train Recall: 0.89612 	 Val. Recall: 0.83463
+----> Train mIoU: 0.81089 	 Val. mIoU: 0.71651
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 22/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 258/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11439 	 Val. Loss: 0.20219
+----> Train Pixel Acc: 0.89998 	 Val. Pixel Acc: 0.83660
+----> Train Dice Coef: 0.89442 	 Val. Dice Coef: 0.83116
+----> Train Precision: 0.89409 	 Val. Precision: 0.82907
+----> Train Recall: 0.89544 	 Val. Recall: 0.83523
+----> Train mIoU: 0.80988 	 Val. mIoU: 0.71617
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 23/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 259/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11423 	 Val. Loss: 0.20501
+----> Train Pixel Acc: 0.90070 	 Val. Pixel Acc: 0.83491
+----> Train Dice Coef: 0.89569 	 Val. Dice Coef: 0.83155
+----> Train Precision: 0.89515 	 Val. Precision: 0.82917
+----> Train Recall: 0.89690 	 Val. Recall: 0.83547
+----> Train mIoU: 0.81190 	 Val. mIoU: 0.71714
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 24/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 260/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11451 	 Val. Loss: 0.20591
+----> Train Pixel Acc: 0.90004 	 Val. Pixel Acc: 0.83508
+----> Train Dice Coef: 0.89515 	 Val. Dice Coef: 0.83163
+----> Train Precision: 0.89469 	 Val. Precision: 0.82783
+----> Train Recall: 0.89632 	 Val. Recall: 0.83767
+----> Train mIoU: 0.81103 	 Val. mIoU: 0.71696
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 25/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 261/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11645 	 Val. Loss: 0.20714
+----> Train Pixel Acc: 0.89922 	 Val. Pixel Acc: 0.83644
+----> Train Dice Coef: 0.89410 	 Val. Dice Coef: 0.83029
+----> Train Precision: 0.89367 	 Val. Precision: 0.83408
+----> Train Recall: 0.89534 	 Val. Recall: 0.82873
+----> Train mIoU: 0.80934 	 Val. mIoU: 0.71507
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 26/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 262/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11925 	 Val. Loss: 0.20316
+----> Train Pixel Acc: 0.89535 	 Val. Pixel Acc: 0.84142
+----> Train Dice Coef: 0.89047 	 Val. Dice Coef: 0.83196
+----> Train Precision: 0.89016 	 Val. Precision: 0.83509
+----> Train Recall: 0.89160 	 Val. Recall: 0.83070
+----> Train mIoU: 0.80342 	 Val. mIoU: 0.71729
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 27/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 263/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11749 	 Val. Loss: 0.20590
+----> Train Pixel Acc: 0.89628 	 Val. Pixel Acc: 0.83063
+----> Train Dice Coef: 0.89140 	 Val. Dice Coef: 0.83001
+----> Train Precision: 0.89139 	 Val. Precision: 0.82451
+----> Train Recall: 0.89245 	 Val. Recall: 0.83743
+----> Train mIoU: 0.80505 	 Val. mIoU: 0.71411
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 28/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 264/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11530 	 Val. Loss: 0.20060
+----> Train Pixel Acc: 0.89956 	 Val. Pixel Acc: 0.83526
+----> Train Dice Coef: 0.89372 	 Val. Dice Coef: 0.83261
+----> Train Precision: 0.89376 	 Val. Precision: 0.82954
+----> Train Recall: 0.89439 	 Val. Recall: 0.83738
+----> Train mIoU: 0.80883 	 Val. mIoU: 0.71798
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 29/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 265/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11600 	 Val. Loss: 0.20381
+----> Train Pixel Acc: 0.89892 	 Val. Pixel Acc: 0.84114
+----> Train Dice Coef: 0.89381 	 Val. Dice Coef: 0.83326
+----> Train Precision: 0.89305 	 Val. Precision: 0.83444
+----> Train Recall: 0.89514 	 Val. Recall: 0.83372
+----> Train mIoU: 0.80889 	 Val. mIoU: 0.71940
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 30/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 266/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11344 	 Val. Loss: 0.20525
+----> Train Pixel Acc: 0.90134 	 Val. Pixel Acc: 0.83539
+----> Train Dice Coef: 0.89538 	 Val. Dice Coef: 0.83177
+----> Train Precision: 0.89551 	 Val. Precision: 0.82995
+----> Train Recall: 0.89612 	 Val. Recall: 0.83619
+----> Train mIoU: 0.81156 	 Val. mIoU: 0.71698
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 31/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 267/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11390 	 Val. Loss: 0.20326
+----> Train Pixel Acc: 0.90043 	 Val. Pixel Acc: 0.84156
+----> Train Dice Coef: 0.89507 	 Val. Dice Coef: 0.83528
+----> Train Precision: 0.89455 	 Val. Precision: 0.83537
+----> Train Recall: 0.89651 	 Val. Recall: 0.83696
+----> Train mIoU: 0.81099 	 Val. mIoU: 0.72199
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 32/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 268/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11483 	 Val. Loss: 0.20398
+----> Train Pixel Acc: 0.90122 	 Val. Pixel Acc: 0.84078
+----> Train Dice Coef: 0.89225 	 Val. Dice Coef: 0.83282
+----> Train Precision: 0.89255 	 Val. Precision: 0.83558
+----> Train Recall: 0.89616 	 Val. Recall: 0.83165
+----> Train mIoU: 0.80886 	 Val. mIoU: 0.71853
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 33/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 269/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11539 	 Val. Loss: 0.20089
+----> Train Pixel Acc: 0.89952 	 Val. Pixel Acc: 0.83336
+----> Train Dice Coef: 0.89307 	 Val. Dice Coef: 0.83025
+----> Train Precision: 0.89315 	 Val. Precision: 0.82694
+----> Train Recall: 0.89367 	 Val. Recall: 0.83543
+----> Train mIoU: 0.80794 	 Val. mIoU: 0.71435
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 34/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 270/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11493 	 Val. Loss: 0.20221
+----> Train Pixel Acc: 0.89971 	 Val. Pixel Acc: 0.84331
+----> Train Dice Coef: 0.89433 	 Val. Dice Coef: 0.83561
+----> Train Precision: 0.89420 	 Val. Precision: 0.83780
+----> Train Recall: 0.89547 	 Val. Recall: 0.83519
+----> Train mIoU: 0.80983 	 Val. mIoU: 0.72226
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 35/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 271/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11408 	 Val. Loss: 0.20696
+----> Train Pixel Acc: 0.90084 	 Val. Pixel Acc: 0.83735
+----> Train Dice Coef: 0.89526 	 Val. Dice Coef: 0.83200
+----> Train Precision: 0.89482 	 Val. Precision: 0.83294
+----> Train Recall: 0.89650 	 Val. Recall: 0.83282
+----> Train mIoU: 0.81123 	 Val. mIoU: 0.71754
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 36/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 272/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11365 	 Val. Loss: 0.20222
+----> Train Pixel Acc: 0.90056 	 Val. Pixel Acc: 0.83873
+----> Train Dice Coef: 0.89549 	 Val. Dice Coef: 0.83417
+----> Train Precision: 0.89515 	 Val. Precision: 0.83469
+----> Train Recall: 0.89661 	 Val. Recall: 0.83610
+----> Train mIoU: 0.81151 	 Val. mIoU: 0.72029
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 37/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 273/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11737 	 Val. Loss: 0.20582
+----> Train Pixel Acc: 0.89968 	 Val. Pixel Acc: 0.83177
+----> Train Dice Coef: 0.88892 	 Val. Dice Coef: 0.83211
+----> Train Precision: 0.88962 	 Val. Precision: 0.82494
+----> Train Recall: 0.89348 	 Val. Recall: 0.84138
+----> Train mIoU: 0.80452 	 Val. mIoU: 0.71747
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 38/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 274/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11390 	 Val. Loss: 0.20156
+----> Train Pixel Acc: 0.89979 	 Val. Pixel Acc: 0.83932
+----> Train Dice Coef: 0.89443 	 Val. Dice Coef: 0.83410
+----> Train Precision: 0.89374 	 Val. Precision: 0.83216
+----> Train Recall: 0.89582 	 Val. Recall: 0.83773
+----> Train mIoU: 0.80995 	 Val. mIoU: 0.72045
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 39/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 275/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11633 	 Val. Loss: 0.20126
+----> Train Pixel Acc: 0.90006 	 Val. Pixel Acc: 0.83264
+----> Train Dice Coef: 0.89036 	 Val. Dice Coef: 0.83149
+----> Train Precision: 0.89046 	 Val. Precision: 0.82616
+----> Train Recall: 0.89450 	 Val. Recall: 0.83861
+----> Train mIoU: 0.80562 	 Val. mIoU: 0.71643
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 40/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 276/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11508 	 Val. Loss: 0.20243
+----> Train Pixel Acc: 0.89956 	 Val. Pixel Acc: 0.82789
+----> Train Dice Coef: 0.89374 	 Val. Dice Coef: 0.83156
+----> Train Precision: 0.89375 	 Val. Precision: 0.82222
+----> Train Recall: 0.89464 	 Val. Recall: 0.84274
+----> Train mIoU: 0.80888 	 Val. mIoU: 0.71659
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 41/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 277/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11348 	 Val. Loss: 0.20219
+----> Train Pixel Acc: 0.90025 	 Val. Pixel Acc: 0.84236
+----> Train Dice Coef: 0.89579 	 Val. Dice Coef: 0.83456
+----> Train Precision: 0.89512 	 Val. Precision: 0.83713
+----> Train Recall: 0.89704 	 Val. Recall: 0.83376
+----> Train mIoU: 0.81193 	 Val. mIoU: 0.72093
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 42/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 278/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11226 	 Val. Loss: 0.20194
+----> Train Pixel Acc: 0.90274 	 Val. Pixel Acc: 0.83475
+----> Train Dice Coef: 0.89742 	 Val. Dice Coef: 0.83260
+----> Train Precision: 0.89716 	 Val. Precision: 0.82974
+----> Train Recall: 0.89840 	 Val. Recall: 0.83683
+----> Train mIoU: 0.81471 	 Val. mIoU: 0.71825
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 43/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 279/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11282 	 Val. Loss: 0.20381
+----> Train Pixel Acc: 0.90245 	 Val. Pixel Acc: 0.82816
+----> Train Dice Coef: 0.89738 	 Val. Dice Coef: 0.82996
+----> Train Precision: 0.89749 	 Val. Precision: 0.82238
+----> Train Recall: 0.89793 	 Val. Recall: 0.83898
+----> Train mIoU: 0.81461 	 Val. mIoU: 0.71471
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 44/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 280/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11335 	 Val. Loss: 0.20383
+----> Train Pixel Acc: 0.90076 	 Val. Pixel Acc: 0.83928
+----> Train Dice Coef: 0.89562 	 Val. Dice Coef: 0.83423
+----> Train Precision: 0.89450 	 Val. Precision: 0.83493
+----> Train Recall: 0.89749 	 Val. Recall: 0.83528
+----> Train mIoU: 0.81186 	 Val. mIoU: 0.72049
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 45/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 281/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11309 	 Val. Loss: 0.20406
+----> Train Pixel Acc: 0.90143 	 Val. Pixel Acc: 0.83415
+----> Train Dice Coef: 0.89478 	 Val. Dice Coef: 0.82926
+----> Train Precision: 0.89459 	 Val. Precision: 0.82932
+----> Train Recall: 0.89629 	 Val. Recall: 0.83093
+----> Train mIoU: 0.81112 	 Val. mIoU: 0.71350
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 46/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 282/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11207 	 Val. Loss: 0.20434
+----> Train Pixel Acc: 0.90161 	 Val. Pixel Acc: 0.83603
+----> Train Dice Coef: 0.89638 	 Val. Dice Coef: 0.83091
+----> Train Precision: 0.89599 	 Val. Precision: 0.83026
+----> Train Recall: 0.89733 	 Val. Recall: 0.83338
+----> Train mIoU: 0.81303 	 Val. mIoU: 0.71569
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 47/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 283/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11100 	 Val. Loss: 0.20262
+----> Train Pixel Acc: 0.90302 	 Val. Pixel Acc: 0.83918
+----> Train Dice Coef: 0.89765 	 Val. Dice Coef: 0.83268
+----> Train Precision: 0.89711 	 Val. Precision: 0.83226
+----> Train Recall: 0.89872 	 Val. Recall: 0.83471
+----> Train mIoU: 0.81510 	 Val. mIoU: 0.71832
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 48/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 284/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11163 	 Val. Loss: 0.20318
+----> Train Pixel Acc: 0.90568 	 Val. Pixel Acc: 0.83427
+----> Train Dice Coef: 0.90014 	 Val. Dice Coef: 0.83222
+----> Train Precision: 0.89997 	 Val. Precision: 0.82831
+----> Train Recall: 0.90085 	 Val. Recall: 0.83787
+----> Train mIoU: 0.81916 	 Val. mIoU: 0.71779
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 49/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 285/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10970 	 Val. Loss: 0.20519
+----> Train Pixel Acc: 0.90467 	 Val. Pixel Acc: 0.83466
+----> Train Dice Coef: 0.89968 	 Val. Dice Coef: 0.82995
+----> Train Precision: 0.89929 	 Val. Precision: 0.82991
+----> Train Recall: 0.90064 	 Val. Recall: 0.83145
+----> Train mIoU: 0.81837 	 Val. mIoU: 0.71453
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 50/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 286/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10982 	 Val. Loss: 0.20240
+----> Train Pixel Acc: 0.90382 	 Val. Pixel Acc: 0.84311
+----> Train Dice Coef: 0.89888 	 Val. Dice Coef: 0.83237
+----> Train Precision: 0.89872 	 Val. Precision: 0.83659
+----> Train Recall: 0.89983 	 Val. Recall: 0.83006
+----> Train mIoU: 0.81730 	 Val. mIoU: 0.71791
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 51/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 287/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10849 	 Val. Loss: 0.20180
+----> Train Pixel Acc: 0.90724 	 Val. Pixel Acc: 0.83651
+----> Train Dice Coef: 0.90168 	 Val. Dice Coef: 0.83305
+----> Train Precision: 0.90116 	 Val. Precision: 0.83040
+----> Train Recall: 0.90284 	 Val. Recall: 0.83753
+----> Train mIoU: 0.82170 	 Val. mIoU: 0.71868
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 52/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 288/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11079 	 Val. Loss: 0.20099
+----> Train Pixel Acc: 0.90468 	 Val. Pixel Acc: 0.83677
+----> Train Dice Coef: 0.89960 	 Val. Dice Coef: 0.83343
+----> Train Precision: 0.89930 	 Val. Precision: 0.83054
+----> Train Recall: 0.90048 	 Val. Recall: 0.83807
+----> Train mIoU: 0.81824 	 Val. mIoU: 0.71948
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 53/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 289/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10980 	 Val. Loss: 0.20305
+----> Train Pixel Acc: 0.90539 	 Val. Pixel Acc: 0.83698
+----> Train Dice Coef: 0.90075 	 Val. Dice Coef: 0.83391
+----> Train Precision: 0.90041 	 Val. Precision: 0.83052
+----> Train Recall: 0.90157 	 Val. Recall: 0.83936
+----> Train mIoU: 0.82010 	 Val. mIoU: 0.72029
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 54/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 290/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10973 	 Val. Loss: 0.20413
+----> Train Pixel Acc: 0.90462 	 Val. Pixel Acc: 0.83306
+----> Train Dice Coef: 0.89919 	 Val. Dice Coef: 0.83114
+----> Train Precision: 0.89902 	 Val. Precision: 0.82622
+----> Train Recall: 0.89994 	 Val. Recall: 0.83805
+----> Train mIoU: 0.81763 	 Val. mIoU: 0.71624
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 55/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 291/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10885 	 Val. Loss: 0.20393
+----> Train Pixel Acc: 0.90475 	 Val. Pixel Acc: 0.83941
+----> Train Dice Coef: 0.89987 	 Val. Dice Coef: 0.83366
+----> Train Precision: 0.89963 	 Val. Precision: 0.83297
+----> Train Recall: 0.90072 	 Val. Recall: 0.83614
+----> Train mIoU: 0.81866 	 Val. mIoU: 0.71959
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 56/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 292/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10959 	 Val. Loss: 0.20555
+----> Train Pixel Acc: 0.90438 	 Val. Pixel Acc: 0.83232
+----> Train Dice Coef: 0.89895 	 Val. Dice Coef: 0.83195
+----> Train Precision: 0.89857 	 Val. Precision: 0.82652
+----> Train Recall: 0.89995 	 Val. Recall: 0.83913
+----> Train mIoU: 0.81730 	 Val. mIoU: 0.71759
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 57/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 293/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10929 	 Val. Loss: 0.20070
+----> Train Pixel Acc: 0.90457 	 Val. Pixel Acc: 0.84212
+----> Train Dice Coef: 0.89972 	 Val. Dice Coef: 0.83399
+----> Train Precision: 0.89930 	 Val. Precision: 0.83628
+----> Train Recall: 0.90069 	 Val. Recall: 0.83349
+----> Train mIoU: 0.81846 	 Val. mIoU: 0.72012
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 58/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 294/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11023 	 Val. Loss: 0.20281
+----> Train Pixel Acc: 0.90459 	 Val. Pixel Acc: 0.83696
+----> Train Dice Coef: 0.89931 	 Val. Dice Coef: 0.83156
+----> Train Precision: 0.89927 	 Val. Precision: 0.83146
+----> Train Recall: 0.89992 	 Val. Recall: 0.83363
+----> Train mIoU: 0.81784 	 Val. mIoU: 0.71657
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 59/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 295/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11003 	 Val. Loss: 0.20369
+----> Train Pixel Acc: 0.90545 	 Val. Pixel Acc: 0.83568
+----> Train Dice Coef: 0.89975 	 Val. Dice Coef: 0.83303
+----> Train Precision: 0.90010 	 Val. Precision: 0.83040
+----> Train Recall: 0.90006 	 Val. Recall: 0.83740
+----> Train mIoU: 0.81866 	 Val. mIoU: 0.71853
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 60/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 296/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10813 	 Val. Loss: 0.20206
+----> Train Pixel Acc: 0.90596 	 Val. Pixel Acc: 0.84093
+----> Train Dice Coef: 0.90083 	 Val. Dice Coef: 0.83298
+----> Train Precision: 0.90047 	 Val. Precision: 0.83408
+----> Train Recall: 0.90187 	 Val. Recall: 0.83364
+----> Train mIoU: 0.82036 	 Val. mIoU: 0.71864
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 61/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 297/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10691 	 Val. Loss: 0.20801
+----> Train Pixel Acc: 0.90697 	 Val. Pixel Acc: 0.83761
+----> Train Dice Coef: 0.90191 	 Val. Dice Coef: 0.83250
+----> Train Precision: 0.90157 	 Val. Precision: 0.83162
+----> Train Recall: 0.90288 	 Val. Recall: 0.83547
+----> Train mIoU: 0.82217 	 Val. mIoU: 0.71790
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 62/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 298/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10733 	 Val. Loss: 0.20284
+----> Train Pixel Acc: 0.90653 	 Val. Pixel Acc: 0.83568
+----> Train Dice Coef: 0.90137 	 Val. Dice Coef: 0.83398
+----> Train Precision: 0.90117 	 Val. Precision: 0.82984
+----> Train Recall: 0.90211 	 Val. Recall: 0.83973
+----> Train mIoU: 0.82118 	 Val. mIoU: 0.71975
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 63/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 299/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.10759 	 Val. Loss: 0.20217
+----> Train Pixel Acc: 0.90665 	 Val. Pixel Acc: 0.83682
+----> Train Dice Coef: 0.90121 	 Val. Dice Coef: 0.83348
+----> Train Precision: 0.90088 	 Val. Precision: 0.83080
+----> Train Recall: 0.90208 	 Val. Recall: 0.83828
+----> Train mIoU: 0.82102 	 Val. mIoU: 0.71920
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 64/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 300/500 --model:unet --lr:2.9525e-04
+----> Train Loss: 0.11119 	 Val. Loss: 0.20371
+----> Train Pixel Acc: 0.90327 	 Val. Pixel Acc: 0.82999
+----> Train Dice Coef: 0.89799 	 Val. Dice Coef: 0.82729
+----> Train Precision: 0.89764 	 Val. Precision: 0.82558
+----> Train Recall: 0.89900 	 Val. Recall: 0.83069
+----> Train mIoU: 0.81569 	 Val. mIoU: 0.71055
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 65/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 301/500 --model:unet --lr:2.6572e-04
+----> Train Loss: 0.11152 	 Val. Loss: 0.20286
+----> Train Pixel Acc: 0.90198 	 Val. Pixel Acc: 0.83915
+----> Train Dice Coef: 0.89674 	 Val. Dice Coef: 0.83466
+----> Train Precision: 0.89639 	 Val. Precision: 0.83352
+----> Train Recall: 0.89765 	 Val. Recall: 0.83718
+----> Train mIoU: 0.81361 	 Val. mIoU: 0.72116
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 66/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 302/500 --model:unet --lr:2.6572e-04
+----> Train Loss: 0.10775 	 Val. Loss: 0.20640
+----> Train Pixel Acc: 0.90785 	 Val. Pixel Acc: 0.83967
+----> Train Dice Coef: 0.89937 	 Val. Dice Coef: 0.83047
+----> Train Precision: 0.89903 	 Val. Precision: 0.83560
+----> Train Recall: 0.90356 	 Val. Recall: 0.82764
+----> Train mIoU: 0.82022 	 Val. mIoU: 0.71545
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 67/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 303/500 --model:unet --lr:2.6572e-04
+----> Train Loss: 0.10682 	 Val. Loss: 0.20516
+----> Train Pixel Acc: 0.90745 	 Val. Pixel Acc: 0.83706
+----> Train Dice Coef: 0.90216 	 Val. Dice Coef: 0.83154
+----> Train Precision: 0.90198 	 Val. Precision: 0.83264
+----> Train Recall: 0.90290 	 Val. Recall: 0.83222
+----> Train mIoU: 0.82248 	 Val. mIoU: 0.71680
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 68/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 304/500 --model:unet --lr:2.6572e-04
+----> Train Loss: 0.10812 	 Val. Loss: 0.20140
+----> Train Pixel Acc: 0.90671 	 Val. Pixel Acc: 0.83842
+----> Train Dice Coef: 0.90143 	 Val. Dice Coef: 0.83342
+----> Train Precision: 0.90116 	 Val. Precision: 0.83308
+----> Train Recall: 0.90229 	 Val. Recall: 0.83531
+----> Train mIoU: 0.82133 	 Val. mIoU: 0.71934
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 69/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 305/500 --model:unet --lr:2.6572e-04
+----> Train Loss: 0.10751 	 Val. Loss: 0.20068
+----> Train Pixel Acc: 0.90697 	 Val. Pixel Acc: 0.83966
+----> Train Dice Coef: 0.90205 	 Val. Dice Coef: 0.83561
+----> Train Precision: 0.90193 	 Val. Precision: 0.83359
+----> Train Recall: 0.90266 	 Val. Recall: 0.83924
+----> Train mIoU: 0.82235 	 Val. mIoU: 0.72251
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 70/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 306/500 --model:unet --lr:2.6572e-04
+----> Train Loss: 0.10664 	 Val. Loss: 0.20378
+----> Train Pixel Acc: 0.90830 	 Val. Pixel Acc: 0.83962
+----> Train Dice Coef: 0.90307 	 Val. Dice Coef: 0.83544
+----> Train Precision: 0.90278 	 Val. Precision: 0.83274
+----> Train Recall: 0.90394 	 Val. Recall: 0.83980
+----> Train mIoU: 0.82408 	 Val. mIoU: 0.72236
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 71/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 307/500 --model:unet --lr:2.6572e-04
+----> Train Loss: 0.10692 	 Val. Loss: 0.20582
+----> Train Pixel Acc: 0.90705 	 Val. Pixel Acc: 0.83444
+----> Train Dice Coef: 0.90226 	 Val. Dice Coef: 0.83076
+----> Train Precision: 0.90224 	 Val. Precision: 0.82960
+----> Train Recall: 0.90282 	 Val. Recall: 0.83368
+----> Train mIoU: 0.82269 	 Val. mIoU: 0.71556
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 72/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 308/500 --model:unet --lr:2.6572e-04
+----> Train Loss: 0.10598 	 Val. Loss: 0.20353
+----> Train Pixel Acc: 0.90781 	 Val. Pixel Acc: 0.83927
+----> Train Dice Coef: 0.90304 	 Val. Dice Coef: 0.83352
+----> Train Precision: 0.90305 	 Val. Precision: 0.83199
+----> Train Recall: 0.90360 	 Val. Recall: 0.83694
+----> Train mIoU: 0.82402 	 Val. mIoU: 0.71951
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 73/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 309/500 --model:unet --lr:2.6572e-04
+----> Train Loss: 0.10735 	 Val. Loss: 0.20385
+----> Train Pixel Acc: 0.90865 	 Val. Pixel Acc: 0.83838
+----> Train Dice Coef: 0.90313 	 Val. Dice Coef: 0.83166
+----> Train Precision: 0.90364 	 Val. Precision: 0.83380
+----> Train Recall: 0.90403 	 Val. Recall: 0.83131
+----> Train mIoU: 0.82458 	 Val. mIoU: 0.71725
+Valid Dice not improved: 0.83566, Val. Loss: 0.19921, ESC: 74/75 
+Checkpoint path: logs/2022-11-03_21_13_50/checkpoints/
+Epoch: 310/500 --model:unet --lr:2.6572e-04
++++++++++++++++++ Stop training early +++++++++++++
+-------------------- Finished Train ---------------------
+******************* Start evaluation  *******************
+(0.19920784566137525, 0.85599315, [0.9853163011187627, 0.921296225149393, 0.9150898081885928, 0.9282402255980549, 0.9212962252456682])

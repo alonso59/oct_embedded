@@ -15,14 +15,17 @@ def initialize(cfg):
 
     with open(version + 'experiment_cfg.yaml', 'w') as yaml_config:
         yaml.dump(cfg, yaml_config)
-
+    print(version + "info.log")
     """logging"""
     logging.basicConfig(filename=version + "info.log",
                         format='%(asctime)s %(levelname)s %(message)s',
+                        encoding='utf-8',
                         datefmt='%H:%M:%S',
                         level=logging.INFO)
+                        
+    fh = logging.FileHandler(version + "info.log")
     logger = logging.getLogger()
-    logger.addHandler(logging.StreamHandler(sys.stdout))
+    logger.addHandler(fh)
 
     """ Seeding """
     # seeding(43)  # 42

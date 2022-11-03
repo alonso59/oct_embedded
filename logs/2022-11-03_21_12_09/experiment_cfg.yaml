@@ -1,0 +1,57 @@
+general:
+  channels: 1
+  checkpoint: false
+  img_sizeh: 512
+  img_sizew: 512
+  img_type: large
+  init_weights: logs/2022-09-07_15_17_28/checkpoints/weights.pth
+  n_classes: 10
+  pretrain: false
+hyperparameters:
+  b1: 0.9
+  b2: 0.999
+  batch_size: 8
+  loss_fn: wce_dice
+  lr: 0.0005
+  n_gpus: 1
+  num_epochs: 500
+  optimizer: adam
+  scheduler:
+    gamma: 0.9
+    step: 50
+    type: step
+  weight_decay: 4.0e-05
+model_name: unet
+paths:
+  base: dataset/data/
+  save_testimg: preds/Images/
+  save_testmsk: preds/Masks/
+  save_testpred: preds/Preds/
+  test_imgdir: val/Images/
+  test_mskdir: val/Masks/
+  train_imgdir: train/Images/
+  train_mskdir: train/Masks/
+  val_imgdir: val/Images/
+  val_mskdir: val/Masks/
+swin_unet_custom_architecture:
+  depths:
+  - 2
+  - 2
+  - 2
+  - 2
+  drop_path_rate: 0.1
+  embed_dim: 24
+  num_heads:
+  - 2
+  - 4
+  - 8
+  - 16
+  window_size: 8
+unet_architecutre:
+  bilinear: false
+  dropout: 0.0
+  feature_start: 32
+  kernel_size: 3
+  layers: 4
+  padding: 1
+  stride: 1

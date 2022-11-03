@@ -18,7 +18,7 @@ swin_unet_custom_architecture:
   drop_path_rate: 0.1
 
 paths:
-  base: dataset/128_10_classes/
+  base: dataset/data/
   train_imgdir: train/Images/ # images_patches
   train_mskdir: train/Masks/ # masks_patches
   val_imgdir: val/Images/
@@ -30,7 +30,7 @@ paths:
   save_testpred: preds/Preds/
 
 hyperparameters:
-  loss_fn: dice_loss #wce_dice, dice_loss, dice_focal_loss, ce
+  loss_fn: wce_dice #wce_dice, dice_loss, dice_focal_loss, ce
   optimizer: adam # sgd, adam
   batch_size: 8
   num_epochs: 500

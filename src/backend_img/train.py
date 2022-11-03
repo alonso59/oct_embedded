@@ -11,7 +11,6 @@ from monai.losses.dice import DiceFocalLoss, DiceLoss
 from training.dataset import loaders
 from training.trainer import trainer, evaluation
 from training.scheduler import CyclicCosineDecayLR
-from training.scheduler import CyclicCosineDecayLR
 from training.loss import WeightedCrossEntropyDice, CrossEntropyLoss
 
 

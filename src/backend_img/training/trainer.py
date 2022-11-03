@@ -28,7 +28,7 @@ def trainer(num_epochs, train_loader, val_loader, model, optimizer, loss_fn, dev
 
     for epoch in range(num_epochs):
         lr_ = optimizer.param_groups[0]["lr"]
-        str = f"Epoch: {epoch+1}/{num_epochs} --loss_fn:{loss_fn.__name__} --model:{name_model} --lr:{lr_:.4e}"
+        str = f"Epoch: {epoch+1}/{num_epochs} --model:{name_model} --lr:{lr_:.4e}"
         logger.info(str)
 
         train_loss, train_metrics, train_iter = train(train_loader, model, optimizer, loss_fn, writer, train_iter, device)

@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
 import torch.nn as nn
-
+from monai.losses.dice import DiceFocalLoss as DL
 
 class CrossEntropyLoss(nn.Module):
     def __init__(self, device, weights=None):
@@ -66,8 +66,8 @@ class WeightedCrossEntropyDice(nn.Module):
         w = torch.ones(inputs.shape).type(inputs.type()).to(self.device)
         for c in range(inputs.shape[1]):
             w[:, c, :, :] = self.class_weights[c]
-
-        dice_loss = dice_score(self, inputs=inputs, targets=targets, activation=self.activation)
+        dl = DL(to_onehot_y=True, softmax=True)
+        dice_loss = dl(inputs, targets)
 
         # Compute categorical cross entropy
         target1 = targets.squeeze(1)

@@ -1,18 +1,19 @@
 import os
+import sys
+import cv2
+import yaml
+import torch
 import numpy as np
 import albumentations as T
-import cv2
+import elasticdeform as ed
+
+from tqdm import tqdm
+from PIL import Image
+from utils import visualize, get_filenames
 from torch.utils.data import DataLoader, Dataset
 from skimage.restoration import denoise_tv_chambolle
 from albumentations.core.transforms_interface import ImageOnlyTransform, DualTransform
-from utils import visualize, get_filenames
-import sys
-from tqdm import tqdm
-import yaml
-import h5py
-import torch
-import elasticdeform as ed
-from PIL import Image
+
 MEAN = 0.1338  # 0.1338
 STD = 0.1466  # 0.1466
 
@@ -67,18 +68,18 @@ def loaders(train_imgdir,
             T.Resize(cfg['general']['img_sizeh'], cfg['general']['img_sizew']),
             T.Rotate(limit=(-25, 25), p=1.0, border_mode=cv2.BORDER_CONSTANT),
             T.HorizontalFlip(p=0.5),
-            GrayGammaTransform(limit=(0.8, 2.5), p=0.5),
+            GrayGammaTransform(limit=(0.8, 1.5), p=0.5),
             T.OneOf([
                 T.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, p=0.3),
                 T.CLAHE(clip_limit=2, tile_grid_size=(4, 4), p=0.3),
             ], p=0.1),
-            # T.OneOf([
-            #     # T.Affine(scale=(0.9, 1.1), p=0.5),
-            #     TVDenoising(p=0.3),
-            #     T.GaussianBlur(blur_limit=(1, 3), p=0.3),
-            #     # T.GaussNoise(var_limit=(2,4), mean=0, p=0.3),
-            # ], p=0.3),
-            # ElasticDeformation(sigma_range=(1,3), points=4, p=0.1),
+            T.OneOf([
+                # T.Affine(scale=(0.9, 1.1), p=0.5),
+                TVDenoising(p=0.2),
+                T.GaussianBlur(blur_limit=(1, 3), p=0.2),
+                # T.GaussNoise(var_limit=(2,4), mean=0, p=0.3),
+            ], p=0.3),
+            ElasticDeformation(sigma_range=(1,3), points=4, p=0.1),
             T.Normalize(mean=MEAN, std=STD),
         ]
     )
