@@ -123,6 +123,7 @@ class Ui_MainWindow(object):
 		self.toolBar.addAction(self.oplAction)
 		self.toolBar.addAction(self.onlAction)
 		self.toolBar.addAction(self.elmAction)
+		self.toolBar.addAction(self.ezAction)
 		self.toolBar.addAction(self.izrpeAction)
 		self.toolBar.addAction(self.allAction)
 		self.toolBar.addSeparator()
@@ -151,8 +152,9 @@ class Ui_MainWindow(object):
 		self.iplAction.setText(QCoreApplication.translate("MainWindow", u"IPL", None))
 		self.inlAction.setText(QCoreApplication.translate("MainWindow", u"INL", None))
 		self.oplAction.setText(QCoreApplication.translate("MainWindow", u"OPL", None))
-		self.onlAction.setText(QCoreApplication.translate("MainWindow", u"ELM", None))
-		self.elmAction.setText(QCoreApplication.translate("MainWindow", u"EZ", None))
+		self.onlAction.setText(QCoreApplication.translate("MainWindow", u"ONL", None))
+		self.elmAction.setText(QCoreApplication.translate("MainWindow", u"ELM", None))
+		self.ezAction.setText(QCoreApplication.translate("MainWindow", u"EZ", None))
 		self.izrpeAction.setText(QCoreApplication.translate("MainWindow", u"IZ-RPE", None))
 		self.allAction.setText(QCoreApplication.translate("MainWindow", u"ALL", None))
 		self.backAction.setText(QCoreApplication.translate("MainWindow", u"Back", None))
@@ -164,6 +166,61 @@ class MainWindow(QMainWindow):
 		QMainWindow.__init__(self,parent)
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
+
+		#Menubar actions
+		self.ui.ilmrnflAction.triggered.connect(self.operationIlmrnf)
+		self.ui.gclAction.triggered.connect(self.operationGcl)
+		self.ui.iplAction.triggered.connect(self.operationIpl)
+		self.ui.inlAction.triggered.connect(self.operationInl)
+		self.ui.oplAction.triggered.connect(self.operationOpl)
+		self.ui.onlAction.triggered.connect(self.operationOnl)
+		self.ui.elmAction.triggered.connect(self.operationElm)
+		self.ui.ezAction.triggered.connect(self.operationEz)
+		self.ui.izrpeAction.triggered.connect(self.operationIzrpe)
+		self.ui.allAction.triggered.connect(self.operationAll)
+		#self.ui.backAction
+		#self.ui.saveAction
+		#self.ui.finishAction
+
+	def operationIlmrnf(self):
+		print("Triggered: ILMRNF")
+		...
+
+	def operationGcl(self):
+		print("Triggered: GCL")
+		...
+
+	def operationIpl(self):
+		print("Triggered: IPL")
+		...
+
+	def operationInl(self):
+		print("Triggered: INL")
+		...
+
+	def operationOpl(self):
+		print("Triggered: OPL")
+		...
+
+	def operationOnl(self):
+		print("Triggered: ONL")
+		...
+
+	def operationElm(self):
+		print("Triggered: ELM")
+		...
+
+	def operationEz(self):
+		print("Triggered: EZ")
+		...
+
+	def operationIzrpe(self):
+		print("Triggered: IZRPE")
+		...
+
+	def operationAll(self):
+		print("Triggered: ALL")
+		...	
 
 if __name__ == "__main__":
 	print(os.name)
