@@ -1,0 +1,55 @@
+# unet, swin_unet, swin_unet_custom
+model_name: unet
+
+unet_architecutre:
+  bilinear: False
+  dropout: 0.0
+  feature_start: 32
+  kernel_size: 3
+  layers: 4
+  padding: 1
+  stride: 1
+
+swin_unet_custom_architecture:
+  embed_dim: 24
+  depths: [2, 2, 2, 2]
+  num_heads: [2, 4, 8, 16]
+  window_size: 8
+  drop_path_rate: 0.1
+
+paths:
+  base: dataset/128_10_classes/
+  train_imgdir: train/Images/ # images_patches
+  train_mskdir: train/Masks/ # masks_patches
+  val_imgdir: val/Images/
+  val_mskdir: val/Masks/
+  test_imgdir: val/Images/
+  test_mskdir: val/Masks/
+  save_testimg: preds/Images/
+  save_testmsk: preds/Masks/
+  save_testpred: preds/Preds/
+
+hyperparameters:
+  loss_fn: dice_loss #wce_dice, dice_loss, dice_focal_loss, ce
+  optimizer: adam # sgd, adam
+  batch_size: 8
+  num_epochs: 500
+  lr: 0.0005
+  b1: 0.9
+  b2: 0.999
+  weight_decay: 0.00004
+  scheduler:
+    type: 'step' # step, cosine, exponential
+    gamma: 0.9
+    step: 50
+  n_gpus: 1
+
+general:
+  pretrain: False
+  checkpoint: False
+  init_weights: logs/2022-09-07_15_17_28/checkpoints/weights.pth
+  n_classes: 10
+  img_sizeh: 512
+  img_sizew: 512
+  channels: 1
+  img_type: large
