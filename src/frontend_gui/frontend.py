@@ -60,6 +60,7 @@ class Ui_MainWindow(object):
 		self.mainMenuBar.setObjectName(u"mainMenuBar")
 		self.mainMenuBar.setGeometry(QRect(0,0,800,21))
 		MainWindow.setMenuBar(self.mainMenuBar)
+		self.mainMenuBar.setNativeMenuBar(False)
 
 		self.menuFile = QMenu(self.mainMenuBar)
 		self.menuFile.setObjectName(u"menuFile")
@@ -228,7 +229,7 @@ class MainWindow(QMainWindow):
 		print("[INFO] Closing app...")
 		self.close()
 		...
-		
+
 	def switchTheme(self):
 		if app.palette() == darkPalette:
 			#print("dark palette => white palette")
