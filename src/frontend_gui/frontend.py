@@ -1,10 +1,9 @@
 #Import System Util
 import sys, os, time, platform
 # Import PySide6 classes
-from PySide6.QtCore import *
-from PySide6.QtGui import *
-from PySide6.QtWidgets import *
-from PySide6.QtSvg import *
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
 
 class ImageHolder(QWidget):
 	def __init__(self, title):
@@ -24,7 +23,6 @@ class ImageHolder(QWidget):
 
 		self.thisLayout.addWidget(self.titleLabel)
 		self.thisLayout.addWidget(self.imgLabel)
-
 
 	def setImage(self, pixmap):
 		self.img.load(pixmap)
@@ -161,10 +159,6 @@ class Ui_MainWindow(object):
 		self.saveAction.setText(QCoreApplication.translate("MainWindow", u"Save", None))
 		self.finishAction.setText(QCoreApplication.translate("MainWindow", u"Finish", None))
 
-
-
-
-
 class MainWindow(QMainWindow):
 	def __init__(self, parent=None):
 		QMainWindow.__init__(self,parent)
@@ -178,4 +172,4 @@ if __name__ == "__main__":
 	app = QApplication()
 	mainWindow = MainWindow()
 	mainWindow.show()
-	sys.exit(app.exec())
+	sys.exit(app.exec_())
