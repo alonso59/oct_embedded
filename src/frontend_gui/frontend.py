@@ -19,7 +19,7 @@ class ImageHolder(QWidget):
 		self.titleLabel.setAlignment(Qt.AlignCenter)
 		self.titleLabel.setStyleSheet("background-color:rgb(70,70,70); color:rgb(255,255,255)")
 		self.imgLabel = QLabel()
-		self.imgLabel.setStyleSheet("background-color:rgb(255,255,150)")
+		self.imgLabel.setStyleSheet("background-color:rgb(0,0,0)")
 
 		self.thisLayout.addWidget(self.titleLabel)
 		self.thisLayout.addWidget(self.imgLabel)
@@ -37,6 +37,8 @@ class Ui_MainWindow(object):
 
 		self.centralWidget = QWidget(MainWindow)
 		self.centralWidget.setObjectName(u"centralWidget")
+		#centralWidgetStyleSheet = open(r"src\frontend_gui\frontend_stylesheet.css","r")
+		#self.centralWidget.setStyleSheet(centralWidgetStyleSheet.read())
 
 		self.verticalLayout = QVBoxLayout(self.centralWidget)
 		self.verticalLayout.setObjectName(u"verticalLayout")
@@ -116,6 +118,19 @@ class Ui_MainWindow(object):
 		self.finishAction = QAction()
 		self.finishAction.setObjectName(u"finishAction")
 
+		self.actionOpenFile = QAction(MainWindow)
+		self.actionOpenFile.setObjectName(u"actionOpenFile")
+		self.menuFile.addAction(self.actionOpenFile)
+
+		self.actionClose = QAction(MainWindow)
+		self.actionClose.setObjectName(u"actionClose")
+		self.menuFile.addAction(self.actionClose)
+
+		self.actionSwitchTheme = QAction(MainWindow)
+		self.actionSwitchTheme.setObjectName(u"actionSwitchTheme")
+		self.menuOptions.addAction(self.actionSwitchTheme)
+
+
 		self.toolBar.addAction(self.ilmrnflAction)
 		self.toolBar.addAction(self.gclAction)
 		self.toolBar.addAction(self.iplAction)
@@ -144,6 +159,9 @@ class Ui_MainWindow(object):
 	def retranslateUi(self,MainWindow):
 		MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow",u"OCT Layer Segmentation", None))
 		self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
+		self.actionOpenFile.setText(QCoreApplication.translate("MainWindow",u"Open file...",None))
+		self.actionClose.setText(QCoreApplication.translate("MainWindow",u"Close",None))
+		self.actionSwitchTheme.setText(QCoreApplication.translate("MainWindow",u"Switch color theme",None))
 		self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
 		self.menuOptions.setTitle(QCoreApplication.translate("MainWindow", u"Options", None))
 		self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
@@ -166,7 +184,16 @@ class MainWindow(QMainWindow):
 		QMainWindow.__init__(self,parent)
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
+		self.workingFile = ""
 
+		#Main menu actions
+			#File
+		self.ui.actionOpenFile.triggered.connect(self.openFile)
+		self.ui.actionClose.triggered.connect(self.closeApp)
+			#Edit
+			#Options
+		self.ui.actionSwitchTheme.triggered.connect(self.switchTheme)
+			#Help
 		#Menubar actions
 		self.ui.ilmrnflAction.triggered.connect(self.operationIlmrnf)
 		self.ui.gclAction.triggered.connect(self.operationGcl)
@@ -181,6 +208,34 @@ class MainWindow(QMainWindow):
 		#self.ui.backAction
 		#self.ui.saveAction
 		#self.ui.finishAction
+
+
+	def openFile(self):
+		print("[INFO] Selecting file...")
+		fname = QFileDialog.getOpenFileName(self, "Select .vol file...")
+		fext = fname[0].split(".")[-1]
+		print("[INFO] Selected file: ", fname[0] ," Extension:", fext)
+		if fname != "":
+			if fname[0].split(".")[-1] != 'vol':
+				print("[ERROR] Invalid type of file")
+			else:
+				print("[INFO] Correct file...Reading...")	
+				self.workingFile = fname[0]
+		else:
+			print("[ERROR] Invalid file")	
+
+	def closeApp(self):
+		print("[INFO] Closing app...")
+		self.close()
+		...
+		
+	def switchTheme(self):
+		if app.palette() == darkPalette:
+			#print("dark palette => white palette")
+			app.setPalette(whitePalette)
+		else:
+			#print("white palette => dark palette")
+			app.setPalette(darkPalette)
 
 	def operationIlmrnf(self):
 		print("Triggered: ILMRNF")
@@ -222,11 +277,34 @@ class MainWindow(QMainWindow):
 		print("Triggered: ALL")
 		...	
 
+class DarkPalette(QPalette):
+	def __init__(self):
+		super().__init__()
+		self.setColor(QPalette.Window, QColor(53, 53, 53))
+		self.setColor(QPalette.WindowText, Qt.white)
+		self.setColor(QPalette.Base, QColor(25, 25, 25))
+		self.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+		self.setColor(QPalette.ToolTipBase, Qt.black)
+		self.setColor(QPalette.ToolTipText, Qt.gray)
+		self.setColor(QPalette.Text, Qt.white)
+		self.setColor(QPalette.Button, QColor(53, 53, 53))
+		self.setColor(QPalette.ButtonText, Qt.white)
+		self.setColor(QPalette.BrightText, Qt.red)
+		self.setColor(QPalette.Link, QColor(42, 130, 218))
+		self.setColor(QPalette.Highlight, QColor(42, 130, 218))
+		self.setColor(QPalette.HighlightedText, Qt.black)
+		self.setColor(QPalette.PlaceholderText, QColor(245, 245, 245, 100))
+
+
 if __name__ == "__main__":
 	print(os.name)
 	print(platform.system(), platform.release())
 
 	app = QApplication()
+	darkPalette = DarkPalette()
+	whitePalette = app.palette()
+	app.setStyle('Fusion')
+	app.setPalette(darkPalette)  
 	mainWindow = MainWindow()
 	mainWindow.show()
 	sys.exit(app.exec_())
