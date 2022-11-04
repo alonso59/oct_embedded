@@ -1,7 +1,8 @@
 import torch
 import matplotlib 
 import numpy as np
-import eyepy as ep
+# import eyepy as ep
+from eyepy.core.base import Oct
 import albumentations as T
 import matplotlib.pyplot as plt
 import torch.nn.functional as F
@@ -26,7 +27,7 @@ class OCTProcessing:
         return len(self.oct)
         
     def oct_reader(self, oct_file):
-        self.oct = ep.import_heyex_vol(oct_file)
+        self.oct = Oct.from_heyex_vol(oct_file)
         self.scale_y = self.oct.meta.as_dict()['scale_y']
         self.scale_x = self.oct.meta.as_dict()['scale_x']
         self.visit_date = self.oct.meta.as_dict()['visit_date']
