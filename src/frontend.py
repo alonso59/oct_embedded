@@ -12,19 +12,66 @@ import numpy as np
 # import OCT
 from oct_library import OCTProcessing
 
+class ImageViewer(QGraphicsView):
+	def __init__(self):
+		super(ImageViewer, self).__init__()
+		self.zoom = 0
+
+	def keyPressEvent(self, event):
+		print("pressed key in ImageViewer")
+		if event.key() == Qt.Key_F:
+			print("F was pressed")
+			self.fitInView(self.scene().sceneRect(), Qt.KeepAspectRatio)
+		elif event.key() == Qt.Key_W:
+			print("W was pressed")
+			self.fitInView(self.scene().sceneRect())
+		else:
+			...
+
+	def wheelEvent(self, event):
+		if event.delta() >0:
+			factor = 1.25
+			self.zoom +=1
+		else:
+			factor = 0.8
+			self.zoom -=1
+		if self.zoom > 0:
+			self.scale(factor, factor)
+		elif self.zoom == 0:
+			self.fitInView()
+		else:
+			self.zoom = 0
+
 class PropertiesHolder(QWidget):
 	def __init__(self):
 		super().__init__()
+		#GENERAL METADATA
+		#-> AI Model
+		#-> File
+		#-> Patient ID
+		#-> Visit Date
+		#-> Scan Pos
+		#-> Scale X
+		#-> Scale Z
+		#-> Size XSlo
+		#-> Size YSlo
+		#-> Scale XSlo
+		#-> Scale YSlo
+		#-> No. Bscans
+		# FOVEA BSCAN METADATA
+		#-> # Bscan
+		#-> Start X
+		#-> End X
 		self.thisLayout = QVBoxLayout()
 		self.setLayout(self.thisLayout)
 		self.titleLabel = QLabel()
 		self.titleLabel.setText("Patient Info")
-		self.titleLabel.setFixedWidth(60)
+		self.titleLabel.setFixedWidth(400)
 		self.titleLabel.setAlignment(Qt.AlignCenter)
 		self.titleLabel.setStyleSheet("background-color:rgb(70,70,70); color:rgb(255,255,255)")
 		self.thisLayout.addWidget(self.titleLabel)	
 
-
+		self.imgLabel = QLabel ()
 
 class ImageHolder(QWidget):
 	def __init__(self, title):
@@ -32,7 +79,7 @@ class ImageHolder(QWidget):
 		self.thisLayout = QVBoxLayout()
 		self.setLayout(self.thisLayout)
 
-		self.img = QPixmap()
+		self.savedPixmap = QPixmap()
 
 		self.titleLabel = QLabel()
 		self.titleLabel.setText(title)
@@ -42,12 +89,30 @@ class ImageHolder(QWidget):
 		self.imgLabel = QLabel()
 		self.imgLabel.setStyleSheet("background-color:rgb(0,0,0)")
 
+		self.graphicsScene = QGraphicsScene()
+
+		self.graphicsView = ImageViewer()
+		#self.graphicsView.setFixedHeight(90)
+		#self.graphicsView.setFixedWidth(240)
+		self.graphicsPixmapItem = QGraphicsPixmapItem()
+		self.graphicsScene.addItem(self.graphicsPixmapItem)
+		self.graphicsView.setScene(self.graphicsScene)
+
 		self.thisLayout.addWidget(self.titleLabel)
-		self.thisLayout.addWidget(self.imgLabel)
+		self.thisLayout.addWidget(self.graphicsView)
 
 	def setImage(self, pixmap):
-		self.img = pixmap
-		self.imgLabel.setPixmap(self.img)
+		w = self.imgLabel.width()
+		h = self.imgLabel.height()
+		self.savedPixmap = pixmap
+		self.imgLabel.setPixmap(self.savedPixmap.scaled(w,h, Qt.KeepAspectRatio))
+		...
+
+	def storeImage(self, pixmap):
+		self.graphicsPixmapItem.setPixmap(pixmap)
+		...
+
+	def displayImage():
 		...
 
 class Ui_MainWindow(object):
@@ -56,12 +121,16 @@ class Ui_MainWindow(object):
 			MainWindow.setObjectName(u"MainWindow")
 		MainWindow.resize(800,600)
 
+
 		self.centralWidget = QWidget(MainWindow)
 		self.centralWidget.setObjectName(u"centralWidget")
 		#centralWidgetStyleSheet = open(r"src\frontend_gui\frontend_stylesheet.css","r")
 		#self.centralWidget.setStyleSheet(centralWidgetStyleSheet.read())
 
-		self.verticalLayout = QVBoxLayout(self.centralWidget)
+		self.horizontalLayout = QHBoxLayout(self.centralWidget)
+		self.horizontalLayout.setObjectName(u"horizontalLayout")
+
+		self.verticalLayout = QVBoxLayout()
 		self.verticalLayout.setObjectName(u"verticalLayout")
 
 		# self.topLabelImage = QLabel()
@@ -71,6 +140,7 @@ class Ui_MainWindow(object):
 		# self.bottomLabelImage.setObjectName(u"bottomLabelImage")
 		# self.bottomLabelImage.setStyleSheet("background-color:rgb(255,255,150)")
 
+		self.propertiesP = PropertiesHolder()
 		self.topLabelImg = ImageHolder("B-Scan Centra Fovea")		
 		self.middleLabelImg = ImageHolder("B-Scan Output Model")
 		self.bottomLabelImg = ImageHolder("B-Scan Layer Segmentation")
@@ -101,26 +171,20 @@ class Ui_MainWindow(object):
 		self.toolBar.setObjectName(u"toolBar")
 		self.toolBar.setMovable(False)
 		MainWindow.addToolBar(Qt.RightToolBarArea, self.toolBar)
-								#A
-		self.buttonBooleans = [False, False, False, False, False, False, False, False, False, False]
+								#A    #RNFL #GCLIPL  #INL   #OPL   #ONL   #IS    #OS    #RPE
+		self.buttonBooleans = [False, False, False, False, False, False, False, False, False]
 		DefaultPushButtonStyleSheet = "QPushButton {background-color:red;} QPushButton:checked{background-color:green;}"
-		self.ilmrnflAction = QPushButton()
-		self.ilmrnflAction.setObjectName(u"ilmrnflAction")
-		self.ilmrnflAction.setCheckable(True)
-		self.ilmrnflAction.setChecked(False)
-		self.ilmrnflAction.setStyleSheet(DefaultPushButtonStyleSheet)
+		self.rnflAction = QPushButton()
+		self.rnflAction.setObjectName(u"rnflAction")
+		self.rnflAction.setCheckable(True)
+		self.rnflAction.setChecked(False)
+		self.rnflAction.setStyleSheet(DefaultPushButtonStyleSheet)
 
-		self.gclAction = QPushButton()
-		self.gclAction.setObjectName(u"gclAction")
-		self.gclAction.setCheckable(True)
-		self.gclAction.setChecked(False)
-		self.gclAction.setStyleSheet(DefaultPushButtonStyleSheet)
-
-		self.iplAction = QPushButton()
-		self.iplAction.setObjectName(u"iplAction")
-		self.iplAction.setCheckable(True)
-		self.iplAction.setChecked(False)
-		self.iplAction.setStyleSheet(DefaultPushButtonStyleSheet)
+		self.gcliplAction = QPushButton()
+		self.gcliplAction.setObjectName(u"gcliplAction")
+		self.gcliplAction.setCheckable(True)
+		self.gcliplAction.setChecked(False)
+		self.gcliplAction.setStyleSheet(DefaultPushButtonStyleSheet)
 		
 		self.inlAction = QPushButton()
 		self.inlAction.setObjectName(u"inlAction")
@@ -140,25 +204,23 @@ class Ui_MainWindow(object):
 		self.onlAction.setChecked(False)
 		self.onlAction.setStyleSheet(DefaultPushButtonStyleSheet)
 		
-		self.elmAction = QPushButton()
-		self.elmAction.setObjectName(u"elmAction")
-		self.elmAction.setCheckable(True)
-		self.elmAction.setChecked(False)
-		self.elmAction.setStyleSheet(DefaultPushButtonStyleSheet)
+		self.isAction = QPushButton()
+		self.isAction.setObjectName(u"isAction")
+		self.isAction.setCheckable(True)
+		self.isAction.setChecked(False)
+		self.isAction.setStyleSheet(DefaultPushButtonStyleSheet)
 		
-		self.ezAction = QPushButton()
-		self.ezAction.setObjectName(u"ezAction")
-		self.ezAction.setCheckable(True)
-		self.ezAction.setChecked(False)
-		self.ezAction.setStyleSheet(DefaultPushButtonStyleSheet)
+		self.osAction = QPushButton()
+		self.osAction.setObjectName(u"ezAction")
+		self.osAction.setCheckable(True)
+		self.osAction.setChecked(False)
+		self.osAction.setStyleSheet(DefaultPushButtonStyleSheet)
 		
-		self.izrpeAction = QPushButton()
-		self.izrpeAction.setObjectName(u"izrpeAction")
-		self.izrpeAction.setCheckable(True)
-		self.izrpeAction.setChecked(False)
-		self.izrpeAction.setStyleSheet(DefaultPushButtonStyleSheet)
-
-
+		self.rpeAction = QPushButton()
+		self.rpeAction.setObjectName(u"rpeAction")
+		self.rpeAction.setCheckable(True)
+		self.rpeAction.setChecked(False)
+		self.rpeAction.setStyleSheet(DefaultPushButtonStyleSheet)
 		
 		self.allAction = QPushButton()
 		self.allAction.setObjectName(u"allAction")
@@ -188,25 +250,23 @@ class Ui_MainWindow(object):
 		self.menuOptions.addAction(self.actionSwitchTheme)
 
 		self.allOpButtons = []
-		self.allOpButtons.append(self.ilmrnflAction)
-		self.allOpButtons.append(self.gclAction)
-		self.allOpButtons.append(self.iplAction)
+		self.allOpButtons.append(self.rnflAction)
+		self.allOpButtons.append(self.gcliplAction)
 		self.allOpButtons.append(self.inlAction)
 		self.allOpButtons.append(self.oplAction)
 		self.allOpButtons.append(self.onlAction)
-		self.allOpButtons.append(self.elmAction)
-		self.allOpButtons.append(self.ezAction)
-		self.allOpButtons.append(self.izrpeAction)
+		self.allOpButtons.append(self.isAction)
+		self.allOpButtons.append(self.osAction)
+		self.allOpButtons.append(self.rpeAction)
 
-		self.toolBar.addWidget(self.ilmrnflAction)
-		self.toolBar.addWidget(self.gclAction)
-		self.toolBar.addWidget(self.iplAction)
+		self.toolBar.addWidget(self.rnflAction)
+		self.toolBar.addWidget(self.gcliplAction)
 		self.toolBar.addWidget(self.inlAction)
 		self.toolBar.addWidget(self.oplAction)
 		self.toolBar.addWidget(self.onlAction)
-		self.toolBar.addWidget(self.elmAction)
-		self.toolBar.addWidget(self.ezAction)
-		self.toolBar.addWidget(self.izrpeAction)
+		self.toolBar.addWidget(self.isAction)
+		self.toolBar.addWidget(self.osAction)
+		self.toolBar.addWidget(self.rpeAction)
 		self.toolBar.addWidget(self.allAction)
 		self.toolBar.addSeparator()
 		self.toolBar.addAction(self.loadAction)
@@ -217,6 +277,9 @@ class Ui_MainWindow(object):
 		self.mainMenuBar.addAction(self.menuEdit.menuAction())
 		self.mainMenuBar.addAction(self.menuOptions.menuAction())
 		self.mainMenuBar.addAction(self.menuHelp.menuAction())
+
+		self.horizontalLayout.addWidget(self.propertiesP)
+		self.horizontalLayout.addLayout(self.verticalLayout)
 
 
 		MainWindow.setCentralWidget(self.centralWidget)
@@ -232,15 +295,14 @@ class Ui_MainWindow(object):
 		self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
 		self.menuOptions.setTitle(QCoreApplication.translate("MainWindow", u"Options", None))
 		self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
-		self.ilmrnflAction.setText(QCoreApplication.translate("MainWindow", u"ILM-RNFL", None))
-		self.gclAction.setText(QCoreApplication.translate("MainWindow", u"GCL", None))
-		self.iplAction.setText(QCoreApplication.translate("MainWindow", u"IPL", None))
+		self.rnflAction.setText(QCoreApplication.translate("MainWindow", u"RNFL", None))
+		self.gcliplAction.setText(QCoreApplication.translate("MainWindow", u"GCL+IPL", None))
 		self.inlAction.setText(QCoreApplication.translate("MainWindow", u"INL", None))
 		self.oplAction.setText(QCoreApplication.translate("MainWindow", u"OPL", None))
 		self.onlAction.setText(QCoreApplication.translate("MainWindow", u"ONL", None))
-		self.elmAction.setText(QCoreApplication.translate("MainWindow", u"ELM", None))
-		self.ezAction.setText(QCoreApplication.translate("MainWindow", u"EZ", None))
-		self.izrpeAction.setText(QCoreApplication.translate("MainWindow", u"IZ-RPE", None))
+		self.isAction.setText(QCoreApplication.translate("MainWindow", u"IS", None))
+		self.osAction.setText(QCoreApplication.translate("MainWindow", u"OS", None))
+		self.rpeAction.setText(QCoreApplication.translate("MainWindow", u"RPE", None))
 		self.allAction.setText(QCoreApplication.translate("MainWindow", u"ALL", None))
 		self.loadAction.setText(QCoreApplication.translate("MainWindow", u"Load", None))
 		self.saveAction.setText(QCoreApplication.translate("MainWindow", u"Save", None))
@@ -262,15 +324,14 @@ class MainWindow(QMainWindow):
 		self.ui.actionSwitchTheme.triggered.connect(self.switchTheme)
 			#Help
 		#Menubar buttons
-		self.ui.ilmrnflAction.clicked.connect(self.operationIlmrnf)
-		self.ui.gclAction.clicked.connect(self.operationGcl)
-		self.ui.iplAction.clicked.connect(self.operationIpl)
+		self.ui.rnflAction.clicked.connect(self.operationRnfl)
+		self.ui.gcliplAction.clicked.connect(self.operationGclipl)
 		self.ui.inlAction.clicked.connect(self.operationInl)
 		self.ui.oplAction.clicked.connect(self.operationOpl)
 		self.ui.onlAction.clicked.connect(self.operationOnl)
-		self.ui.elmAction.clicked.connect(self.operationElm)
-		self.ui.ezAction.clicked.connect(self.operationEz)
-		self.ui.izrpeAction.clicked.connect(self.operationIzrpe)
+		self.ui.isAction.clicked.connect(self.operationIs)
+		self.ui.osAction.clicked.connect(self.operationOs)
+		self.ui.rpeAction.clicked.connect(self.operationRpe)
 		self.ui.allAction.clicked.connect(self.operationAll)
 		#Menu bar actions
 		self.ui.loadAction.triggered.connect(self.operationLoadAction)
@@ -305,65 +366,58 @@ class MainWindow(QMainWindow):
 			#print("white palette => dark palette")
 			app.setPalette(darkPalette)
 
-	def operationIlmrnf(self):
-		print("Triggered: ILMRNF")
-		self.ui.buttonBooleans[1] = self.ui.ilmrnflAction.isChecked()
+	def operationRnfl(self):
+		print("Triggered: RNFL")
+		self.ui.buttonBooleans[1] = self.ui.rnflAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
-	def operationGcl(self):
-		print("Triggered: GCL")
-		self.ui.buttonBooleans[2] = self.ui.gclAction.isChecked()
-		print(f"BUTTONS: {self.ui.buttonBooleans}")
-		self.operationAllChecked()
-		...
-
-	def operationIpl(self):
-		print("Triggered: IPL")
-		self.ui.buttonBooleans[3] = self.ui.iplAction.isChecked()
+	def operationGclipl(self):
+		print("Triggered: GCL+IPL")
+		self.ui.buttonBooleans[2] = self.ui.gcliplAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationInl(self):
 		print("Triggered: INL")
-		self.ui.buttonBooleans[4] = self.ui.inlAction.isChecked()
+		self.ui.buttonBooleans[3] = self.ui.inlAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationOpl(self):
 		print("Triggered: OPL")
-		self.ui.buttonBooleans[5] = self.ui.oplAction.isChecked()
+		self.ui.buttonBooleans[4] = self.ui.oplAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationOnl(self):
 		print("Triggered: ONL")
-		self.ui.buttonBooleans[6] = self.ui.onlAction.isChecked()
+		self.ui.buttonBooleans[5] = self.ui.onlAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
-	def operationElm(self):
-		print("Triggered: ELM")
-		self.ui.buttonBooleans[7] = self.ui.elmAction.isChecked()
+	def operationIs(self):
+		print("Triggered: IS")
+		self.ui.buttonBooleans[6] = self.ui.isAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
-	def operationEz(self):
-		print("Triggered: EZ")
-		self.ui.buttonBooleans[8] = self.ui.ezAction.isChecked()
+	def operationOs(self):
+		print("Triggered: OS")
+		self.ui.buttonBooleans[7] = self.ui.osAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
-	def operationIzrpe(self):
-		print("Triggered: IZRPE")
-		self.ui.buttonBooleans[9] = self.ui.izrpeAction.isChecked()
+	def operationRpe(self):
+		print("Triggered: RPE")
+		self.ui.buttonBooleans[8] = self.ui.rpeAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
@@ -384,11 +438,11 @@ class MainWindow(QMainWindow):
 		...	
 
 	def operationAllChecked(self):
-		print(f"SUM BOOL: {sum(self.ui.buttonBooleans[1:10])}")
-		if sum(self.ui.buttonBooleans[1:10]) < 9:
+		print(f"SUM BOOL: {sum(self.ui.buttonBooleans[1:9])}")
+		if sum(self.ui.buttonBooleans[1:9]) < 8:
 			self.ui.allAction.setChecked(False)		
 			allTrue = False
-		elif sum(self.ui.buttonBooleans[1:10]) == 9:
+		elif sum(self.ui.buttonBooleans[1:9]) == 8:
 			self.ui.allAction.setChecked(True)
 			allTrue = True
 		else:
@@ -399,15 +453,17 @@ class MainWindow(QMainWindow):
 
 	def sendOperation(self):
 		bottomimg = self.currentOctProcess.get_individual_layers_segmentation(self.ui.buttonBooleans)
-
+		bottomimg = bottomimg.astype('uint8')
+		
 		print(bottomimg.max())
 		print(f"Current shape: {bottomimg.shape}")
-		qImg = QImage(bottomimg, bottomimg.shape[1], bottomimg.shape[0], QImage.Format_RGBA8888)
+		qImg = QImage(bottomimg, bottomimg.shape[1], bottomimg.shape[0], QImage.Format_Indexed8)
 
 		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
 		qPix = QPixmap(qImg)	
 		print("Loading image...")
-		self.ui.bottomLabelImg.imgLabel.setPixmap(qPix.scaled(self.ui.bottomLabelImg.imgLabel.size(),Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+		self.ui.bottomLabelImg.storeImage(qPix)
+		self.ui.bottomLabelImg.graphicsView.fitInView(self.ui.middleLabelImg.graphicsScene.sceneRect(),Qt.KeepAspectRatio)
 		print("Loaded image!")
 
 
@@ -460,7 +516,9 @@ class MainWindow(QMainWindow):
 		qPix = QPixmap(qImg)	
 		rPix = qPix.scaled(QSize(self.ui.topLabelImg.width(),self.ui.topLabelImg.height()))	
 		print("Loading image...")
-		self.ui.topLabelImg.setImage(rPix)
+		#self.ui.topLabelImg.setImage(rPix)
+		self.ui.topLabelImg.storeImage(qPix)
+		self.ui.topLabelImg.graphicsView.fitInView(self.ui.topLabelImg.graphicsScene.sceneRect(),Qt.KeepAspectRatio)
 		print("Loaded image!")
 
 		middleimg = self.currentOctProcess.overlay
@@ -469,7 +527,9 @@ class MainWindow(QMainWindow):
 		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
 		qPix = QPixmap(qImg)	
 		print("Loading image...")
-		self.ui.middleLabelImg.imgLabel.setPixmap(qPix.scaled(self.ui.middleLabelImg.imgLabel.size(),Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+		#self.ui.middleLabelImg.imgLabel.setPixmap(qPix.scaled(self.ui.middleLabelImg.imgLabel.size(),Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+		self.ui.middleLabelImg.storeImage(qPix)
+		self.ui.middleLabelImg.graphicsView.fitInView(self.ui.middleLabelImg.graphicsScene.sceneRect(),Qt.KeepAspectRatio)
 		print("Loaded image!")
 
 		...
@@ -503,6 +563,6 @@ if __name__ == "__main__":
 	#app.setStyle('Fusion')
 	app.setPalette(darkPalette)  
 	mainWindow = MainWindow()
-	mainWindow.show()
+	mainWindow.showFullScreen()
 	print(mainWindow.ui.topLabelImg.imgLabel.width(), mainWindow.ui.topLabelImg.imgLabel.height(), )
 	sys.exit(app.exec_())

@@ -19,7 +19,7 @@ class OCTProcessing:
         self.classes = ['BG', 'ILM', 'GCL', 'IPL', 'INL', 'OPL', 'ONL', 'ELM', 'EZ', 'BM']
         self.model = torchmodel
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')        
-        # self.device = 'cpu'
+        #self.device = 'cpu'
         self.oct_file = oct_file
         self.oct_reader(self.oct_file)
         self.fovea_forward()

@@ -2,3 +2,5 @@ dataset/
 logs/
 logs1/
 model.pth
+src/__pycache__
+src/networks/__pycache__
