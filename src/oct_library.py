@@ -20,6 +20,7 @@ class OCTProcessing:
         # self.device = 'cpu'
         self.oct_file = oct_file
         self.oct_reader(self.oct_file)
+        self.fovea_forward()
 
     def __len__(self):
         return len(self.oct)
@@ -68,7 +69,7 @@ class OCTProcessing:
         img_overlay = Image.fromarray(img)
         pred_overlay = pred_overlay.convert("RGBA")
         img_overlay = img_overlay.convert("RGBA")
-        overlay = Image.blend(img_overlay, pred_overlay, 0.5)
+        overlay = Image.blend(img_overlay, pred_overlay, 0.3)
         overlay = np.array(overlay)
         return pred, pred_rgb, overlay
 
@@ -118,7 +119,7 @@ class OCTProcessing:
         ax[1].tick_params(labelsize=12)
         ax[1].tick_params(labelsize=12)   
 
-    def fovea_forward(self, gamma, alpha, imgh, imgw):
+    def fovea_forward(self, gamma=1.5, alpha=0.02, imgh=512, imgw=512):
 
         self.pred_class_map, self.pred_rgb, self.overlay = self.get_segmentation(self.bscan_fovea, gamma=gamma, alpha=alpha, imgh=imgh, imgw=imgw)
 

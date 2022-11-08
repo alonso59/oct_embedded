@@ -6,6 +6,9 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 # Torch
 import torch
+from PIL import Image
+from PIL.ImageQt import ImageQt
+import numpy as np
 # import OCT
 from oct_library import OCTProcessing
 
@@ -43,7 +46,7 @@ class ImageHolder(QWidget):
 		self.thisLayout.addWidget(self.imgLabel)
 
 	def setImage(self, pixmap):
-		self.img.load(pixmap)
+		self.img = pixmap
 		self.imgLabel.setPixmap(self.img)
 		...
 
@@ -61,17 +64,19 @@ class Ui_MainWindow(object):
 		self.verticalLayout = QVBoxLayout(self.centralWidget)
 		self.verticalLayout.setObjectName(u"verticalLayout")
 
-		self.topLabelImage = QLabel()
-		self.topLabelImage.setObjectName(u"topLabelImage")
-		self.topLabelImage.setStyleSheet("background-color:rgb(255,255,150)")
-		self.bottomLabelImage = QLabel()
-		self.bottomLabelImage.setObjectName(u"bottomLabelImage")
-		self.bottomLabelImage.setStyleSheet("background-color:rgb(255,255,150)")
+		# self.topLabelImage = QLabel()
+		# self.topLabelImage.setObjectName(u"topLabelImage")
+		# self.topLabelImage.setStyleSheet("background-color:rgb(255,255,150)")
+		# self.bottomLabelImage = QLabel()
+		# self.bottomLabelImage.setObjectName(u"bottomLabelImage")
+		# self.bottomLabelImage.setStyleSheet("background-color:rgb(255,255,150)")
 
-		self.topLabelImg = ImageHolder("OCT FOVEA")		
-		self.bottomLabelImg = ImageHolder("OCT Segmentation")
+		self.topLabelImg = ImageHolder("B-Scan Centra Fovea")		
+		self.middleLabelImg = ImageHolder("B-Scan Output Model")
+		self.bottomLabelImg = ImageHolder("B-Scan Layer Segmentation")
 
 		self.verticalLayout.addWidget(self.topLabelImg)
+		self.verticalLayout.addWidget(self.middleLabelImg)
 		self.verticalLayout.addWidget(self.bottomLabelImg)
 
 		self.mainMenuBar = QMenuBar(MainWindow)
@@ -424,9 +429,32 @@ class MainWindow(QMainWindow):
 		
 		print (f"MODEL: {model_path} OCT(VOL): {oc_file}")
 
+		print("Creating model...")
 		model = torch.load(model_path, map_location='cuda')
-
+		print("Creating process...")
 		currentOctProcess = OCTProcessing(oct_file=oc_file, torchmodel=model)
+		print("Creating image...")
+
+		topimg = currentOctProcess.bscan_fovea
+		print(f"Current shape: {topimg.shape}")
+		qImg = QImage(topimg,topimg.shape[1],topimg.shape[0],QImage.Format_Indexed8)
+		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
+		qPix = QPixmap(qImg)	
+		rPix = qPix.scaled(QSize(self.ui.topLabelImg.width(),self.ui.topLabelImg.height()))	
+		print("Loading image...")
+		self.ui.topLabelImg.setImage(rPix)
+		print("Loaded image!")
+
+		middleimg = currentOctProcess.overlay
+		print(f"Current shape: {middleimg.shape}")
+		qImg = QImage(middleimg,middleimg.shape[1],middleimg.shape[0],QImage.Format_RGBA8888)
+		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
+		qPix = QPixmap(qImg)	
+		rPix = qPix.scaled(QSize(self.ui.topLabelImg.width(),self.ui.topLabelImg.height()))	
+		print("Loading image...")
+		self.ui.middleLabelImg.setImage(rPix)
+		print("Loaded image!")
+
 
 		...
 
@@ -461,4 +489,5 @@ if __name__ == "__main__":
 	app.setPalette(darkPalette)  
 	mainWindow = MainWindow()
 	mainWindow.show()
+	print(mainWindow.ui.topLabelImg.imgLabel.width(), mainWindow.ui.topLabelImg.imgLabel.height(), )
 	sys.exit(app.exec_())
