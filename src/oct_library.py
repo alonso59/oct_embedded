@@ -12,13 +12,14 @@ from matplotlib import cm
 from itertools import compress
 from scipy.interpolate import interp1d
 from skimage.restoration import denoise_tv_chambolle
+from time import time
 
 class OCTProcessing:
     def __init__(self, oct_file, torchmodel):
         self.classes = ['BG', 'ILM', 'GCL', 'IPL', 'INL', 'OPL', 'ONL', 'ELM', 'EZ', 'BM']
         self.model = torchmodel
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')        
-        self.device = 'cuda'
+        # self.device = 'cpu'
         self.oct_file = oct_file
         self.oct_reader(self.oct_file)
         self.fovea_forward()
@@ -38,9 +39,15 @@ class OCTProcessing:
         image = transforms(image)
         image = torch.permute(image, (2, 0, 1))
         
-        print(image.max(), image.min())
         image = image.unsqueeze(0)
+        start = torch.cuda.Event(enable_timing=True)
+        end = torch.cuda.Event(enable_timing=True)
+        start.record()
         y_pred = model(image)
+        end.record()
+        torch.cuda.synchronize()
+        print(start.elapsed_time(end), 'ms')
+        print(1/(start.elapsed_time(end) / 1000), 'FPS')
         y_pred = F.softmax(y_pred, dim=1)
         y_pred = torch.argmax(y_pred, dim=1)
         y_pred = y_pred.squeeze(0).detach().cpu().numpy()
@@ -95,27 +102,33 @@ class OCTProcessing:
 
     def plot_selected_layers(self):
         fig, ax = plt.subplots(nrows=1, ncols=1, dpi=200, figsize=(14,10), gridspec_kw={'width_ratios': [1]}, frameon=False)
-        ax.set_xlabel('B-Scan (X)', fontsize=14, weight="bold")
-        ax.set_ylabel('A-Scan (Y)', fontsize=14, weight="bold")
-        ax.tick_params(labelsize=12)
-        ax.tick_params(labelsize=12)
-        ax.imshow(self.segmented, cmap='gray')
+        # ax.set_xlabel('B-Scan (X)', fontsize=14, weight="bold")
+        # ax.set_ylabel('A-Scan (Y)', fontsize=14, weight="bold")
+        # ax.tick_params(labelsize=12)
+        # ax.tick_params(labelsize=12)
+        ax.imshow(self.bscan_fovea, cmap='gray')
+        ax.set_xticks([])
+        ax.set_yticks([])
 
     def plot_overlay_oct_segmentation(self):
         fig, ax = plt.subplots(nrows=1, ncols=1, dpi=200, figsize=(14,10), gridspec_kw={'width_ratios': [1]}, frameon=False)
-        ax.set_xlabel('B-Scan (X)', fontsize=14, weight="bold")
-        ax.set_ylabel('A-Scan (Y)', fontsize=14, weight="bold")
-        ax.tick_params(labelsize=12)
-        ax.tick_params(labelsize=12)
+        # ax.set_xlabel('B-Scan (X)', fontsize=14, weight="bold")
+        # ax.set_ylabel('A-Scan (Y)', fontsize=14, weight="bold")
+        # ax.tick_params(labelsize=12)
+        # ax.tick_params(labelsize=12)
         ax.imshow(self.overlay)
+        ax.set_xticks([])
+        ax.set_yticks([])
 
     def plot_segmentation_full(self):
         fig, ax = plt.subplots(nrows=1, ncols=1, dpi=200, figsize=(14,10), gridspec_kw={'width_ratios': [1]}, frameon=False)
-        ax.set_xlabel('B-Scan (X)', fontsize=14, weight="bold")
-        ax.set_ylabel('A-Scan (Y)', fontsize=14, weight="bold")
-        ax.tick_params(labelsize=12)
-        ax.tick_params(labelsize=12)
+        # ax.set_xlabel('B-Scan (X)', fontsize=14, weight="bold")
+        # ax.set_ylabel('A-Scan (Y)', fontsize=14, weight="bold")
+        # ax.tick_params(labelsize=12)
+        # ax.tick_params(labelsize=12)
         ax.imshow(self.segmented_total, cmap='gray')
+        ax.set_xticks([])
+        ax.set_yticks([])
 
     def plot_slo_fovea(self):
         fig, ax = plt.subplots(nrows=1, ncols=2, dpi=200, figsize=(25,10), gridspec_kw={'width_ratios': [1, 2]}, frameon=False)
