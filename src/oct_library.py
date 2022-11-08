@@ -90,7 +90,8 @@ class OCTProcessing:
         for l in classmap_bool:
             binary = np.where(self.pred_class_map == self.classes.index(l), 1, 0)
             multi = np.multiply(binary, self.bscan_fovea)
-            self.segmented = np.add(self.segmented, multi)
+            segmented = np.add(self.segmented, multi)
+        return segmented
 
     def plot_selected_layers(self):
         fig, ax = plt.subplots(nrows=1, ncols=1, dpi=200, figsize=(14,10), gridspec_kw={'width_ratios': [1]}, frameon=False)

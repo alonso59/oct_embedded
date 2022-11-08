@@ -398,9 +398,9 @@ class MainWindow(QMainWindow):
 		...
 
 	def sendOperation(self):
-		self.currentOctProcess.get_individual_layers_segmentation(self.ui.buttonBooleans)
+		bottomimg = self.currentOctProcess.get_individual_layers_segmentation(self.ui.buttonBooleans)
 
-		bottomimg = self.currentOctProcess.segmented
+
 		print(f"Current shape: {bottomimg.shape}")
 		qImg = QImage(bottomimg, bottomimg.shape[1], bottomimg.shape[0],QImage.Format_Indexed8)
 		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
