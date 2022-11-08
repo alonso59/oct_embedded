@@ -9,6 +9,7 @@ import heyexReader as ep
 
 from PIL import Image
 from matplotlib import cm
+from itertools import compress
 from scipy.interpolate import interp1d
 from skimage.restoration import denoise_tv_chambolle
 
@@ -17,7 +18,7 @@ class OCTProcessing:
         self.classes = ['BG', 'ILM', 'GCL', 'IPL', 'INL', 'OPL', 'ONL', 'ELM', 'EZ', 'BM']
         self.model = torchmodel
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')        
-        # self.device = 'cpu'
+        self.device = 'cuda'
         self.oct_file = oct_file
         self.oct_reader(self.oct_file)
         self.fovea_forward()
@@ -73,21 +74,31 @@ class OCTProcessing:
         overlay = np.array(overlay)
         return pred, pred_rgb, overlay
 
-    def get_layer_binary_mask(self,sample_pred, layer='EZ', offset=0):
-        binary = np.where(sample_pred == self.classes.index(layer), 1, 0)
+    def get_layer_binary_mask(self, pred, layer):
+        binary = np.where(pred == self.classes.index(layer), 1, 0)
         size = 1
-        if offset > 0:
-            for off in range(offset):
-                for i in range(size, binary.shape[1], size):
-                    col = binary[:, i - size:i]
-                    if 1 in col:
-                        place = np.max(np.where(col)[0])
-                        binary[place, i - size:i] = 0
+        for i in range(size, binary.shape[1], size):
+            col = binary[:, i - size:i]
+            if 1 in col:
+                place = np.max(np.where(col)[0])
+                binary[place, i - size:i] = 0
         return binary
 
-    def get_individual_layers_segmentation(self, layer):
-        self.binary = self.get_layer_binary_mask(self.sample_pred, layer=layer, offset=0)
-        self.segmented = np.multiply(self.binary, self.sample_bscan)
+    def get_individual_layers_segmentation(self, layer: list):
+        classmap_bool = list(compress(self.classes, layer))
+        self.segmented = np.zeros(self.bscan_fovea.shape)
+        for l in classmap_bool:
+            binary = np.where(self.pred_class_map == self.classes.index(l), 1, 0)
+            multi = np.multiply(binary, self.bscan_fovea)
+            self.segmented = np.add(self.segmented, multi)
+
+    def plot_selected_layers(self):
+        fig, ax = plt.subplots(nrows=1, ncols=1, dpi=200, figsize=(14,10), gridspec_kw={'width_ratios': [1]}, frameon=False)
+        ax.set_xlabel('B-Scan (X)', fontsize=14, weight="bold")
+        ax.set_ylabel('A-Scan (Y)', fontsize=14, weight="bold")
+        ax.tick_params(labelsize=12)
+        ax.tick_params(labelsize=12)
+        ax.imshow(self.segmented)
 
     def plot_overlay_oct_segmentation(self):
         fig, ax = plt.subplots(nrows=1, ncols=1, dpi=200, figsize=(14,10), gridspec_kw={'width_ratios': [1]}, frameon=False)
