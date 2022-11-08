@@ -19,13 +19,14 @@ def initialize(cfg):
     """logging"""
     logging.basicConfig(filename=version + "info.log",
                         format='%(asctime)s %(levelname)s %(message)s',
-                        encoding='utf-8',
+                        # encoding='utf-8',
                         datefmt='%H:%M:%S',
                         level=logging.INFO)
-                        
-    fh = logging.FileHandler(version + "info.log")
     logger = logging.getLogger()
-    logger.addHandler(fh)
+    logger.addHandler(logging.StreamHandler(sys.stdout))                    
+    # fh = logging.FileHandler(version + "info.log")
+    # logger = logging.getLogger()
+    # logger.addHandler(fh)
 
     """ Seeding """
     # seeding(43)  # 42

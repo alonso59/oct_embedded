@@ -2,9 +2,9 @@
 model_name: unet
 
 unet_architecutre:
-  bilinear: False
+  bilinear: True
   dropout: 0.0
-  feature_start: 32
+  feature_start: 16
   kernel_size: 3
   layers: 4
   padding: 1
@@ -18,7 +18,7 @@ swin_unet_custom_architecture:
   drop_path_rate: 0.1
 
 paths:
-  base: dataset/data/
+  base: dataset/128_9_classes/
   train_imgdir: train/Images/ # images_patches
   train_mskdir: train/Masks/ # masks_patches
   val_imgdir: val/Images/
@@ -49,7 +49,7 @@ general:
   checkpoint: False
   init_weights: logs/2022-09-07_15_17_28/checkpoints/weights.pth
   n_classes: 10
-  img_sizeh: 512
-  img_sizew: 512
+  img_sizeh: 256
+  img_sizew: 256
   channels: 1
   img_type: large
