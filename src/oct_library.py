@@ -98,7 +98,7 @@ class OCTProcessing:
         ax.set_ylabel('A-Scan (Y)', fontsize=14, weight="bold")
         ax.tick_params(labelsize=12)
         ax.tick_params(labelsize=12)
-        ax.imshow(self.segmented)
+        ax.imshow(self.segmented, cmap='gray')
 
     def plot_overlay_oct_segmentation(self):
         fig, ax = plt.subplots(nrows=1, ncols=1, dpi=200, figsize=(14,10), gridspec_kw={'width_ratios': [1]}, frameon=False)
