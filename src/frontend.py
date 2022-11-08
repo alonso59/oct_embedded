@@ -400,14 +400,21 @@ class MainWindow(QMainWindow):
 	def sendOperation(self):
 		bottomimg = self.currentOctProcess.get_individual_layers_segmentation(self.ui.buttonBooleans)
 
-
+		print(bottomimg.max())
 		print(f"Current shape: {bottomimg.shape}")
-		qImg = QImage(bottomimg, bottomimg.shape[1], bottomimg.shape[0],QImage.Format_Indexed8)
+		qImg = QImage(bottomimg, bottomimg.shape[1], bottomimg.shape[0], QImage.Format_RGBA8888)
+
 		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
 		qPix = QPixmap(qImg)	
 		print("Loading image...")
-		self.ui.bottomLabelImg.imgLabel.setPixmap(qPix.scaled(self.ui.bottomLabelImg.imgLabel.size(),Qt.KeepAspectRatio, Qt.SmoothTransformation))
+		self.ui.bottomLabelImg.imgLabel.setPixmap(qPix.scaled(self.ui.bottomLabelImg.imgLabel.size(),Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
 		print("Loaded image!")
+
+
+		# qPix = QPixmap(qImg)	
+		# rPix = qPix.scaled(QSize(self.ui.topLabelImg.width(),self.ui.topLabelImg.height()))	
+		# print("Loading image...")
+		# self.ui.topLabelImg.setImage(rPix)
 
 		...
 
@@ -462,7 +469,7 @@ class MainWindow(QMainWindow):
 		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
 		qPix = QPixmap(qImg)	
 		print("Loading image...")
-		self.ui.middleLabelImg.imgLabel.setPixmap(qPix.scaled(self.ui.middleLabelImg.imgLabel.size(),Qt.KeepAspectRatio, Qt.SmoothTransformation))
+		self.ui.middleLabelImg.imgLabel.setPixmap(qPix.scaled(self.ui.middleLabelImg.imgLabel.size(),Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
 		print("Loaded image!")
 
 		...
