@@ -86,7 +86,7 @@ class OCTProcessing:
 
     def get_individual_layers_segmentation(self, layer: list):
         classmap_bool = list(compress(self.classes, layer))
-        self.segmented = np.zeros(self.bscan_fovea.shape)
+        segmented = np.zeros(self.bscan_fovea.shape)
         for l in classmap_bool:
             binary = np.where(self.pred_class_map == self.classes.index(l), 1, 0)
             multi = np.multiply(binary, self.bscan_fovea)
