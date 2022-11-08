@@ -101,8 +101,8 @@ class Ui_MainWindow(object):
 		self.toolBar.setObjectName(u"toolBar")
 		self.toolBar.setMovable(False)
 		MainWindow.addToolBar(Qt.RightToolBarArea, self.toolBar)
-
-		self.buttonBooleans = [False, False, False, False, False, False, False, False, False]
+								#A
+		self.buttonBooleans = [False, False, False, False, False, False, False, False, False, False]
 		DefaultPushButtonStyleSheet = "QPushButton {background-color:red;} QPushButton:checked{background-color:green;}"
 		self.ilmrnflAction = QPushButton()
 		self.ilmrnflAction.setObjectName(u"ilmrnflAction")
@@ -252,7 +252,7 @@ class MainWindow(QMainWindow):
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
 		self.workingFile = ""
-
+		self.currentOctProcess = None
 		#Main menu actions
 			#File
 		self.ui.actionOpenFile.triggered.connect(self.openFile)
@@ -307,63 +307,63 @@ class MainWindow(QMainWindow):
 
 	def operationIlmrnf(self):
 		print("Triggered: ILMRNF")
-		self.ui.buttonBooleans[0] = self.ui.ilmrnflAction.isChecked()
+		self.ui.buttonBooleans[1] = self.ui.ilmrnflAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationGcl(self):
 		print("Triggered: GCL")
-		self.ui.buttonBooleans[1] = self.ui.gclAction.isChecked()
+		self.ui.buttonBooleans[2] = self.ui.gclAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationIpl(self):
 		print("Triggered: IPL")
-		self.ui.buttonBooleans[2] = self.ui.iplAction.isChecked()
+		self.ui.buttonBooleans[3] = self.ui.iplAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationInl(self):
 		print("Triggered: INL")
-		self.ui.buttonBooleans[3] = self.ui.inlAction.isChecked()
+		self.ui.buttonBooleans[4] = self.ui.inlAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationOpl(self):
 		print("Triggered: OPL")
-		self.ui.buttonBooleans[4] = self.ui.oplAction.isChecked()
+		self.ui.buttonBooleans[5] = self.ui.oplAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationOnl(self):
 		print("Triggered: ONL")
-		self.ui.buttonBooleans[5] = self.ui.onlAction.isChecked()
+		self.ui.buttonBooleans[6] = self.ui.onlAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationElm(self):
 		print("Triggered: ELM")
-		self.ui.buttonBooleans[6] = self.ui.elmAction.isChecked()
+		self.ui.buttonBooleans[7] = self.ui.elmAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationEz(self):
 		print("Triggered: EZ")
-		self.ui.buttonBooleans[7] = self.ui.ezAction.isChecked()
+		self.ui.buttonBooleans[8] = self.ui.ezAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
 
 	def operationIzrpe(self):
 		print("Triggered: IZRPE")
-		self.ui.buttonBooleans[8] = self.ui.izrpeAction.isChecked()
+		self.ui.buttonBooleans[9] = self.ui.izrpeAction.isChecked()
 		print(f"BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...
@@ -374,21 +374,21 @@ class MainWindow(QMainWindow):
 		for button in self.ui.allOpButtons:
 			button.setChecked(state)
 		if self.ui.allAction.isChecked():
-			for index in range(len(self.ui.buttonBooleans)):
-				self.ui.buttonBooleans[index-1] = True
+			for index in range(len(self.ui.buttonBooleans)-1):
+				self.ui.buttonBooleans[index+1] = True
 		else:
-			for index in range(len(self.ui.buttonBooleans)):
-				self.ui.buttonBooleans[index-1] = False
+			for index in range(len(self.ui.buttonBooleans)-1):
+				self.ui.buttonBooleans[index+1] = False
 		print(f"ALL BUTTONS: {self.ui.buttonBooleans}")
 		self.operationAllChecked()
 		...	
 
 	def operationAllChecked(self):
-		print(f"SUM BOOL: {sum(self.ui.buttonBooleans)}")
-		if sum(self.ui.buttonBooleans) < 9:
+		print(f"SUM BOOL: {sum(self.ui.buttonBooleans[1:10])}")
+		if sum(self.ui.buttonBooleans[1:10]) < 9:
 			self.ui.allAction.setChecked(False)		
 			allTrue = False
-		elif sum(self.ui.buttonBooleans) == 9:
+		elif sum(self.ui.buttonBooleans[1:10]) == 9:
 			self.ui.allAction.setChecked(True)
 			allTrue = True
 		else:
@@ -398,6 +398,17 @@ class MainWindow(QMainWindow):
 		...
 
 	def sendOperation(self):
+		self.currentOctProcess.get_individual_layers_segmentation(self.ui.buttonBooleans)
+
+		bottomimg = self.currentOctProcess.segmented
+		print(f"Current shape: {bottomimg.shape}")
+		qImg = QImage(bottomimg, bottomimg.shape[1], bottomimg.shape[0],QImage.Format_Indexed8)
+		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
+		qPix = QPixmap(qImg)	
+		print("Loading image...")
+		self.ui.bottomLabelImg.imgLabel.setPixmap(qPix.scaled(self.ui.bottomLabelImg.imgLabel.size(),Qt.KeepAspectRatio, Qt.SmoothTransformation))
+		print("Loaded image!")
+
 		...
 
 	def operationLoadAction(self):
@@ -432,10 +443,10 @@ class MainWindow(QMainWindow):
 		print("Creating model...")
 		model = torch.load(model_path, map_location='cuda')
 		print("Creating process...")
-		currentOctProcess = OCTProcessing(oct_file=oc_file, torchmodel=model)
+		self.currentOctProcess = OCTProcessing(oct_file=oc_file, torchmodel=model)
 		print("Creating image...")
 
-		topimg = currentOctProcess.bscan_fovea
+		topimg = self.currentOctProcess.bscan_fovea
 		print(f"Current shape: {topimg.shape}")
 		qImg = QImage(topimg,topimg.shape[1],topimg.shape[0],QImage.Format_Indexed8)
 		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
@@ -445,16 +456,14 @@ class MainWindow(QMainWindow):
 		self.ui.topLabelImg.setImage(rPix)
 		print("Loaded image!")
 
-		middleimg = currentOctProcess.overlay
+		middleimg = self.currentOctProcess.overlay
 		print(f"Current shape: {middleimg.shape}")
 		qImg = QImage(middleimg,middleimg.shape[1],middleimg.shape[0],QImage.Format_RGBA8888)
 		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
 		qPix = QPixmap(qImg)	
-		rPix = qPix.scaled(QSize(self.ui.topLabelImg.width(),self.ui.topLabelImg.height()))	
 		print("Loading image...")
-		self.ui.middleLabelImg.setImage(rPix)
+		self.ui.middleLabelImg.imgLabel.setPixmap(qPix.scaled(self.ui.middleLabelImg.imgLabel.size(),Qt.KeepAspectRatio, Qt.SmoothTransformation))
 		print("Loaded image!")
-
 
 		...
 
@@ -484,7 +493,6 @@ if __name__ == "__main__":
 	app = QApplication()
 	darkPalette = DarkPalette()
 	whitePalette = app.palette()
-	currentOctProcess = None
 	#app.setStyle('Fusion')
 	app.setPalette(darkPalette)  
 	mainWindow = MainWindow()
