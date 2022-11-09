@@ -144,7 +144,7 @@ class OCTProcessing:
         ax[1].tick_params(labelsize=12)
         ax[1].tick_params(labelsize=12)   
 
-    def fovea_forward(self, gamma=1.3, alpha=0.01, imgh=256, imgw=256):
+    def fovea_forward(self, gamma=1.3, alpha=0.01, imgh=512, imgw=512):
 
         self.pred_class_map, self.pred_rgb, self.overlay = self.get_segmentation(self.bscan_fovea, gamma=gamma, alpha=alpha, imgh=imgh, imgw=imgw)
 

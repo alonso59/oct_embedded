@@ -32,8 +32,8 @@ paths:
 hyperparameters:
   loss_fn: wce_dice #wce_dice, dice_loss, dice_focal_loss, ce
   optimizer: adam # sgd, adam
-  batch_size: 8
-  num_epochs: 500
+  batch_size: 4
+  num_epochs: 600
   lr: 0.0005
   b1: 0.9
   b2: 0.999
@@ -48,7 +48,7 @@ general:
   pretrain: False
   checkpoint: False
   init_weights: logs/2022-09-07_15_17_28/checkpoints/weights.pth
-  n_classes: 10
+  n_classes: 9
   img_sizeh: 256
   img_sizew: 256
   channels: 1
