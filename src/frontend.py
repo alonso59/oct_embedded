@@ -62,16 +62,110 @@ class PropertiesHolder(QWidget):
 		#-> # Bscan
 		#-> Start X
 		#-> End X
+		self.setFixedWidth(400)
 		self.thisLayout = QVBoxLayout()
 		self.setLayout(self.thisLayout)
 		self.titleLabel = QLabel()
-		self.titleLabel.setText("Patient Info")
+		self.titleLabel.setText("SLO")
 		self.titleLabel.setFixedWidth(400)
+		self.titleLabel.setFixedHeight(20)
 		self.titleLabel.setAlignment(Qt.AlignCenter)
 		self.titleLabel.setStyleSheet("background-color:rgb(70,70,70); color:rgb(255,255,255)")
-		self.thisLayout.addWidget(self.titleLabel)	
 
-		self.imgLabel = QLabel ()
+		self.graphicsScene = QGraphicsScene()
+		self.graphicsView = ImageViewer()
+		self.graphicsView.setStyleSheet("background-color:rgb(0,0,0)")
+		#self.graphicsView.setFixedHeight(400)
+		#self.graphicsView.setFixedWidth(400)
+		self.graphicsView.setFixedSize(400,400)
+		self.graphicsPixmapItem = QGraphicsPixmapItem()
+		self.graphicsScene.addItem(self.graphicsPixmapItem)
+		self.graphicsView.setScene(self.graphicsScene)
+
+		#GENERAL METADATA
+		#-> AI Model
+		#-> File
+		#-> Patient ID
+		#-> Visit Date
+		#-> Scan Pos
+		#-> Scale X
+		#-> Scale Z
+		#-> Size XSlo
+		#-> Size YSlo
+		#-> Scale XSlo
+		#-> Scale YSlo
+		#-> No. Bscans
+		self.generalMetadataTitle = QLabel()
+		self.generalMetadataTitle.setText("General Metadata")
+		self.generalMetadataTitle.setFixedWidth(400)
+		self.generalMetadataTitle.setFixedHeight(20)
+		self.generalMetadataTitle.setAlignment(Qt.AlignCenter)
+		self.generalMetadataTitle.setStyleSheet("background-color:rgb(70,70,70); color:rgb(255,255,255)")
+		self.generalMetadataStandardModel = QStandardItemModel()
+		self.generalMetadataStandardModel.appendRow([QStandardItem("AI Model"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("File"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("Patient ID"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("Visit Date"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("Scan Pos"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("Scale X"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("Scale Z"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("Size XSlo"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("Size YSlo"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("Scale XSlo"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("Scale YSlo"), QStandardItem("")])
+		self.generalMetadataStandardModel.appendRow([QStandardItem("No. Bscans"), QStandardItem("")])
+		self.generalMetadataTableView = QTableView()
+		self.generalMetadataTableView.setModel(self.generalMetadataStandardModel)
+		self.generalMetadataTableView.setFixedWidth(400)
+		self.generalMetadataTableView.horizontalHeader().setVisible(False)
+		self.generalMetadataTableView.verticalHeader().setVisible(False)
+		#self.generalMetadataTableView.setColumnWidth(0,80)
+		#self.generalMetadataTableView.setColumnWidth(1,10)
+		self.generalMetadataTableView.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+		self.generalMetadataTableView.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+		self.generalMetadataTableView.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+
+
+		# FOVEA BSCAN METADATA
+		#-> # Bscan
+		#-> Start X
+		#-> End X
+		self.foveaMetadataTitle = QLabel()
+		self.foveaMetadataTitle.setText("Fovea Bscan Metadata")
+		self.foveaMetadataTitle.setFixedWidth(400)
+		self.foveaMetadataTitle.setFixedHeight(20)
+		self.foveaMetadataTitle.setAlignment(Qt.AlignCenter)
+		self.foveaMetadataTitle.setStyleSheet("background-color:rgb(70,70,70); color:rgb(255,255,255)")
+		self.foveaMetadataStandardModel = QStandardItemModel()
+		self.foveaMetadataStandardModel.appendRow([QStandardItem("Bscan"), QStandardItem("")])
+		self.foveaMetadataStandardModel.appendRow([QStandardItem("Start X"), QStandardItem("")])
+		self.foveaMetadataStandardModel.appendRow([QStandardItem("End X"), QStandardItem("")])
+		self.foveaMetadataTableView = QTableView()
+		self.foveaMetadataTableView.setModel(self.foveaMetadataStandardModel)
+		self.foveaMetadataTableView.horizontalHeader().setVisible(False)
+		self.foveaMetadataTableView.verticalHeader().setVisible(False)
+		self.foveaMetadataTableView.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+		self.foveaMetadataTableView.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+		self.foveaMetadataTableView.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+
+		self.foveaMetadataTableView.setFixedWidth(400)
+		self.foveaMetadataTableView.setFixedHeight(100)
+
+
+		self.thisLayout.addWidget(self.titleLabel)	
+		self.thisLayout.addWidget(self.graphicsView)
+		self.thisLayout.addWidget(self.generalMetadataTitle)
+		self.thisLayout.addWidget(self.generalMetadataTableView)
+		self.thisLayout.addWidget(self.foveaMetadataTitle)
+		self.thisLayout.addWidget(self.foveaMetadataTableView)
+
+	def storeImage(self, pixmap):
+		self.graphicsPixmapItem.setPixmap(pixmap)
+		...
+
+	def setMetaData(self):
+		...
+
 
 class ImageHolder(QWidget):
 	def __init__(self, title):
@@ -115,11 +209,13 @@ class ImageHolder(QWidget):
 	def displayImage():
 		...
 
+
 class Ui_MainWindow(object):
 	def setupUi(self, MainWindow: QMainWindow):
 		if MainWindow.objectName():
 			MainWindow.setObjectName(u"MainWindow")
-		MainWindow.resize(800,600)
+		MainWindow.resize(1366,768)
+		MainWindow.setMinimumSize(1366,768)
 
 
 		self.centralWidget = QWidget(MainWindow)
@@ -532,6 +628,48 @@ class MainWindow(QMainWindow):
 		self.ui.middleLabelImg.graphicsView.fitInView(self.ui.middleLabelImg.graphicsScene.sceneRect(),Qt.KeepAspectRatio)
 		print("Loaded image!")
 
+
+		eyeimg = self.currentOctProcess.oct.irslo
+		print(f"Current shape: {eyeimg.shape}")
+		qImg = QImage(eyeimg,eyeimg.shape[1],eyeimg.shape[0],QImage.Format_Indexed8)
+		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
+		qPix = QPixmap(qImg)	
+		print("Loading image...")
+		#self.ui.topLabelImg.setImage(rPix)
+		self.ui.propertiesP.storeImage(qPix)
+		self.ui.propertiesP.graphicsView.fitInView(self.ui.propertiesP.graphicsScene.sceneRect(),Qt.KeepAspectRatio)
+		print("Loaded image!")
+
+
+		print("Loading metadata...")
+		model = self.ui.propertiesP.generalMetadataStandardModel
+
+		genMetadata = self.currentOctProcess.oct.fileHeader
+		genMetasearch = ['PatientID','VisitDate', 'scanPos', 'scaleX', 'scaleZ', 'sizeXSlo', 'sizeYSlo', 'scaleXSlo', 'scaleYSlo', 'numBscan']
+		
+		print("GENERAL METADATA")
+		print(model_path)
+		AIModel = model_path.split('/').pop()
+		model.setData(model.index(0,1), AIModel)
+
+		file = oc_file.split('/').pop()
+		model.setData(model.index(1,1), file )
+
+		index = 2
+		for item in genMetasearch:
+			print(f"{item}: {genMetadata[item]}")
+			model.setData(model.index(index,1), str(genMetadata[item]) )
+			index = index + 1
+		
+		print("FOVEA BSCAN METADATA")
+		model = self.ui.propertiesP.foveaMetadataStandardModel
+		Bscan = genMetadata['numBscan']//2
+		StartX = self.currentOctProcess.oct.bScanHeader(genMetadata['numBscan']//2)['startX']
+		StartY = self.currentOctProcess.oct.bScanHeader(genMetadata['numBscan']//2)['startY']
+		print(f"numBscan: {genMetadata['numBscan']} Bscan: {Bscan} StartX: {StartX} StartY: {StartY}")
+		model.setData(model.index(0,1), str(Bscan) )
+		model.setData(model.index(1,1), str(StartX) )
+		model.setData(model.index(2,1), str(StartY) )
 		...
 
 class DarkPalette(QPalette):
@@ -563,6 +701,6 @@ if __name__ == "__main__":
 	#app.setStyle('Fusion')
 	app.setPalette(darkPalette)  
 	mainWindow = MainWindow()
-	mainWindow.showFullScreen()
+	mainWindow.show()
 	print(mainWindow.ui.topLabelImg.imgLabel.width(), mainWindow.ui.topLabelImg.imgLabel.height(), )
 	sys.exit(app.exec_())
