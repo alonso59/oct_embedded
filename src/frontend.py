@@ -602,7 +602,9 @@ class MainWindow(QMainWindow):
 		print("Creating model...")
 		model = torch.load(model_path, map_location='cuda')
 		print("Creating process...")
-		self.currentOctProcess = OCTProcessing(oct_file=oc_file, torchmodel=model)
+		device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+		self.currentOctProcess = OCTProcessing(oct_file=oc_file, torchmodel=model, half=False, device=device)
+		self.currentOctProcess.fovea_forward(imgw=512, imgh=512)
 		print("Creating image...")
 
 		topimg = self.currentOctProcess.bscan_fovea

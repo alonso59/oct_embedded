@@ -15,11 +15,11 @@ from skimage.restoration import denoise_tv_chambolle
 from time import time
 
 class OCTProcessing:
-    def __init__(self, oct_file, torchmodel):
+    def __init__(self, oct_file, torchmodel, half=False, device='cuda'):
         self.classes = ['BG', 'ILM', 'GCL', 'IPL', 'INL', 'OPL', 'ONL', 'ELM', 'EZ', 'BM']
         self.model = torchmodel
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')        
-        #self.device = 'cpu'
+        self.device = device
+        self.half = half
         self.oct_file = oct_file
         self.oct_reader(self.oct_file)
         self.fovea_forward()
@@ -35,7 +35,11 @@ class OCTProcessing:
     def predict(self, model, x_image):
         transforms = T.Normalize(mean=0.1338, std=0.1466) # CONTROL: 0.0389,  0.1036,  # FULL: 0.1338, 0.1466
         image = np.expand_dims(x_image, axis=-1)
-        image = torch.tensor(image, dtype=torch.float, device=self.device)
+        if self.half:
+            type_float = torch.float16
+        else:
+            type_float = torch.float
+        image = torch.tensor(image, dtype=type_float, device=self.device)
         image = transforms(image)
         image = torch.permute(image, (2, 0, 1))
         
