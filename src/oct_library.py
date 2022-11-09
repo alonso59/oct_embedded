@@ -22,7 +22,7 @@ class OCTProcessing:
         self.half = half
         self.oct_file = oct_file
         self.oct_reader(self.oct_file)
-        self.fovea_forward()
+        
 
     def __len__(self):
         return len(self.oct)
