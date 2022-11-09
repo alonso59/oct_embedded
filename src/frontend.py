@@ -658,7 +658,10 @@ class MainWindow(QMainWindow):
 		index = 2
 		for item in genMetasearch:
 			print(f"{item}: {genMetadata[item]}")
-			model.setData(model.index(index,1), str(genMetadata[item]) )
+			if index == 2 or index ==4:
+				model.setData(model.index(index,1), genMetadata[item].decode() )
+			else:
+				model.setData(model.index(index,1), str(genMetadata[item]) )
 			index = index + 1
 		
 		print("FOVEA BSCAN METADATA")
