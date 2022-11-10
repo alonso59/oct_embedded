@@ -49,7 +49,7 @@ def train(cfg):
                                                           val_imgdir=val_imgdir,
                                                           val_maskdir=val_mskdir,
                                                           batch_size=batch_size,
-                                                          num_workers=24,
+                                                          num_workers=8,
                                                           pin_memory=True,
                                                           preprocess_input=None,
                                                           )

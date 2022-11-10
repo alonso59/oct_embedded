@@ -5,7 +5,7 @@ import yaml
 import torch
 import numpy as np
 import albumentations as T
-import elasticdeform as ed
+# import elasticdeform as ed
 
 from tqdm import tqdm
 from PIL import Image
@@ -79,7 +79,7 @@ def loaders(train_imgdir,
                 T.GaussianBlur(blur_limit=(1, 3), p=0.2),
                 # T.GaussNoise(var_limit=(2,4), mean=0, p=0.3),
             ], p=0.3),
-            ElasticDeformation(sigma_range=(1,3), points=4, p=0.1),
+            # ElasticDeformation(sigma_range=(1,3), points=4, p=0.1),
             T.Normalize(mean=MEAN, std=STD),
         ]
     )

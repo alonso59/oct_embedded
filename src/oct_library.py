@@ -39,7 +39,7 @@ class OCTProcessing:
             type_float = torch.float16
         else:
             type_float = torch.float
-        image = torch.tensor(image, dtype=type_float, device=self.device)
+        image = torch.tensor(image, dtype=torch.float, device=self.device)
         image = transforms(image)
         image = torch.permute(image, (2, 0, 1))
         
