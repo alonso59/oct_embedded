@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import torch.nn.functional as F
 import heyexReader as ep
 
-from PIL import Image
+from PIL import Image, ImageDraw
 from matplotlib import cm
 from itertools import compress
 from scipy.interpolate import interp1d
@@ -50,6 +50,7 @@ class OCTProcessing:
         y_pred = model(image)
         end.record()
         torch.cuda.synchronize()
+        self.FPS = 1/(start.elapsed_time(end) / 1000)
         print(start.elapsed_time(end), 'ms')
         print(1/(start.elapsed_time(end) / 1000), 'FPS')
         y_pred = F.softmax(y_pred, dim=1)
@@ -134,9 +135,23 @@ class OCTProcessing:
         ax.set_xticks([])
         ax.set_yticks([])
 
+    def irslo(self):
+        wf = self.oct.wholefile
+        slo_grid = np.copy(wf["sloImage"])
+        slo_grid = np.stack((slo_grid,)*3, axis=-1)
+        slo_grid = Image.fromarray(slo_grid)
+        draw = ImageDraw.Draw(slo_grid)
+        grid = self.oct.grid
+        for (x_0, y_0, x_1, y_1) in grid:
+            draw.line((x_0,y_0, x_1, y_1), fill=(255,255,0), width=3)
+        return slo_grid
+
     def plot_slo_fovea(self):
+        slo_grid = self.irslo()
+        
         fig, ax = plt.subplots(nrows=1, ncols=2, dpi=200, figsize=(25,10), gridspec_kw={'width_ratios': [1, 2]}, frameon=False)
-        ax[0].imshow(self.oct.irslo, cmap='gray')
+        
+        ax[0].imshow(slo_grid, cmap='gray')
         # self.oct.plot(localizer=True, bscan_positions=True, ax=ax[0])
         ax[1].imshow(self.bscan_fovea, cmap='gray')
         ax[1].set_xlabel('B-Scan (X)', fontsize=14, weight="bold")
