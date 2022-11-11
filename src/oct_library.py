@@ -39,7 +39,7 @@ class OCTProcessing:
             type_float = torch.float16
         else:
             type_float = torch.float
-        image = torch.tensor(image, dtype=torch.float, device=self.device)
+        image = torch.tensor(image, dtype=type_float, device=self.device)
         image = transforms(image)
         image = torch.permute(image, (2, 0, 1))
         
@@ -52,7 +52,7 @@ class OCTProcessing:
         torch.cuda.synchronize()
         self.FPS = 1/(start.elapsed_time(end) / 1000)
         #print(start.elapsed_time(end), 'ms')
-        #print(1/(start.elapsed_time(end) / 1000), 'FPS')
+        print(1/(start.elapsed_time(end) / 1000), 'FPS')
         y_pred = F.softmax(y_pred, dim=1)
         y_pred = torch.argmax(y_pred, dim=1)
         y_pred = y_pred.squeeze(0).detach().cpu().numpy()
