@@ -11,6 +11,7 @@ from PIL.ImageQt import ImageQt
 import numpy as np
 # import OCT
 from oct_library import OCTProcessing
+from jtop import jtop
 
 class ImageViewer(QGraphicsView):
 	def __init__(self):
@@ -596,7 +597,8 @@ class MainWindow(QMainWindow):
 				model_path = fname[0]
 		else:
 			print("[ERROR] Invalid file")
-		
+		print("MEASURING BEFORE")
+		jetsonStats() #TAKING BEFORE
 		print (f"MODEL: {model_path} OCT(VOL): {oc_file}")
 
 		print("Creating model...")
@@ -605,8 +607,10 @@ class MainWindow(QMainWindow):
 		device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 		self.currentOctProcess = OCTProcessing(oct_file=oc_file, torchmodel=model, half=False, device=device)
 		self.currentOctProcess.fovea_forward(imgw=512, imgh=512)
+		print("Reporting process gpu, temp, pow")
+		print("MEASURING AFTER")
+		jetsonStats() #TAKING AFTER
 		print("Creating image...")
-
 		topimg = self.currentOctProcess.bscan_fovea
 		print(f"Current shape: {topimg.shape}")
 		qImg = QImage(topimg,topimg.shape[1],topimg.shape[0],QImage.Format_Indexed8)
@@ -694,6 +698,26 @@ class DarkPalette(QPalette):
 		self.setColor(QPalette.Highlight, QColor(42, 130, 218))
 		self.setColor(QPalette.HighlightedText, Qt.black)
 		self.setColor(QPalette.PlaceholderText, QColor(245, 245, 245, 100))
+
+def jetsonStats():
+	with jtop() as jetson:
+		print(f"BOARD: {jetson.board['info']['machine']}")
+		print(f"SOC HARDWARE: {jetson.board['hardware']['SOC']}")
+		print(f"CPU MODEL: {jetson.cpu['CPU1']['model']}")
+		print(f"TEMP GPU: {jetson.temperature['GPU']} °C")
+		print(f"TEMP BCPU: {jetson.temperature['BCPU']} °C")
+		print(f"TEMP THERMAL: {jetson.temperature['thermal']} °C")
+		print(f"TEMP TDIODE: {jetson.temperature['Tdiode']} °C")
+		print(f"POWER GENERAL CURRENT: {jetson.power[0]['cur']} mW")
+		print(f"POWER GENERAL AVG: {jetson.power[0]['avg']} mW")
+		print(f"POWER SYS SOC CURRENT: {jetson.power[1]['SYS SOC']['cur']} mW")
+		print(f"POWER SYS SOC AVG: {jetson.power[1]['SYS SOC']['avg']} mW")
+		print(f"POWER SYS GPU CURRENT: {jetson.power[1]['SYS GPU']['cur']} mW")
+		print(f"POWER SYS GPU AVG: {jetson.power[1]['SYS GPU']['avg']} mW")
+		print(f"POWER SYS CPU CURRENT: {jetson.power[1]['SYS CPU']['cur']} mW")
+		print(f"POWER SYS CPU AVG: {jetson.power[1]['SYS CPU']['avg']} mW")
+		print(f"POWER SYS DDR CURRENT: {jetson.power[1]['SYS DDR']['cur']} mW")
+		print(f"POWER SYS DDR AVG: {jetson.power[1]['SYS DDR']['avg']} mW")
 
 
 if __name__ == "__main__":
