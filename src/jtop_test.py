@@ -35,11 +35,12 @@ model_path = '/media/jetson/CA33-10E2/256.pth'
 oc_file = '/home/jetson/Documents/oct_embedded/dataset/hopkins/hc01_spectralis_macula_v1_s1_R.vol'
 
 model = torch.load(model_path, map_location='cuda')
+model = model.half()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-OCT = OCTProcessing(oct_file=oc_file, torchmodel=model, half=False, device=device)
+OCT = OCTProcessing(oct_file=oc_file, torchmodel=model, half=True, device=device)
 OCT.fovea_forward(imgw=256, imgh=256)
 
-file = open('jtop_test_result.log', 'w')
+file = open('jtop_test_result_gpu_half.log', 'w')
 file.write(f"ITERATION, GPUTEMP, CPUTEMP, GPUPOW, CPUPOW, FPS \n")
 
 for i in range(times):
