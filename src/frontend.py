@@ -63,12 +63,13 @@ class PropertiesHolder(QWidget):
 		#-> # Bscan
 		#-> Start X
 		#-> End X
-		self.setFixedWidth(400)
+		widgetSpan = 400
+		self.setFixedWidth(widgetSpan)
 		self.thisLayout = QVBoxLayout()
 		self.setLayout(self.thisLayout)
 		self.titleLabel = QLabel()
 		self.titleLabel.setText("SLO")
-		self.titleLabel.setFixedWidth(400)
+		self.titleLabel.setFixedWidth(widgetSpan)
 		self.titleLabel.setFixedHeight(20)
 		self.titleLabel.setAlignment(Qt.AlignCenter)
 		self.titleLabel.setStyleSheet("background-color:rgb(70,70,70); color:rgb(255,255,255)")
@@ -76,9 +77,9 @@ class PropertiesHolder(QWidget):
 		self.graphicsScene = QGraphicsScene()
 		self.graphicsView = ImageViewer()
 		self.graphicsView.setStyleSheet("background-color:rgb(0,0,0)")
-		#self.graphicsView.setFixedHeight(400)
-		#self.graphicsView.setFixedWidth(400)
-		self.graphicsView.setFixedSize(400,400)
+		#self.graphicsView.setFixedHeight(widgetSpan)
+		#self.graphicsView.setFixedWidth(widgetSpan)
+		self.graphicsView.setFixedSize(widgetSpan,widgetSpan)
 		self.graphicsPixmapItem = QGraphicsPixmapItem()
 		self.graphicsScene.addItem(self.graphicsPixmapItem)
 		self.graphicsView.setScene(self.graphicsScene)
@@ -98,7 +99,7 @@ class PropertiesHolder(QWidget):
 		#-> No. Bscans
 		self.generalMetadataTitle = QLabel()
 		self.generalMetadataTitle.setText("General Metadata")
-		self.generalMetadataTitle.setFixedWidth(400)
+		self.generalMetadataTitle.setFixedWidth(widgetSpan)
 		self.generalMetadataTitle.setFixedHeight(20)
 		self.generalMetadataTitle.setAlignment(Qt.AlignCenter)
 		self.generalMetadataTitle.setStyleSheet("background-color:rgb(70,70,70); color:rgb(255,255,255)")
@@ -117,7 +118,7 @@ class PropertiesHolder(QWidget):
 		self.generalMetadataStandardModel.appendRow([QStandardItem("No. Bscans"), QStandardItem("")])
 		self.generalMetadataTableView = QTableView()
 		self.generalMetadataTableView.setModel(self.generalMetadataStandardModel)
-		self.generalMetadataTableView.setFixedWidth(400)
+		self.generalMetadataTableView.setFixedWidth(widgetSpan)
 		self.generalMetadataTableView.horizontalHeader().setVisible(False)
 		self.generalMetadataTableView.verticalHeader().setVisible(False)
 		#self.generalMetadataTableView.setColumnWidth(0,80)
@@ -133,7 +134,7 @@ class PropertiesHolder(QWidget):
 		#-> End X
 		self.foveaMetadataTitle = QLabel()
 		self.foveaMetadataTitle.setText("Fovea Bscan Metadata")
-		self.foveaMetadataTitle.setFixedWidth(400)
+		self.foveaMetadataTitle.setFixedWidth(widgetSpan)
 		self.foveaMetadataTitle.setFixedHeight(20)
 		self.foveaMetadataTitle.setAlignment(Qt.AlignCenter)
 		self.foveaMetadataTitle.setStyleSheet("background-color:rgb(70,70,70); color:rgb(255,255,255)")
@@ -149,7 +150,7 @@ class PropertiesHolder(QWidget):
 		self.foveaMetadataTableView.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
 		self.foveaMetadataTableView.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
 
-		self.foveaMetadataTableView.setFixedWidth(400)
+		self.foveaMetadataTableView.setFixedWidth(widgetSpan)
 		self.foveaMetadataTableView.setFixedHeight(100)
 
 
@@ -216,7 +217,7 @@ class Ui_MainWindow(object):
 		if MainWindow.objectName():
 			MainWindow.setObjectName(u"MainWindow")
 		MainWindow.resize(1366,768)
-		MainWindow.setMinimumSize(1366,768)
+		MainWindow.setMinimumSize(800,600)
 
 
 		self.centralWidget = QWidget(MainWindow)
@@ -270,7 +271,7 @@ class Ui_MainWindow(object):
 		MainWindow.addToolBar(Qt.RightToolBarArea, self.toolBar)
 								#A    #RNFL #GCLIPL  #INL   #OPL   #ONL   #IS    #OS    #RPE
 		self.buttonBooleans = [False, False, False, False, False, False, False, False, False]
-		DefaultPushButtonStyleSheet = "QPushButton {background-color:red;} QPushButton:checked{background-color:green;}"
+		DefaultPushButtonStyleSheet = "QPushButton {background-color:orange;} QPushButton:checked{background-color:green;} QPushButton{font-size:24px;}"
 		self.rnflAction = QPushButton()
 		self.rnflAction.setObjectName(u"rnflAction")
 		self.rnflAction.setCheckable(True)
@@ -325,14 +326,19 @@ class Ui_MainWindow(object):
 		self.allAction.setChecked(False)
 		self.allAction.setStyleSheet(DefaultPushButtonStyleSheet)
 		
+		actionFont = QFont("Times", 10, QFont.Bold)
+
 		self.loadAction = QAction()
 		self.loadAction.setObjectName(u"loadAction")
+		self.loadAction.setFont(actionFont)
 
 		self.saveAction = QAction()
 		self.saveAction.setObjectName(u"saveAction")
+		self.saveAction.setFont(actionFont)
 
 		self.finishAction = QAction()
 		self.finishAction.setObjectName(u"finishAction")
+		self.finishAction.setFont(actionFont)
 
 		self.actionOpenFile = QAction(MainWindow)
 		self.actionOpenFile.setObjectName(u"actionOpenFile")
@@ -341,6 +347,7 @@ class Ui_MainWindow(object):
 		self.actionClose = QAction(MainWindow)
 		self.actionClose.setObjectName(u"actionClose")
 		self.menuFile.addAction(self.actionClose)
+		
 
 		self.actionSwitchTheme = QAction(MainWindow)
 		self.actionSwitchTheme.setObjectName(u"actionSwitchTheme")
@@ -634,17 +641,27 @@ class MainWindow(QMainWindow):
 		self.ui.middleLabelImg.graphicsView.fitInView(self.ui.middleLabelImg.graphicsScene.sceneRect(),Qt.KeepAspectRatio)
 		print("Loaded image!")
 
+		# eyeimg = self.currentOctProcess.oct.irslo
+		# print(f"Current shape: {eyeimg.shape}")
+		# qImg = QImage(eyeimg,eyeimg.shape[1],eyeimg.shape[0],QImage.Format_Indexed8)
+		# print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
+		# qPix = QPixmap(qImg)	
+		# print("Loading image...")
+		# #self.ui.topLabelImg.setImage(rPix)
+		# self.ui.propertiesP.storeImage(qPix)
+		# self.ui.propertiesP.graphicsView.fitInView(self.ui.propertiesP.graphicsScene.sceneRect(),Qt.KeepAspectRatio)
+		# print("Loaded image!")	
 
-		eyeimg = self.currentOctProcess.oct.irslo
-		print(f"Current shape: {eyeimg.shape}")
-		qImg = QImage(eyeimg,eyeimg.shape[1],eyeimg.shape[0],QImage.Format_Indexed8)
-		print(f"Image width: {qImg.width()} Image height: {qImg.height()}")
-		qPix = QPixmap(qImg)	
+		eyeimg = self.currentOctProcess.irslo()
+		qImg = ImageQt(eyeimg)
+		qPix = QPixmap.fromImage(qImg)	
 		print("Loading image...")
 		#self.ui.topLabelImg.setImage(rPix)
 		self.ui.propertiesP.storeImage(qPix)
 		self.ui.propertiesP.graphicsView.fitInView(self.ui.propertiesP.graphicsScene.sceneRect(),Qt.KeepAspectRatio)
 		print("Loaded image!")
+
+
 
 
 		print("Loading metadata...")
@@ -666,6 +683,8 @@ class MainWindow(QMainWindow):
 			print(f"{item}: {genMetadata[item]}")
 			if index == 2 or index ==4:
 				model.setData(model.index(index,1), genMetadata[item].decode() )
+			elif index == 5 or index == 6 or index == 9 or index == 10:
+				model.setData(model.index(index,1), str(round(genMetadata[item],10)) )
 			else:
 				model.setData(model.index(index,1), str(genMetadata[item]) )
 			index = index + 1
