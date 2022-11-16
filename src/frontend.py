@@ -612,8 +612,14 @@ class MainWindow(QMainWindow):
 		model = torch.load(model_path, map_location='cuda')
 		print("Creating process...")
 		device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-		self.currentOctProcess = OCTProcessing(oct_file=oc_file, torchmodel=model, half=False, device=device)
-		self.currentOctProcess.fovea_forward(imgw=512, imgh=512)
+		# create example data
+		x = torch.ones((1, 3, 256, 256)).cuda()
+		# convert to TensorRT feeding sample data as input
+		model_trt = torch2trt(model, [x])
+
+		self.currentOctProcess = OCTProcessing(oct_file=oc_file, torchmodel=model_trt, half=False, device=device)
+		self.currentOctProcess.fovea_forward(imgw=256, imgh=256)
+
 		print("Reporting process gpu, temp, pow")
 		print("MEASURING AFTER")
 		jetsonStats() #TAKING AFTER
