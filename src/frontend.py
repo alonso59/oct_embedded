@@ -12,6 +12,7 @@ import numpy as np
 # import OCT
 from oct_library import OCTProcessing
 from jtop import jtop
+from torch2trt import torch2trt
 
 class ImageViewer(QGraphicsView):
 	def __init__(self):
