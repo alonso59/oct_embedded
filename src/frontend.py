@@ -12,7 +12,7 @@ import numpy as np
 # import OCT
 from oct_library import OCTProcessing
 from jtop import jtop
-from torch2trt import torch2trt
+from torch2trt import TRTModule
 
 class ImageViewer(QGraphicsView):
 	def __init__(self):
@@ -593,31 +593,32 @@ class MainWindow(QMainWindow):
 		else:
 			print("[ERROR] Invalid file")
 
-		print("[INFO] Selecting MODEL FILE...")
-		fname = QFileDialog.getOpenFileName(self, "Select .pth file...")
-		fext = fname[0].split(".")[-1]
-		print("[INFO] Selected file: ", fname[0] ," Extension:", fext)
-		if fname != "":
-			if fname[0].split(".")[-1] != 'pth':
-				print("[ERROR] Invalid type of file")
-			else:
-				print("[INFO] Correct file...Reading...")	
-				model_path = fname[0]
-		else:
-			print("[ERROR] Invalid file")
+		# print("[INFO] Selecting MODEL FILE...")
+		# fname = QFileDialog.getOpenFileName(self, "Select .pth file...")
+		# fext = fname[0].split(".")[-1]
+		# print("[INFO] Selected file: ", fname[0] ," Extension:", fext)
+		# if fname != "":
+		# 	if fname[0].split(".")[-1] != 'pth':
+		# 		print("[ERROR] Invalid type of file")
+		# 	else:
+		# 		print("[INFO] Correct file...Reading...")	
+		# 		model_path = fname[0]
+		# else:
+		# 	print("[ERROR] Invalid file")
+
 		print("MEASURING BEFORE")
 		jetsonStats() #TAKING BEFORE
-		print (f"MODEL: {model_path} OCT(VOL): {oc_file}")
+		# print (f"MODEL: {model_path} OCT(VOL): {oc_file}")
 
-		print("Creating model...")
-		model = torch.load(model_path, map_location='cuda')
-		print("Creating process...")
+		# print("Creating model...")
+		# model = torch.load(model_path, map_location='cuda')
+		print("Creating torch2trt...")
 		device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-		# create example data
-		x = torch.ones((1, 3, 256, 256)).cuda()
-		# convert to TensorRT feeding sample data as input
-		model_trt = torch2trt(model, [x])
+		model_trt = TRTModule()
 
+		model_trt.load_state_dict(torch.load('src/unet256_trt.pth'))
+
+		print("Creating process...")
 		self.currentOctProcess = OCTProcessing(oct_file=oc_file, torchmodel=model_trt, half=False, device=device)
 		self.currentOctProcess.fovea_forward(imgw=256, imgh=256)
 
@@ -678,8 +679,8 @@ class MainWindow(QMainWindow):
 		genMetasearch = ['PatientID','VisitDate', 'scanPos', 'scaleX', 'scaleZ', 'sizeXSlo', 'sizeYSlo', 'scaleXSlo', 'scaleYSlo', 'numBscan']
 		
 		print("GENERAL METADATA")
-		print(model_path)
-		AIModel = model_path.split('/').pop()
+		# print(model_path)
+		AIModel = 'src/unet256_trt'
 		model.setData(model.index(0,1), AIModel)
 
 		file = oc_file.split('/').pop()
@@ -705,6 +706,11 @@ class MainWindow(QMainWindow):
 		model.setData(model.index(0,1), str(Bscan) )
 		model.setData(model.index(1,1), str(StartX) )
 		model.setData(model.index(2,1), str(StartY) )
+		print("Printing stats...")
+		ms = self.currentOctProcess.ms		
+		fps = self.currentOctProcess.FPS
+		print(f"ms: [{ms}], fps: [{fps}]")
+
 		...
 
 class DarkPalette(QPalette):

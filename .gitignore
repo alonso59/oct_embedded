@@ -4,3 +4,5 @@ logs1/
 model.pth
 src/__pycache__
 src/networks/__pycache__
+src/unet256_trt.pth
+*.log

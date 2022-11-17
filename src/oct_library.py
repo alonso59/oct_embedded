@@ -38,6 +38,7 @@ class OCTProcessing:
         image = np.expand_dims(x_image, axis=-1)
         if self.half:
             type_float = torch.float16
+            model.half()
         else:
             type_float = torch.float
         image = torch.tensor(image, dtype=type_float, device=self.device)
