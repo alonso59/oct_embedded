@@ -40,7 +40,7 @@ class EtdrsGridItem(QGraphicsItem):
 
     def paint(self, painter, option, widget):
         rect = self.boundingRect()
-        textFont = QFont("Comic Sans MS", 20, QFont.Bold)
+        textFont = QFont("Comic Sans MS", 60, QFont.Bold)
 
         painter.setFont(textFont)
         """
@@ -203,7 +203,7 @@ class EtdrsGridItem(QGraphicsItem):
 
         self.update()
 
-    def setPoints(self, center: QPointF(), centralRad: float, innerRad: float, outerRad: float):
+    def modifyAll(self, center: QPointF(), centralRad: float, innerRad: float, outerRad: float):
         self.centralRingCenter =  center
         self.centralRingRadius = centralRad
         self.innerRingRadius = innerRad
@@ -223,6 +223,9 @@ class EtdrsGridItem(QGraphicsItem):
 
     def modifyYPos(self, yPos: float):
         self.centralRingCenter.setY(yPos)
+    
+    def modifyCenter(self, center: QPointF()):
+        self.centralRingCenter = center
 
 def setCentralLabelValue():
     value = centralRSlider.value()
@@ -260,10 +263,12 @@ def setYPosLabelValue():
     graphicsScene.update()
 
 if __name__ == "__main__":
-    ALL_SLIDER_MAX = 500
+    RAD_SLIDER_MAX = 500
     CENTRAL_RADIUS = 100
     INNER_RADIUS = 200
     OUTER_RADIUS = 400
+    POS_SLIDER_MIN = 0
+    POS_SLIDER_MAX = 2000
     XPOS = 1000
     YPOS = 1000
 
@@ -285,7 +290,8 @@ if __name__ == "__main__":
     rectangleBackground = QGraphicsRectItem(0,0,2000,2000)
     graphicsScene.addItem(rectangleBackground)
     graphicsScene.addItem(etdrsGrid)
-    graphicsView.fitInView(rectangleBackground)
+    graphicsView.fitInView(rectangleBackground, Qt.KeepAspectRatio)
+
 
     sliderWidget = QWidget()
     sliderLayout = QGridLayout()
@@ -294,7 +300,7 @@ if __name__ == "__main__":
     centralRSlider = QSlider()
     centralRSlider.setOrientation(Qt.Horizontal)
     centralRSlider.setMinimum(0)
-    centralRSlider.setMaximum(ALL_SLIDER_MAX)
+    centralRSlider.setMaximum(RAD_SLIDER_MAX)
     centralRSlider.setTickPosition(QSlider.TicksBelow)
     centralRSlider.setTickInterval(10)
     centralRSlider.setValue(CENTRAL_RADIUS)
@@ -302,7 +308,7 @@ if __name__ == "__main__":
     innerRSlider = QSlider()
     innerRSlider.setOrientation(Qt.Horizontal)
     innerRSlider.setMinimum(0)
-    innerRSlider.setMaximum(ALL_SLIDER_MAX)
+    innerRSlider.setMaximum(RAD_SLIDER_MAX)
     innerRSlider.setTickPosition(QSlider.TicksBelow)
     innerRSlider.setTickInterval(10)
     innerRSlider.setSingleStep(10)
@@ -311,15 +317,15 @@ if __name__ == "__main__":
     outerRSlider = QSlider()
     outerRSlider.setOrientation(Qt.Horizontal)
     outerRSlider.setMinimum(0)
-    outerRSlider.setMaximum(ALL_SLIDER_MAX)
+    outerRSlider.setMaximum(RAD_SLIDER_MAX)
     outerRSlider.setTickPosition(QSlider.TicksBelow)
     outerRSlider.setTickInterval(10)
     outerRSlider.setValue(OUTER_RADIUS)
 
     positionXSlider = QSlider()
     positionXSlider.setOrientation(Qt.Horizontal)
-    positionXSlider.setMinimum(-500)
-    positionXSlider.setMaximum(ALL_SLIDER_MAX)
+    positionXSlider.setMinimum(POS_SLIDER_MIN)
+    positionXSlider.setMaximum(POS_SLIDER_MAX)
     positionXSlider.setTickPosition(QSlider.TicksBelow)
     positionXSlider.setTickInterval(10)
     positionXSlider.setSingleStep(10)
@@ -327,8 +333,8 @@ if __name__ == "__main__":
 
     positionYSlider = QSlider()
     positionYSlider.setOrientation(Qt.Horizontal)
-    positionYSlider.setMinimum(-500)
-    positionYSlider.setMaximum(ALL_SLIDER_MAX)
+    positionYSlider.setMinimum(POS_SLIDER_MIN)
+    positionYSlider.setMaximum(POS_SLIDER_MAX)
     positionYSlider.setTickPosition(QSlider.TicksBelow)
     positionYSlider.setTickInterval(10)
     positionYSlider.setSingleStep(10)
@@ -355,10 +361,10 @@ if __name__ == "__main__":
     outerRValue.setText(str(OUTER_RADIUS))
     outerRValue.setFixedSize(100,10)
     positionXValue = QLabel()
-    positionXValue.setText(str(0))
+    positionXValue.setText(str(XPOS))
     positionXValue.setFixedSize(100,10)
     positionYValue = QLabel()
-    positionYValue.setText(str(0))
+    positionYValue.setText(str(YPOS))
     positionYValue.setFixedSize(100,10)
 
     # First Column
